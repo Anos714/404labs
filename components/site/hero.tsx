@@ -35,8 +35,8 @@ export function Hero() {
   });
 
   return (
-    <section className="mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-12 px-5 pb-16 pt-12 sm:px-8 lg:min-h-[calc(100svh-64px)] lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-16">
-      <div className="lg:col-span-7 lg:pr-6">
+    <section className="mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-12 px-5 pb-16 pt-12 sm:px-8 md:grid-cols-12 md:gap-8 lg:min-h-[calc(100svh-64px)] lg:gap-10 lg:pb-20 lg:pt-16">
+      <div className="md:col-span-7 md:pr-4 lg:pr-6">
         <motion.div {...fade(0.05)} className="flex items-center gap-2.5">
           <span className="size-1.5 rounded-full bg-amber" aria-hidden />
           <span className="font-mono text-[11px] text-fg-3">
@@ -46,7 +46,7 @@ export function Hero() {
 
         <motion.h1
           {...fade(0.12)}
-          className="display mt-7 text-[clamp(3.4rem,7vw,6rem)] text-fg"
+          className="display mt-7 text-[clamp(3.4rem,6.6vw,6rem)] text-fg"
         >
           A good place
           <br />
@@ -94,7 +94,7 @@ export function Hero() {
         initial={reduce ? undefined : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.18 }}
-        className="mx-auto w-full max-w-[440px] lg:col-span-5 lg:mx-0 lg:max-w-none"
+        className="mx-auto w-full max-w-[440px] md:col-span-5 md:mx-0 md:max-w-none"
       >
         <figure
           onMouseEnter={fire}
