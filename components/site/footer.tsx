@@ -8,7 +8,7 @@ export function Footer() {
         <div className="flex flex-col justify-between gap-10 sm:flex-row sm:items-start">
           <div>
             <p className="flex items-baseline gap-[5px] text-fg">
-              <span className="font-display text-[22px] leading-none">404</span>
+              <span className="font-display text-[20px] leading-none">404</span>
               <span className="font-mono text-[12px] text-fg-2">lab</span>
             </p>
             <p className="mt-3 max-w-[34ch] text-[13px] leading-[1.7] text-fg-3">
@@ -19,7 +19,7 @@ export function Footer() {
 
           <nav className="flex gap-14">
             <div>
-              <p className="font-mono text-[10px] text-fg-3/70">Library</p>
+              <p className="font-mono text-[11px] text-fg-3">Library</p>
               <ul className="mt-4 space-y-2.5">
                 {[
                   ["The pages", "#pages"],
@@ -29,7 +29,7 @@ export function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
-                      className="text-[12.5px] text-fg-2 transition-colors duration-200 hover:text-fg"
+                      className="text-[13px] text-fg-2 transition-colors duration-200 hover:text-fg"
                     >
                       {label}
                     </Link>
@@ -39,23 +39,23 @@ export function Footer() {
             </div>
 
             <div>
-              <p className="font-mono text-[10px] text-fg-3/70">Elsewhere</p>
+              <p className="font-mono text-[11px] text-fg-3">Elsewhere</p>
               <ul className="mt-4 space-y-2.5">
                 <li>
                   <a
                     href="https://github.com"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1 text-[12.5px] text-fg-2 transition-colors duration-200 hover:text-fg"
+                    className="inline-flex items-center gap-1 text-[13px] text-fg-2 transition-colors duration-200 hover:text-fg"
                   >
                     GitHub
-                    <ArrowUpRight className="size-3" strokeWidth={1.5} />
+                    <ArrowUpRight className="size-4" strokeWidth={1.5} />
                   </a>
                 </li>
                 <li>
                   <Link
                     href="#install"
-                    className="text-[12.5px] text-fg-2 transition-colors duration-200 hover:text-fg"
+                    className="text-[13px] text-fg-2 transition-colors duration-200 hover:text-fg"
                   >
                     Registry JSON
                   </Link>
@@ -66,7 +66,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col justify-between gap-3 border-t border-line pt-6 sm:flex-row sm:items-center">
-          <p className="font-mono text-[10px] text-fg-3">
+          <p className="font-mono text-[11px] text-fg-3">
             Landscape art from{" "}
             <a
               href="https://imageory.in/gallery"
@@ -78,7 +78,7 @@ export function Footer() {
             </a>
             . Built with Next.js, Motion and Tailwind.
           </p>
-          <p className="font-mono text-[10px] text-fg-3">MIT · 2026</p>
+          <p className="font-mono text-[11px] text-fg-3">MIT · 2026</p>
         </div>
       </div>
     </footer>

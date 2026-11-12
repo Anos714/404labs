@@ -46,13 +46,13 @@ export default async function Page({ params }: Params) {
           href="/#pages"
           className="inline-flex items-center gap-2 font-mono text-[11px] text-fg-3 transition-colors duration-200 hover:text-fg"
         >
-          <ArrowLeft className="size-3.5" strokeWidth={1.5} />
+          <ArrowLeft className="size-4" strokeWidth={1.5} />
           all pages
         </Link>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-x-16">
           <div className="lg:col-span-5 lg:row-start-1">
-            <p className="font-mono text-[10.5px] text-fg-3">
+            <p className="font-mono text-[11px] text-fg-3">
               {String(index + 1).padStart(2, "0")} /{" "}
               {String(PAGES.length).padStart(2, "0")}
             </p>
@@ -80,16 +80,16 @@ export default async function Page({ params }: Params) {
             </figure>
 
             <div className="mt-4 flex flex-col items-start gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <p className="max-w-[46ch] font-mono text-[10.5px] leading-relaxed text-fg-3">
+              <p className="max-w-[46ch] font-mono text-[11px] leading-relaxed text-fg-3">
                 source is yours after install. no props are required.
               </p>
               <Link
                 href={`/p/${next.slug}`}
-                className="group inline-flex shrink-0 items-center gap-1.5 font-mono text-[11px] text-fg-2 transition-colors duration-200 hover:text-fg"
+                className="group inline-flex shrink-0 items-center gap-1.5 font-mono text-[12px] text-fg-2 transition-colors duration-200 hover:text-fg"
               >
                 next: {next.title.toLowerCase()}
                 <ArrowUpRight
-                  className="size-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  className="size-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                   strokeWidth={1.5}
                 />
               </Link>
@@ -103,8 +103,8 @@ export default async function Page({ params }: Params) {
                   key={k}
                   className="flex items-baseline justify-between gap-6 border-b border-line py-3"
                 >
-                  <dt className="font-mono text-[10.5px] text-fg-3">{k}</dt>
-                  <dd className="text-right font-mono text-[11px] text-fg-2">
+                  <dt className="font-mono text-[11px] text-fg-3">{k}</dt>
+                  <dd className="text-right font-mono text-[12px] text-fg-2">
                     {v}
                   </dd>
                 </div>
@@ -112,11 +112,11 @@ export default async function Page({ params }: Params) {
             </dl>
 
             <div className="mt-8 max-w-[420px]">
-              <p className="mb-3 font-mono text-[10.5px] text-fg-3">install</p>
+              <p className="mb-3 font-mono text-[11px] text-fg-3">install</p>
               <CopyCommand
                 command={`npx shadcn@latest add @404lab/${page.slug}`}
               />
-              <p className="mt-3 font-mono text-[10.5px] text-fg-3">
+              <p className="mt-3 font-mono text-[11px] text-fg-3">
                 then render it from app/not-found.tsx
               </p>
             </div>

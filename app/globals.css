@@ -17,6 +17,8 @@
   --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --default-transition-duration: 180ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @layer base {
@@ -61,7 +63,7 @@
 @utility display {
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   line-height: 0.94;
   text-wrap: balance;
 }

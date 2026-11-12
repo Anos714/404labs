@@ -46,16 +46,16 @@ export function Hero() {
 
         <motion.h1
           {...fade(0.12)}
-          className="display mt-7 text-[clamp(3.4rem,6.6vw,6rem)] text-fg"
+          className="display mt-7 text-[clamp(3.2rem,6.2vw,5.5rem)] text-fg"
         >
           A good place
           <br />
-          to get lost<span className="text-amber">.</span>
+          to get lost
         </motion.h1>
 
         <motion.p
           {...fade(0.2)}
-          className="mt-7 max-w-[46ch] text-[15.5px] leading-[1.7] text-fg-2 sm:text-[16.5px]"
+          className="mt-7 max-w-[46ch] text-[16px] leading-[1.7] text-fg-2 sm:text-[17px]"
         >
           Six animated 404 pages and the parts they are built from. Next.js,
           Motion, Tailwind. You get the source, not a dependency.
@@ -64,11 +64,11 @@ export function Hero() {
         <motion.div {...fade(0.28)} className="mt-9 flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-3">
           <Link
             href="#pages"
-            className="group inline-flex items-center gap-2 rounded-[8px] bg-fg px-4 py-2.5 text-[13.5px] font-medium text-ink-950 transition-colors duration-200 hover:bg-white"
+            className="group inline-flex items-center gap-2 rounded-[8px] bg-fg px-4 py-3 text-[14px] font-medium text-ink-950 transition-colors duration-200 hover:bg-white"
           >
             Browse the pages
             <ArrowDown
-              className="size-3.5 transition-transform duration-200 group-hover:translate-y-0.5"
+              className="size-4 transition-transform duration-200 group-hover:translate-y-0.5"
               strokeWidth={1.8}
             />
           </Link>
@@ -77,7 +77,7 @@ export function Hero() {
             className="inline-flex items-center gap-1.5 rounded-[8px] px-0 py-2.5 font-mono text-[12px] text-fg-2 transition-colors duration-200 hover:text-fg sm:px-2"
           >
             or copy one command
-            <ArrowUpRight className="size-3.5" strokeWidth={1.5} />
+            <ArrowUpRight className="size-4" strokeWidth={1.5} />
           </Link>
         </motion.div>
 
@@ -85,8 +85,8 @@ export function Hero() {
           <CopyCommand command="npx shadcn@latest add @404lab/glitch-404" />
         </motion.div>
 
-        <motion.p {...fade(0.4)} className="mt-6 font-mono text-[10.5px] text-fg-3">
-          MIT · six pages · five parts · no tracking
+        <motion.p {...fade(0.4)} className="mt-6 font-mono text-[11px] text-fg-3">
+          MIT · 6 pages · 5 parts · no tracking
         </motion.p>
       </div>
 
@@ -111,10 +111,10 @@ export function Hero() {
             />
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,9,10,0.05)_0%,rgba(8,9,10,0.1)_45%,rgba(8,9,10,0.85)_100%)]" />
 
-            <span className="absolute left-4 top-3 font-mono text-[10px] text-white/70">
+            <span className="absolute left-4 top-3 font-mono text-[11px] text-white/75">
               fig. 01
             </span>
-            <span className="absolute right-4 top-3 font-mono text-[10px] text-white/45">
+            <span className="absolute right-4 top-3 font-mono text-[11px] text-white/50">
               51.9° N, 5.6° W
             </span>
 
@@ -127,21 +127,21 @@ export function Hero() {
                 <span aria-hidden>404</span>
                 <span aria-hidden>404</span>
               </div>
-              <p className="mt-3 max-w-[26ch] font-mono text-[10.5px] leading-relaxed text-white/70">
+              <p className="mt-3 max-w-[26ch] font-mono text-[11px] leading-relaxed text-white/75">
                 the page you asked for is not on this coast
               </p>
             </div>
 
-            <span className="absolute left-3 top-1/2 hidden -translate-y-1/2 -rotate-90 font-mono text-[9px] tracking-[0.14em] text-white/25 sm:block">
-              EDGE OF MAP
+            <span className="absolute left-3 top-1/2 hidden -translate-y-1/2 -rotate-90 font-mono text-[10px] tracking-[0.08em] text-white/35 sm:block">
+              edge of map
             </span>
           </div>
 
           <figcaption className="flex items-center justify-between px-2 pb-1 pt-3">
-            <span className="font-mono text-[10px] text-fg-3">
+            <span className="font-mono text-[11px] text-fg-3">
               lighthouse, off the map
             </span>
-            <span className="font-mono text-[10px] text-fg-3">hover 404</span>
+            <span className="font-mono text-[11px] text-fg-3">replay on hover</span>
           </figcaption>
         </figure>
       </motion.div>

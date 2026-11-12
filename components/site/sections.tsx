@@ -53,11 +53,11 @@ function PageCard({
         </div>
         <div className="relative z-10 flex items-start justify-between gap-3 px-2 pb-1.5 pt-4">
           <div>
-            <h3 className="font-mono text-[12px] text-fg">{name}</h3>
+            <h3 className="font-mono text-[13px] text-fg">{name}</h3>
             <p className="mt-1 text-[12px] text-fg-3">{desc}</p>
           </div>
           <ArrowUpRight
-            className="mt-0.5 size-3.5 shrink-0 text-fg-3 transition-[transform,color] duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg"
+            className="mt-0.5 size-4 shrink-0 text-fg-3 transition-[transform,color] duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg"
             strokeWidth={1.5}
           />
         </div>
@@ -72,21 +72,21 @@ export function PagesSection() {
       <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
         <div>
           <Reveal>
-            <p className="font-mono text-[10.5px] text-fg-3">01 / pages</p>
+            <p className="font-mono text-[11px] text-fg-3">01 / pages</p>
             <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
               Six ways to be lost
             </h2>
-            <p className="mt-4 max-w-[52ch] text-[14.5px] leading-[1.7] text-fg-2">
+            <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.7] text-fg-2">
               Each one is a small scene, not a layout with a shake on it. Hover
               a card to run it.
             </p>
           </Reveal>
         </div>
         <Reveal delay={0.1}>
-          <p className="font-mono text-[10.5px] text-fg-3 sm:text-right">
-            06 pages
+          <p className="font-mono text-[11px] text-fg-3 sm:text-right">
+            6 pages
             <br />
-            <span className="text-fg-3/70">404 · 500 · 403 · offline</span>
+            <span className="text-fg-3">404 · 500 · 403 · offline</span>
           </p>
         </Reveal>
       </div>
@@ -146,18 +146,18 @@ export function PartsSection() {
       <div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:py-32">
         <div className="lg:col-span-5">
           <Reveal>
-            <p className="font-mono text-[10.5px] text-fg-3">02 / parts</p>
+            <p className="font-mono text-[11px] text-fg-3">02 / parts</p>
             <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
               Or build your
               <br />
               own dead end
             </h2>
-            <p className="mt-5 max-w-[40ch] text-[14.5px] leading-[1.7] text-fg-2">
+            <p className="mt-5 max-w-[40ch] text-[15px] leading-[1.7] text-fg-2">
               The pages are made from these. Take a part on its own and it will
               sit inside whatever you already have.
             </p>
-            <p className="mt-6 font-mono text-[10.5px] text-fg-3">
-              five parts · same tokens · no assets
+            <p className="mt-6 font-mono text-[11px] text-fg-3">
+              5 parts · same tokens · no assets
             </p>
           </Reveal>
         </div>
@@ -168,7 +168,7 @@ export function PartsSection() {
               <Reveal key={part.name} delay={0.03 * i}>
                 <li className="flex items-center justify-between gap-6 border-b border-line py-5">
                   <div>
-                    <p className="font-mono text-[12px] text-fg">{part.name}</p>
+                    <p className="font-mono text-[13px] text-fg">{part.name}</p>
                     <p className="mt-1 text-[12px] text-fg-3">{part.desc}</p>
                   </div>
                   <div className="flex shrink-0 items-center justify-end">
@@ -179,7 +179,7 @@ export function PartsSection() {
             ))}
           </ul>
           <Reveal delay={0.12}>
-            <p className="mt-5 font-mono text-[10.5px] text-fg-3">
+            <p className="mt-5 font-mono text-[11px] text-fg-3">
               each part ships as its own file
             </p>
           </Reveal>
@@ -195,8 +195,8 @@ function CodeBlock() {
   return (
     <div className="overflow-hidden rounded-[14px] border border-line bg-ink-950">
       <div className="flex items-center justify-between border-b border-line px-4 py-3">
-        <span className="font-mono text-[10.5px] text-fg-3">terminal</span>
-        <span className="font-mono text-[10px] text-fg-3/70">bash</span>
+        <span className="font-mono text-[11px] text-fg-3">terminal</span>
+        <span className="font-mono text-[10px] text-fg-3">bash</span>
       </div>
 
       <div className="p-3">
@@ -210,7 +210,7 @@ function CodeBlock() {
         <p className="mb-3 font-mono text-[10px] text-fg-3">
           then, in your app
         </p>
-        <pre className="overflow-x-auto font-mono text-[11.5px] leading-[1.85] text-fg-2">
+        <pre className="overflow-x-auto font-mono text-[12px] leading-[1.85] text-fg-2">
           <code>
             <span className="text-fg-3">{"// app/not-found.tsx"}</span>
             {"\n"}
@@ -236,7 +236,7 @@ function CodeBlock() {
         <span className="font-mono text-[10px] text-fg-3">
           the file lands in your repo
         </span>
-        <span className="font-mono text-[10px] text-fg-3/70">MIT</span>
+        <span className="font-mono text-[10px] text-fg-3">MIT</span>
       </div>
     </div>
   );
@@ -248,13 +248,13 @@ export function InstallSection() {
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <Reveal>
-            <p className="font-mono text-[10.5px] text-fg-3">03 / install</p>
+            <p className="font-mono text-[11px] text-fg-3">03 / install</p>
             <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
               One command,
               <br />
               then it is yours
             </h2>
-            <p className="mt-5 max-w-[42ch] text-[14.5px] leading-[1.7] text-fg-2">
+            <p className="mt-5 max-w-[42ch] text-[15px] leading-[1.7] text-fg-2">
               No package to keep upgrading. The shadcn registry copies the page
               into your project, with its parts and its Motion import, and you
               edit it like code you wrote.
@@ -268,7 +268,7 @@ export function InstallSection() {
               className="mt-7 inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-2 transition-colors duration-200 hover:text-fg"
             >
               see what is inside
-              <ArrowUpRight className="size-3.5" strokeWidth={1.5} />
+              <ArrowUpRight className="size-4" strokeWidth={1.5} />
             </Link>
           </Reveal>
         </div>
@@ -278,7 +278,7 @@ export function InstallSection() {
             <CodeBlock />
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="mt-4 font-mono text-[10.5px] text-fg-3">
+            <p className="mt-4 font-mono text-[11px] text-fg-3">
               registry: {"404lab.dev/r/{name}.json"}
             </p>
           </Reveal>
@@ -305,7 +305,7 @@ const PRINCIPLES = [
   },
   {
     label: "Small",
-    body: "Under 12 kB of JS per page. No image assets, no animation runtime on top of Motion.",
+    body: "A small surface. Motion is the only animation dependency, and the pages ship without image assets.",
   },
 ];
 
@@ -317,7 +317,7 @@ export function Principles() {
           {PRINCIPLES.map((p, i) => (
             <Reveal key={p.label} delay={0.04 * i}>
               <div className="border-t border-line-2 pt-5">
-                <p className="font-mono text-[10.5px] text-fg-3">{p.label}</p>
+                <p className="font-mono text-[11px] text-fg-3">{p.label}</p>
                 <p className="mt-3 text-[13px] leading-[1.7] text-fg-2">
                   {p.body}
                 </p>

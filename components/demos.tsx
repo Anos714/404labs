@@ -98,7 +98,7 @@ export function GlitchDemo() {
 
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 pb-3">
         <HomeLink />
-        <span className="font-mono text-[10px] text-white/35">0.4kb</span>
+        <span className="font-mono text-[10px] text-white/50">clip-path</span>
       </div>
     </button>
   );
@@ -156,7 +156,7 @@ export function GravityDemo() {
 
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 pb-3">
         <HomeLink />
-        <span className="font-mono text-[10px] text-white/35">spring</span>
+        <span className="font-mono text-[10px] text-white/50">spring</span>
       </div>
     </button>
   );
@@ -224,7 +224,7 @@ export function TerminalDemo() {
             {TERM_LINE.slice(0, typed)}
             <span className="caret ml-0.5 inline-block h-3 w-1 translate-y-0.5 bg-fg/80" />
           </p>
-          <p className="mt-2 font-mono text-[10px] leading-5 text-white/30">
+          <p className="mt-2 font-mono text-[10px] leading-5 text-white/45">
             exit 404 · layers 0
           </p>
         </div>
@@ -232,7 +232,7 @@ export function TerminalDemo() {
 
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 pb-3">
         <HomeLink label="cd ~" />
-        <span className="font-mono text-[10px] text-white/35">12 lines</span>
+        <span className="font-mono text-[10px] text-white/50">typewriter</span>
       </div>
     </button>
   );
@@ -272,8 +272,8 @@ export function SpotlightDemo() {
           className="object-cover brightness-[0.22]"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <span className="display text-[76px] leading-none text-white/30">404</span>
-          <span className="font-mono text-[10px] text-white/30">
+          <span className="display text-[76px] leading-none text-white/45">404</span>
+          <span className="font-mono text-[10px] text-white/45">
             nothing here either
           </span>
         </div>
@@ -305,7 +305,7 @@ export function SpotlightDemo() {
       <Caption label="404 / spotlight" />
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 pb-3">
         <HomeLink />
-        <span className="font-mono text-[10px] text-white/35">move to look</span>
+        <span className="font-mono text-[10px] text-white/50">move to look</span>
       </div>
     </div>
   );
@@ -353,7 +353,7 @@ export function OrbitDemo() {
 
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 pb-3">
         <HomeLink />
-        <span className="font-mono text-[10px] text-white/35">22s loop</span>
+        <span className="font-mono text-[10px] text-white/50">22s loop</span>
       </div>
     </div>
   );
@@ -402,7 +402,7 @@ export function TearDemo() {
       <Caption label="404 / tear" />
       <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between px-4 pb-3">
         <HomeLink />
-        <span className="font-mono text-[10px] text-white/35">clip-path</span>
+        <span className="font-mono text-[10px] text-white/50">clip-path</span>
       </div>
     </div>
   );
@@ -573,7 +573,7 @@ export function TypeLine() {
       }}
       className="cursor-default font-mono text-[11px] text-fg/70"
     >
-      {text.slice(0, n) || "tap to type"}
+      {text.slice(0, n) || "hover or tap"}
       <span className="caret ml-0.5 inline-block h-3 w-[3px] translate-y-0.5 bg-amber/80" />
     </span>
   );
@@ -607,15 +607,15 @@ export function CopyCommand({
       aria-label={`Copy ${command}`}
       className={`group/copy flex w-full items-center justify-between gap-4 rounded-[6px] border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 ${className}`}
     >
-      <code className="truncate font-mono text-[10.5px] text-fg-2 sm:text-[12px]">
+      <code className="truncate font-mono text-[11px] text-fg-2 sm:text-[12px]">
         <span className="mr-1.5 text-amber/80">$</span>
         {command}
       </code>
       <span className="shrink-0 text-fg-3 transition-colors duration-200 group-hover/copy:text-fg">
         {done ? (
-          <Check className="size-3.5" strokeWidth={1.5} />
+          <Check className="size-4" strokeWidth={1.5} />
         ) : (
-          <Copy className="size-3.5" strokeWidth={1.5} />
+          <Copy className="size-4" strokeWidth={1.5} />
         )}
       </span>
     </button>
