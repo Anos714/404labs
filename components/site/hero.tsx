@@ -94,7 +94,7 @@ export function Hero() {
         initial={reduce ? undefined : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.18 }}
-        className="lg:col-span-5"
+        className="mx-auto w-full max-w-[440px] lg:col-span-5 lg:mx-0 lg:max-w-none"
       >
         <figure
           onMouseEnter={fire}
