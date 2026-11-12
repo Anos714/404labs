@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 404lab
 
-## Getting Started
+Landing page and preview site for a small library of animated not-found pages.
 
-First, run the development server:
+Stack: Next.js (App Router), Tailwind CSS v4, Motion, lucide-react.
+
+## Run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/page.tsx` — landing page: hero, page grid, parts, install
+- `app/p/[slug]/page.tsx` — per-page detail and live preview
+- `components/demos.tsx` — all animated previews, reduced-motion aware
+- `components/site/` — nav, hero, sections, footer
+- `lib/pages.tsx` — page registry (slug, copy, demo)
+- `public/worlds/` — pixel landscapes used as scene art
 
-## Learn More
+## Design notes
 
-To learn more about Next.js, take a look at the following resources:
+- Ink surfaces, one amber accent, cream type
+- Instrument Serif for display, Geist for UI, Geist Mono for labels
+- One signature device: a dashed route line ending in a small x
+- Motion only where it explains something; every demo has a still state
+- All animation runs through Motion or a single CSS keyframe set, no assets
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Credits
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Landscape art from [Imageory](https://imageory.in/gallery). Check the terms on
+that site before using the images in a public launch; the gallery does not
+publish an explicit license on its pages.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pages are original work, MIT once the library is published.
