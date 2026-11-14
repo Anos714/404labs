@@ -20,7 +20,40 @@ Open http://localhost:3000.
 - `components/demos/` - all animated previews, grouped by kind and re-exported by `components/demos.tsx`
 - `components/site/` - nav, hero, sections, footer
 - `lib/pages.tsx` - page registry (slug, copy, demo)
+- `lib/source-data.mjs` - reads the registry and demos, builds each page's source
+- `mcp/` - stdio MCP server and its generated data, see [mcp/README.md](mcp/README.md)
+- `scripts/` - MCP data build and smoke test
 - `public/worlds/` - pixel landscapes used as scene art
+
+## MCP server
+
+`mcp/server.mjs` is a stdio MCP server for the library. It lists and searches
+the 46 pages, returns a page's real component source, and hands over the shared
+`chrome.tsx` and `tokens.css`. It works with Claude Code, Codex, Cursor and
+OpenCode.
+
+```bash
+npm run mcp:data   # rebuild mcp/data/pages.json from the demos
+npm run mcp:test   # handshake, tool list, one page read
+npm run mcp        # start the server on stdio
+```
+
+Point a client at the absolute path. A project `.mcp.json` looks like this:
+
+```json
+{
+  "mcpServers": {
+    "404lab": {
+      "command": "node",
+      "args": ["/path/to/404lab/mcp/server.mjs"]
+    }
+  }
+}
+```
+
+Per-client setup, tool list and examples are in
+[`mcp/README.md`](mcp/README.md). `npm run build` regenerates the MCP data
+before the Next build, so the site and the server stay in step.
 
 ## Fonts
 

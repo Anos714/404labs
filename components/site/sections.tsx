@@ -218,6 +218,10 @@ export function InstallSection() {
               <span>registry: {"404lab.dev/r/{name}.json"}</span>
               <span>46 pages · 8 parts · one namespace</span>
             </div>
+            <p className="mt-3 font-mono text-[10.5px] leading-relaxed text-fg-3">
+              mcp: the repo ships a stdio server for Claude Code, Codex, Cursor
+              and OpenCode
+            </p>
           </Reveal>
         </div>
       </div>

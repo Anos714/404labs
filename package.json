@@ -4,18 +4,24 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run mcp:data && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "mcp": "node mcp/server.mjs",
+    "mcp:data": "node scripts/build-mcp-data.mjs",
+    "mcp:check": "node scripts/build-mcp-data.mjs --check",
+    "mcp:test": "node scripts/mcp-smoke.mjs"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "clsx": "^2.1.1",
     "lucide-react": "^1.72.0",
     "motion": "^14.13.0",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "tailwind-merge": "^3.7.0"
+    "tailwind-merge": "^3.7.0",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
