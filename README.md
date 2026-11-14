@@ -17,10 +17,28 @@ Open http://localhost:3000.
 
 - `app/page.tsx` — landing page: hero, page grid, parts, install
 - `app/p/[slug]/page.tsx` — per-page detail and live preview
-- `components/demos.tsx` — all animated previews, reduced-motion aware
+- `components/demos/` — all animated previews, grouped by kind and re-exported by `components/demos.tsx`
 - `components/site/` — nav, hero, sections, footer
 - `lib/pages.tsx` — page registry (slug, copy, demo)
 - `public/worlds/` — pixel landscapes used as scene art
+
+## Fonts
+
+Every page reads two public tokens, so you can change the type without editing a
+component:
+
+```css
+:root {
+  --lab-font-display: "Your Display", Georgia, serif;
+  --lab-font-mono: "Your Mono", ui-monospace, monospace;
+}
+```
+
+Load the faces with `next/font`, a local `@font-face`, or a hosted stylesheet,
+then set the variables on `:root` or on a single wrapper. The `.display` and
+`.lab-mono` utilities in `app/globals.css` resolve through these tokens, with
+fallbacks so the pages still render before a font is chosen. The landing page
+includes a live typeface switch above the page grid to preview the effect.
 
 ## Design notes
 

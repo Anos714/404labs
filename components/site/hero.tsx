@@ -36,7 +36,7 @@ export function Hero() {
 
   return (
     <section className="mx-auto grid max-w-[1320px] grid-cols-1 items-center gap-12 px-5 pb-16 pt-12 sm:px-8 md:grid-cols-12 md:gap-8 lg:min-h-[calc(100svh-64px)] lg:gap-10 lg:pb-20 lg:pt-16">
-      <div className="md:col-span-7 md:pr-4 lg:pr-6">
+      <div className="md:col-span-6 md:pr-4 lg:col-span-7 lg:pr-6">
         <motion.div {...fade(0.05)} className="flex items-center gap-2.5">
           <span className="size-1.5 rounded-full bg-amber" aria-hidden />
           <span className="font-mono text-[11px] text-fg-3">
@@ -57,11 +57,11 @@ export function Hero() {
           {...fade(0.2)}
           className="mt-7 max-w-[46ch] text-[16px] leading-[1.7] text-fg-2 sm:text-[17px]"
         >
-          Six animated 404 pages and the parts they are built from. Next.js,
-          Motion, Tailwind. You get the source, not a dependency.
+          Twenty-six animated 404 pages and the parts they are built from.
+          Next.js, Motion, Tailwind. You get the source, not a dependency.
         </motion.p>
 
-        <motion.div {...fade(0.28)} className="mt-9 flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-3">
+        <motion.div {...fade(0.28)} className="mt-9 flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-3 md:flex-col md:items-start md:gap-1 lg:flex-row lg:items-center lg:gap-3">
           <Link
             href="#pages"
             className="group inline-flex items-center gap-2 rounded-[8px] bg-fg px-4 py-3 text-[14px] font-medium text-ink-950 transition-colors duration-200 hover:bg-white"
@@ -86,7 +86,7 @@ export function Hero() {
         </motion.div>
 
         <motion.p {...fade(0.4)} className="mt-6 font-mono text-[11px] text-fg-3">
-          MIT · 6 pages · 5 parts · no tracking
+          MIT · 26 pages · 8 parts · no tracking
         </motion.p>
       </div>
 
@@ -94,7 +94,7 @@ export function Hero() {
         initial={reduce ? undefined : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: EASE, delay: 0.18 }}
-        className="mx-auto w-full max-w-[440px] md:col-span-5 md:mx-0 md:max-w-none"
+        className="mx-auto w-full max-w-[440px] md:col-span-6 md:mx-0 md:max-w-none lg:col-span-5"
       >
         <figure
           onMouseEnter={fire}

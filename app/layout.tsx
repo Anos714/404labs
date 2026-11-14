@@ -23,13 +23,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "404lab — animated 404 pages for Next.js",
+  title: "404lab · twenty-six animated 404 pages for Next.js",
   description:
-    "A small library of animated not-found pages and the parts they are built from. Next.js, Motion, Tailwind. Installed with shadcn, owned by you.",
+    "Twenty-six animated not-found pages and the parts they are built from. Next.js, Motion, Tailwind. Installed with shadcn, owned by you.",
   openGraph: {
     title: "404lab",
     description:
-      "Animated 404 pages you install with one command, then edit like your own code.",
+      "Animated 404 pages you install with one command, then edit like your own code. Scenes, type and interactive pieces.",
     type: "website",
   },
 };

@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 export function Footer() {
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto max-w-[1320px] px-5 py-14 sm:px-8">
+      <div className="mx-auto max-w-[1320px] px-5 py-12 sm:px-8">
         <div className="flex flex-col justify-between gap-10 sm:flex-row sm:items-start">
           <div>
             <p className="flex items-baseline gap-[5px] text-fg">
@@ -12,8 +12,7 @@ export function Footer() {
               <span className="font-mono text-[12px] text-fg-2">lab</span>
             </p>
             <p className="mt-3 max-w-[34ch] text-[13px] leading-[1.7] text-fg-3">
-              A small library of dead ends, drawn with care and handed over as
-              source.
+              Twenty-six dead ends, drawn with care and handed over as source.
             </p>
           </div>
 
@@ -65,7 +64,7 @@ export function Footer() {
           </nav>
         </div>
 
-        <div className="mt-12 flex flex-col justify-between gap-3 border-t border-line pt-6 sm:flex-row sm:items-center">
+        <div className="mt-10 flex flex-col justify-between gap-3 border-t border-line pt-6 sm:flex-row sm:items-center">
           <p className="font-mono text-[11px] text-fg-3">
             Landscape art from{" "}
             <a

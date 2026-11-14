@@ -1,6 +1,7 @@
 import { Nav } from "@/components/site/nav";
 import { Hero } from "@/components/site/hero";
 import {
+  Closing,
   InstallSection,
   MapEnd,
   PagesSection,
@@ -20,6 +21,7 @@ export default function Home() {
         <PartsSection />
         <InstallSection />
         <Principles />
+        <Closing />
       </main>
       <Footer />
     </>

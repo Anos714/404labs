@@ -16,15 +16,16 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const page = getPage(slug);
-  if (!page) return { title: "Not found — 404lab" };
+  if (!page) return { title: "Not found · 404lab" };
   return {
-    title: `${page.title} 404 — 404lab`,
+    title: `${page.title} 404 · 404lab`,
     description: page.note,
   };
 }
 
-const DETAILS = (slug: string, method: string) => [
+const DETAILS = (slug: string, method: string, category: string) => [
   ["File", `${slug}.tsx`],
+  ["Category", category],
   ["Animation", method],
   ["Status codes", "404 · 500 · 403 · offline"],
   ["Requires", "Motion · Tailwind"],
@@ -52,9 +53,13 @@ export default async function Page({ params }: Params) {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-x-16">
           <div className="lg:col-span-5 lg:row-start-1">
-            <p className="font-mono text-[11px] text-fg-3">
-              {String(index + 1).padStart(2, "0")} /{" "}
-              {String(PAGES.length).padStart(2, "0")}
+            <p className="flex items-center gap-2.5 font-mono text-[11px] text-fg-3">
+              <span>
+                {String(index + 1).padStart(2, "0")} /{" "}
+                {String(PAGES.length).padStart(2, "0")}
+              </span>
+              <span className="h-px w-4 bg-line-2" />
+              <span className="text-amber/75">{page.category}</span>
             </p>
             <h1 className="display mt-4 text-[clamp(2.8rem,5vw,4.2rem)]">
               {page.title}
@@ -98,7 +103,7 @@ export default async function Page({ params }: Params) {
 
           <div className="lg:col-span-5 lg:row-start-2">
             <dl className="max-w-[420px] border-t border-line">
-              {DETAILS(page.slug, page.method).map(([k, v]) => (
+              {DETAILS(page.slug, page.method, page.category).map(([k, v]) => (
                 <div
                   key={k}
                   className="flex items-baseline justify-between gap-6 border-b border-line py-3"

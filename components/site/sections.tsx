@@ -4,12 +4,17 @@ import {
   AnimatedDigits,
   CopyCommand,
   ElasticArrow,
+  FlipDigit,
   MagneticButton,
+  MorseLamp,
   Reveal,
+  ScanSweep,
   ScrambleText,
   TypeLine,
 } from "@/components/demos";
-import { PAGES } from "@/lib/pages";
+import { InstallTabs } from "@/components/site/install";
+import { PagesGrid } from "@/components/site/pages-grid";
+import { PAGES, categoryCount } from "@/lib/pages";
 
 /* --------------------------------- divider --------------------------------- */
 
@@ -27,82 +32,39 @@ export function MapEnd() {
 
 /* ---------------------------------- pages ---------------------------------- */
 
-function PageCard({
-  slug,
-  name,
-  desc,
-  demo,
-  index,
-}: {
-  slug: string;
-  name: string;
-  desc: string;
-  demo: React.ReactNode;
-  index: number;
-}) {
-  return (
-    <Reveal delay={0.04 * (index % 3)}>
-      <article className="group relative rounded-[14px] border border-line bg-ink-900 p-2 transition-[border-color] duration-300 hover:border-line-2 focus-within:border-line-2">
-        <Link
-          href={`/p/${slug}`}
-          aria-label={`${name}, ${desc}`}
-          className="absolute inset-0 z-20 rounded-[14px]"
-        />
-        <div className="relative z-30 aspect-[4/3] overflow-hidden rounded-[6px]">
-          {demo}
-        </div>
-        <div className="relative z-10 flex items-start justify-between gap-3 px-2 pb-1.5 pt-4">
-          <div>
-            <h3 className="font-mono text-[13px] text-fg">{name}</h3>
-            <p className="mt-1 text-[12px] text-fg-3">{desc}</p>
-          </div>
-          <ArrowUpRight
-            className="mt-0.5 size-4 shrink-0 text-fg-3 transition-[transform,color] duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-fg"
-            strokeWidth={1.5}
-          />
-        </div>
-      </article>
-    </Reveal>
-  );
-}
-
 export function PagesSection() {
   return (
-    <section id="pages" className="mx-auto max-w-[1320px] scroll-mt-16 px-5 py-24 sm:px-8 lg:py-32">
+    <section
+      id="pages"
+      className="mx-auto max-w-[1320px] scroll-mt-16 px-5 py-24 sm:px-8 lg:py-28"
+    >
       <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
         <div>
           <Reveal>
             <p className="font-mono text-[11px] text-fg-3">01 / pages</p>
             <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
-              Six ways to be lost
+              Twenty-six ways to be lost
             </h2>
-            <p className="mt-4 max-w-[52ch] text-[15px] leading-[1.7] text-fg-2">
-              Each one is a small scene, not a layout with a shake on it. Hover
-              a card to run it.
+            <p className="mt-4 max-w-[54ch] text-[15px] leading-[1.7] text-fg-2">
+              Each page is a small scene with one mechanic, not a layout with a
+              shake on it. Filter the set, hover to run it, open one for the
+              method and the source.
             </p>
           </Reveal>
         </div>
         <Reveal delay={0.1}>
-          <p className="font-mono text-[11px] text-fg-3 sm:text-right">
-            6 pages
+          <p className="font-mono text-[11px] leading-relaxed text-fg-3 sm:text-right">
+            {PAGES.length} pages
             <br />
-            <span className="text-fg-3">404 · 500 · 403 · offline</span>
+            <span className="whitespace-nowrap">
+              {categoryCount("scene")} scenes · {categoryCount("type")} type ·{" "}
+              {categoryCount("interactive")} interactive
+            </span>
           </p>
         </Reveal>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {PAGES.map((page, i) => (
-          <PageCard
-            key={page.slug}
-            slug={page.slug}
-            name={page.slug}
-            desc={page.desc}
-            demo={page.demo}
-            index={i}
-          />
-        ))}
-      </div>
+      <PagesGrid />
     </section>
   );
 }
@@ -114,6 +76,11 @@ const PARTS = [
     name: "scramble-text",
     desc: "Letters resolve from noise",
     demo: <ScrambleText />,
+  },
+  {
+    name: "flip-digit",
+    desc: "A split-flap cell finds its value",
+    demo: <FlipDigit />,
   },
   {
     name: "animated-digits",
@@ -135,16 +102,23 @@ const PARTS = [
     desc: "A sentence types itself",
     demo: <TypeLine />,
   },
+  {
+    name: "morse-lamp",
+    desc: "One light says the whole thing",
+    demo: <MorseLamp />,
+  },
+  {
+    name: "scan-sweep",
+    desc: "A line fills what it crosses",
+    demo: <ScanSweep />,
+  },
 ];
 
 export function PartsSection() {
   return (
-    <section
-      id="parts"
-      className="scroll-mt-16 border-y border-line bg-ink-900/40"
-    >
-      <div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:py-32">
-        <div className="lg:col-span-5">
+    <section id="parts" className="scroll-mt-16 border-y border-line bg-ink-900/40">
+      <div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:py-28">
+        <div className="min-w-0 lg:col-span-5">
           <Reveal>
             <p className="font-mono text-[11px] text-fg-3">02 / parts</p>
             <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
@@ -153,23 +127,32 @@ export function PartsSection() {
               own dead end
             </h2>
             <p className="mt-5 max-w-[40ch] text-[15px] leading-[1.7] text-fg-2">
-              The pages are made from these. Take a part on its own and it will
+              The pages are assembled from these. Take one on its own and it will
               sit inside whatever you already have.
             </p>
             <p className="mt-6 font-mono text-[11px] text-fg-3">
-              5 parts · same tokens · no assets
+              8 parts · same tokens · no assets
+            </p>
+            <p className="mt-2 max-w-[38ch] text-[13px] leading-[1.7] text-fg-3">
+              Each one is a single file with its own state. No shared provider,
+              no context to wire up.
             </p>
           </Reveal>
         </div>
 
-        <div className="lg:col-span-7">
+        <div className="min-w-0 lg:col-span-7">
           <ul className="border-t border-line">
             {PARTS.map((part, i) => (
-              <Reveal key={part.name} delay={0.03 * i}>
-                <li className="flex items-center justify-between gap-6 border-b border-line py-5">
-                  <div>
-                    <p className="font-mono text-[13px] text-fg">{part.name}</p>
-                    <p className="mt-1 text-[12px] text-fg-3">{part.desc}</p>
+              <Reveal key={part.name} delay={0.02 * i}>
+                <li className="flex items-center gap-4 border-b border-line py-4">
+                  <span className="w-5 shrink-0 font-mono text-[10px] tabular-nums text-fg-3">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-mono text-[12.5px] text-fg">{part.name}</p>
+                    <p className="mt-0.5 text-[12px] leading-snug text-fg-3">
+                      {part.desc}
+                    </p>
                   </div>
                   <div className="flex shrink-0 items-center justify-end">
                     {part.demo}
@@ -191,60 +174,12 @@ export function PartsSection() {
 
 /* --------------------------------- install --------------------------------- */
 
-function CodeBlock() {
-  return (
-    <div className="overflow-hidden rounded-[14px] border border-line bg-ink-950">
-      <div className="flex items-center justify-between border-b border-line px-4 py-3">
-        <span className="font-mono text-[11px] text-fg-3">terminal</span>
-        <span className="font-mono text-[10px] text-fg-3">bash</span>
-      </div>
-
-      <div className="p-3">
-        <CopyCommand
-          command="npx shadcn@latest add @404lab/glitch-404"
-          className="border-transparent bg-ink-900"
-        />
-      </div>
-
-      <div className="border-t border-line px-4 py-4">
-        <p className="mb-3 font-mono text-[10px] text-fg-3">
-          then, in your app
-        </p>
-        <pre className="overflow-x-auto font-mono text-[12px] leading-[1.85] text-fg-2">
-          <code>
-            <span className="text-fg-3">{"// app/not-found.tsx"}</span>
-            {"\n"}
-            <span className="text-fg-2">import</span>
-            {" { Glitch } "}
-            <span className="text-fg-2">from</span>{" "}
-            <span className="text-amber/85">
-              &quot;@/components/404lab/glitch-404&quot;
-            </span>
-            {"\n\n"}
-            <span className="text-fg-2">export default function</span>{" "}
-            <span className="text-fg">NotFound</span>() {"{"}
-            {"\n  "}
-            <span className="text-fg-2">return</span> {"<"}
-            <span className="text-fg">Glitch</span> home=
-            <span className="text-amber/85">&quot;/&quot;</span> {" />"}
-            {"\n}"}
-          </code>
-        </pre>
-      </div>
-
-      <div className="flex items-center justify-between border-t border-line px-4 py-3">
-        <span className="font-mono text-[10px] text-fg-3">
-          the file lands in your repo
-        </span>
-        <span className="font-mono text-[10px] text-fg-3">MIT</span>
-      </div>
-    </div>
-  );
-}
-
 export function InstallSection() {
   return (
-    <section id="install" className="mx-auto max-w-[1320px] scroll-mt-16 px-5 py-24 sm:px-8 lg:py-32">
+    <section
+      id="install"
+      className="mx-auto max-w-[1320px] scroll-mt-16 px-5 py-24 sm:px-8 lg:py-28"
+    >
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <Reveal>
@@ -256,12 +191,13 @@ export function InstallSection() {
             </h2>
             <p className="mt-5 max-w-[42ch] text-[15px] leading-[1.7] text-fg-2">
               No package to keep upgrading. The shadcn registry copies the page
-              into your project, with its parts and its Motion import, and you
+              into your project with its parts and its Motion import, and you
               edit it like code you wrote.
             </p>
             <p className="mt-6 max-w-[42ch] text-[13px] leading-[1.7] text-fg-3">
               Works with any App Router project that already uses Tailwind. If
-              you have shadcn set up, you are one line away.
+              you have shadcn set up, you are one line away. If you would rather
+              not use the CLI, the same file is in the repository.
             </p>
             <Link
               href="#pages"
@@ -273,14 +209,15 @@ export function InstallSection() {
           </Reveal>
         </div>
 
-        <div className="lg:col-span-7">
-          <Reveal delay={0.1}>
-            <CodeBlock />
+        <div className="min-w-0 lg:col-span-7">
+          <Reveal delay={0.1} className="min-w-0">
+            <InstallTabs />
           </Reveal>
-          <Reveal delay={0.16}>
-            <p className="mt-4 font-mono text-[11px] text-fg-3">
-              registry: {"404lab.dev/r/{name}.json"}
-            </p>
+          <Reveal delay={0.16} className="min-w-0">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[10.5px] text-fg-3">
+              <span>registry: {"404lab.dev/r/{name}.json"}</span>
+              <span>26 pages · 8 parts · one namespace</span>
+            </div>
           </Reveal>
         </div>
       </div>
@@ -297,7 +234,7 @@ const PRINCIPLES = [
   },
   {
     label: "Keyboard first",
-    body: "Real buttons under the effects, visible focus, and a way out without a mouse.",
+    body: "Real controls under the effects, visible focus, and a way out without a mouse.",
   },
   {
     label: "Light and dark",
@@ -324,6 +261,43 @@ export function Principles() {
               </div>
             </Reveal>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------- closing --------------------------------- */
+
+export function Closing() {
+  return (
+    <section className="border-t border-line">
+      <div className="mx-auto max-w-[1320px] px-5 py-20 sm:px-8 lg:py-24">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <Reveal>
+            <p className="font-mono text-[11px] text-fg-3">04 / end of the line</p>
+            <h2 className="display mt-4 text-[clamp(2.6rem,5vw,4.4rem)]">
+              Pick a dead end
+            </h2>
+            <p className="mt-4 max-w-[40ch] text-[15px] leading-[1.7] text-fg-2">
+              One command copies a page into your project. Then it is just a
+              component you can break, rewrite or leave alone.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1} className="w-full max-w-[430px]">
+            <CopyCommand command="npx shadcn@latest add @404lab/glitch-404" />
+            <div className="mt-3 flex items-center justify-between gap-4">
+              <Link
+                href="#pages"
+                className="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-2 transition-colors duration-200 hover:text-fg"
+              >
+                browse all {PAGES.length} pages
+                <ArrowUpRight className="size-4" strokeWidth={1.5} />
+              </Link>
+              <span className="font-mono text-[10px] text-fg-3">MIT</span>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
