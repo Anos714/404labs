@@ -80,7 +80,7 @@ export function StackDemo() {
           animate={
             open || reduce
               ? { rotateX: 0, rotateY: 0 }
-              : { rotateX: 6, rotateY: -16 }
+              : { rotateX: 2, rotateY: -8 }
           }
           transition={{ type: "spring", stiffness: 120, damping: 18 }}
         >
@@ -96,7 +96,7 @@ export function StackDemo() {
                 animate={
                   open || reduce
                     ? { z: 0, opacity: 1 }
-                    : { z: -i * 54, opacity: 1 - i * 0.2 }
+                    : { z: -i * 18, opacity: 1 - i * 0.06 }
                 }
                 transition={{
                   type: "spring",
@@ -310,7 +310,7 @@ export function SweepDemo() {
             className="display text-[70px] leading-none"
             style={{
               color: "transparent",
-              WebkitTextStroke: "1px rgba(242,237,227,0.6)",
+              WebkitTextStroke: "1.3px rgba(242,237,227,0.78)",
             }}
           >
             404
@@ -410,7 +410,7 @@ export function MorseDemo() {
             className={`size-3 rounded-full transition-[background-color,box-shadow] duration-75 ${
               lit
                 ? "bg-amber shadow-[0_0_26px_6px_rgba(233,184,113,0.45)]"
-                : "bg-fg/15"
+                : "bg-fg/20 shadow-[0_0_10px_rgba(233,184,113,0.08)]"
             }`}
           />
           <span className="absolute -bottom-4 lab-mono text-[8px] text-white/35">

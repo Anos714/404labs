@@ -49,7 +49,8 @@ export function Foot({
   );
 }
 
-const SCREEN = "group relative h-full w-full overflow-hidden bg-ink-900";
+const SCREEN =
+  "group @container relative h-full w-full overflow-hidden bg-ink-900";
 
 export function Screen({
   className = "",

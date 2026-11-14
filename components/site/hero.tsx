@@ -57,7 +57,7 @@ export function Hero() {
           {...fade(0.2)}
           className="mt-7 max-w-[46ch] text-[16px] leading-[1.7] text-fg-2 sm:text-[17px]"
         >
-          Twenty-six animated 404 pages and the parts they are built from.
+          Forty-six animated 404 pages and the parts they are built from.
           Next.js, Motion, Tailwind. You get the source, not a dependency.
         </motion.p>
 
@@ -86,7 +86,7 @@ export function Hero() {
         </motion.div>
 
         <motion.p {...fade(0.4)} className="mt-6 font-mono text-[11px] text-fg-3">
-          MIT · 26 pages · 8 parts · no tracking
+          MIT · 46 pages · 8 parts · no tracking
         </motion.p>
       </div>
 

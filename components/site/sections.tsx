@@ -43,7 +43,7 @@ export function PagesSection() {
           <Reveal>
             <p className="font-mono text-[11px] text-fg-3">01 / pages</p>
             <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
-              Twenty-six ways to be lost
+              Forty-six ways to be lost
             </h2>
             <p className="mt-4 max-w-[54ch] text-[15px] leading-[1.7] text-fg-2">
               Each page is a small scene with one mechanic, not a layout with a
@@ -216,7 +216,7 @@ export function InstallSection() {
           <Reveal delay={0.16} className="min-w-0">
             <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[10.5px] text-fg-3">
               <span>registry: {"404lab.dev/r/{name}.json"}</span>
-              <span>26 pages · 8 parts · one namespace</span>
+              <span>46 pages · 8 parts · one namespace</span>
             </div>
           </Reveal>
         </div>

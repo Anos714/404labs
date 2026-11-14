@@ -4,3 +4,6 @@ export * from "./demos/parts";
 export * from "./demos/scene";
 export * from "./demos/typecase";
 export * from "./demos/physics";
+export * from "./demos/atlas";
+export * from "./demos/letterpress";
+export * from "./demos/hands";

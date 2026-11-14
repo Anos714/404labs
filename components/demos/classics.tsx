@@ -190,6 +190,13 @@ export function SpotlightDemo() {
 
   const mask = useMotionTemplate`radial-gradient(150px circle at ${x}px ${y}px, #000 25%, transparent 78%)`;
 
+  useEffect(() => {
+    const r = ref.current?.getBoundingClientRect();
+    if (!r) return;
+    x.set(r.width / 2);
+    y.set(r.height / 2);
+  }, [x, y]);
+
   function move(e: React.PointerEvent<HTMLDivElement>) {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
@@ -198,19 +205,23 @@ export function SpotlightDemo() {
     if (!ready) setReady(true);
   }
 
+  function leave() {
+    setReady(false);
+    const r = ref.current?.getBoundingClientRect();
+    if (!r) return;
+    x.set(r.width / 2);
+    y.set(r.height / 2);
+  }
+
   return (
-    <Screen
-      ref={ref}
-      onPointerMove={move}
-      onPointerLeave={() => setReady(false)}
-    >
+    <Screen ref={ref} onPointerMove={move} onPointerLeave={leave}>
       <div className="absolute inset-0">
         <Plate src="/worlds/in3.webp" className="brightness-[0.22]" />
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <span className="display text-[76px] leading-none text-white/45">
+          <span className="display text-[76px] leading-none text-white/55">
             404
           </span>
-          <span className="lab-mono text-[10px] text-white/45">
+          <span className="lab-mono text-[10px] text-white/55">
             nothing here either
           </span>
         </div>
@@ -221,8 +232,9 @@ export function SpotlightDemo() {
         style={{
           maskImage: mask,
           WebkitMaskImage: mask,
-          opacity: ready ? 1 : 0,
         }}
+        animate={{ opacity: ready ? 1 : 0.42 }}
+        transition={{ duration: 0.35 }}
       >
         <Plate src="/worlds/in3.webp" className="brightness-100" />
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">

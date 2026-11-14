@@ -443,7 +443,21 @@ export function TrailDemo() {
       </div>
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className="display text-[68px] leading-none text-fg/90">404</span>
+        <div className="relative grid place-items-center">
+          <span
+            aria-hidden
+            className="absolute h-[128px] w-[236px] rounded-[50%] border border-dashed border-white/10"
+          />
+          <span
+            aria-hidden
+            className="absolute left-1/2 top-0 size-[3px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber/50"
+          />
+          <span
+            aria-hidden
+            className="absolute bottom-0 left-1/2 size-[3px] -translate-x-1/2 translate-y-1/2 rounded-full bg-white/25"
+          />
+          <span className="display text-[68px] leading-none text-fg/90">404</span>
+        </div>
       </div>
 
       {ready && (

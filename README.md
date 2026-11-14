@@ -15,12 +15,12 @@ Open http://localhost:3000.
 
 ## Structure
 
-- `app/page.tsx` — landing page: hero, page grid, parts, install
-- `app/p/[slug]/page.tsx` — per-page detail and live preview
-- `components/demos/` — all animated previews, grouped by kind and re-exported by `components/demos.tsx`
-- `components/site/` — nav, hero, sections, footer
-- `lib/pages.tsx` — page registry (slug, copy, demo)
-- `public/worlds/` — pixel landscapes used as scene art
+- `app/page.tsx` - landing page: hero, page grid, parts, install
+- `app/p/[slug]/page.tsx` - per-page detail and live preview
+- `components/demos/` - all animated previews, grouped by kind and re-exported by `components/demos.tsx`
+- `components/site/` - nav, hero, sections, footer
+- `lib/pages.tsx` - page registry (slug, copy, demo)
+- `public/worlds/` - pixel landscapes used as scene art
 
 ## Fonts
 

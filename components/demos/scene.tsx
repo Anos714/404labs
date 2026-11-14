@@ -423,7 +423,15 @@ export function ConstellationDemo() {
         role="img"
         aria-label="404 drawn as a constellation"
       >
-        <g key={run}>
+        <g stroke="#f2ede3" strokeWidth="0.5" opacity="0.11">
+          {[40, 80, 120].map((y) => (
+            <line key={`h-${y}`} x1={0} x2={320} y1={y} y2={y} />
+          ))}
+          {[80, 160, 240].map((x) => (
+            <line key={`v-${x}`} x1={x} x2={x} y1={0} y2={150} />
+          ))}
+        </g>
+        <g key={run} transform="translate(6 2)">
           {STARS.map(([x, y], i) => (
             <motion.circle
               key={`s-${i}`}
