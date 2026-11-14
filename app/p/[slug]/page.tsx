@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Nav } from "@/components/site/nav";
 import { Footer } from "@/components/site/footer";
+import { SourcePanel } from "@/components/site/source-panel";
 import { CopyCommand } from "@/components/demos";
+import { getPageSource } from "@/lib/source";
 import { PAGES, getPage } from "@/lib/pages";
 
 type Params = { params: Promise<{ slug: string }> };
@@ -38,11 +40,12 @@ export default async function Page({ params }: Params) {
 
   const index = PAGES.findIndex((p) => p.slug === page.slug);
   const next = PAGES[(index + 1) % PAGES.length];
+  const source = getPageSource(page.slug);
 
   return (
     <>
       <Nav />
-      <main className="mx-auto max-w-[1320px] px-5 pb-24 pt-10 sm:px-8 lg:pb-32">
+      <main className="mx-auto w-full min-w-0 max-w-[1320px] px-5 pb-24 pt-10 sm:px-8 lg:pb-32">
         <Link
           href="/#pages"
           className="inline-flex items-center gap-2 font-mono text-[11px] text-fg-3 transition-colors duration-200 hover:text-fg"
@@ -52,7 +55,7 @@ export default async function Page({ params }: Params) {
         </Link>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-x-16">
-          <div className="lg:col-span-5 lg:row-start-1">
+          <div className="min-w-0 lg:col-span-5 lg:row-start-1">
             <p className="flex items-center gap-2.5 font-mono text-[11px] text-fg-3">
               <span>
                 {String(index + 1).padStart(2, "0")} /{" "}
@@ -69,7 +72,7 @@ export default async function Page({ params }: Params) {
             </p>
           </div>
 
-          <div className="lg:col-span-7 lg:row-span-2 lg:row-start-1">
+          <div className="min-w-0 lg:col-span-7 lg:row-span-2 lg:row-start-1">
             <figure className="rounded-[14px] border border-line bg-ink-900 p-2">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[6px]">
                 {page.demo}
@@ -101,7 +104,7 @@ export default async function Page({ params }: Params) {
             </div>
           </div>
 
-          <div className="lg:col-span-5 lg:row-start-2">
+          <div className="min-w-0 lg:col-span-5 lg:row-start-2">
             <dl className="max-w-[420px] border-t border-line">
               {DETAILS(page.slug, page.method, page.category).map(([k, v]) => (
                 <div
@@ -116,17 +119,51 @@ export default async function Page({ params }: Params) {
               ))}
             </dl>
 
-            <div className="mt-8 max-w-[420px]">
-              <p className="mb-3 font-mono text-[11px] text-fg-3">install</p>
+            <a
+              href="#source"
+              className="group mt-8 inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-2 transition-colors duration-200 hover:text-fg"
+            >
+              source and install
+              <ArrowDown
+                className="size-3.5 transition-transform duration-200 group-hover:translate-y-0.5"
+                strokeWidth={1.6}
+              />
+            </a>
+          </div>
+        </div>
+
+        <section
+          id="source"
+          className="mt-16 min-w-0 scroll-mt-24 border-t border-line pt-8"
+        >
+          <div className="grid min-w-0 gap-8 lg:grid-cols-12 lg:items-end lg:gap-x-16">
+            <div className="min-w-0 lg:col-span-5">
+              <p className="font-mono text-[11px] text-fg-3">source</p>
+              <h2 className="display mt-3 text-[clamp(1.9rem,3.4vw,2.7rem)]">
+                Take the file.
+              </h2>
+              <p className="mt-3 max-w-[46ch] text-[14px] leading-[1.7] text-fg-2">
+                One demo per page, no props. The shared chrome and tokens are a
+                one-time copy, and the command brings them along instead.
+              </p>
+            </div>
+
+            <div className="min-w-0 lg:col-span-7">
+              <p className="mb-2 font-mono text-[10px] text-fg-3">install</p>
               <CopyCommand
                 command={`npx shadcn@latest add @404lab/${page.slug}`}
               />
-              <p className="mt-3 font-mono text-[11px] text-fg-3">
-                then render it from app/not-found.tsx
+              <p className="mt-2 font-mono text-[10px] text-fg-3">
+                then render it from app/not-found.tsx, or copy the three files
+                below
               </p>
             </div>
           </div>
-        </div>
+
+          <div className="mt-6 min-w-0">
+            <SourcePanel files={source.files} />
+          </div>
+        </section>
       </main>
       <Footer />
     </>
