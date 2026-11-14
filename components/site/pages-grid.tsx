@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState, type CSSProperties } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Reveal } from "@/components/demos";
+import { FACES } from "@/lib/faces";
 import {
   CATEGORIES,
   PAGES,
@@ -14,44 +15,114 @@ import {
 
 type Filter = Category | "all";
 
-type Face = {
-  id: string;
-  label: string;
-  display: string;
-  mono: string;
-};
+function FaceRail({
+  faceId,
+  onPick,
+}: {
+  faceId: string;
+  onPick: (id: string) => void;
+}) {
+  const rail = useRef<HTMLDivElement>(null);
+  const [edges, setEdges] = useState({ start: true, end: false });
 
-const FACES: Face[] = [
-  {
-    id: "instrument",
-    label: "Instrument",
-    display:
-      'var(--font-instrument), Georgia, "Times New Roman", serif',
-    mono: "var(--font-geist-mono), ui-monospace, monospace",
-  },
-  {
-    id: "grotesk",
-    label: "Grotesk",
-    display: "var(--font-geist), ui-sans-serif, system-ui, sans-serif",
-    mono: "var(--font-geist), ui-sans-serif, system-ui, sans-serif",
-  },
-  {
-    id: "mono",
-    label: "Mono",
-    display: "var(--font-geist-mono), ui-monospace, monospace",
-    mono: "var(--font-geist-mono), ui-monospace, monospace",
-  },
-];
+  useEffect(() => {
+    const el = rail.current;
+    if (!el) return;
 
-function PageCard({ page }: { page: PageEntry }) {
+    const read = () =>
+      setEdges({
+        start: el.scrollLeft <= 1,
+        end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 1,
+      });
+
+    read();
+    el.addEventListener("scroll", read, { passive: true });
+    window.addEventListener("resize", read);
+    return () => {
+      el.removeEventListener("scroll", read);
+      window.removeEventListener("resize", read);
+    };
+  }, []);
+
+  const nudge = (direction: number) =>
+    rail.current?.scrollBy({ left: direction * 340, behavior: "smooth" });
+
   return (
-    <article className="group flex h-full flex-col rounded-[14px] border border-line bg-ink-900 p-2 transition-[border-color] duration-300 hover:border-line-2 focus-within:border-line-2">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[6px] bg-ink-950">
+    <div className="order-3 flex w-full min-w-0 items-center gap-1.5 sm:order-none sm:flex-1">
+      <div className="relative min-w-0 flex-1">
+        <div
+          ref={rail}
+          role="group"
+          aria-labelledby="face-label"
+          className="flex min-w-0 items-center gap-1 overflow-x-auto py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {FACES.map((face) => {
+            const on = face.id === faceId;
+            return (
+              <button
+                key={face.id}
+                type="button"
+                onClick={() => onPick(face.id)}
+                aria-pressed={on}
+                style={{ fontFamily: face.display }}
+                className={`shrink-0 rounded-control border px-2.5 py-1 text-[11.5px] leading-none transition-colors duration-200 ${
+                  on
+                    ? "border-line-2 bg-ink-850 text-fg"
+                    : "border-transparent text-fg-3 hover:border-line hover:text-fg-2"
+                }`}
+              >
+                {face.label}
+              </button>
+            );
+          })}
+        </div>
+        <div
+          aria-hidden
+          className={`pointer-events-none absolute inset-y-0 left-0 w-7 bg-gradient-to-r from-ink-950 to-transparent transition-opacity duration-200 ${
+            edges.start ? "opacity-0" : "opacity-100"
+          }`}
+        />
+        <div
+          aria-hidden
+          className={`pointer-events-none absolute inset-y-0 right-0 w-7 bg-gradient-to-l from-ink-950 to-transparent transition-opacity duration-200 ${
+            edges.end ? "opacity-0" : "opacity-100"
+          }`}
+        />
+      </div>
+
+      <div className="hidden shrink-0 items-center gap-0.5 sm:flex">
+        <button
+          type="button"
+          onClick={() => nudge(-1)}
+          disabled={edges.start}
+          aria-label="Previous typeface"
+          className="grid size-7 place-items-center rounded-control border border-line text-fg-3 transition-colors duration-200 hover:border-line-2 hover:text-fg disabled:opacity-30 disabled:hover:border-line disabled:hover:text-fg-3"
+        >
+          <ChevronLeft className="size-3.5" strokeWidth={1.6} />
+        </button>
+        <button
+          type="button"
+          onClick={() => nudge(1)}
+          disabled={edges.end}
+          aria-label="Next typeface"
+          className="grid size-7 place-items-center rounded-control border border-line text-fg-3 transition-colors duration-200 hover:border-line-2 hover:text-fg disabled:opacity-30 disabled:hover:border-line disabled:hover:text-fg-3"
+        >
+          <ChevronRight className="size-3.5" strokeWidth={1.6} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function PageCard({ page, index }: { page: PageEntry; index: number }) {
+  return (
+    <article className="group flex h-full flex-col rounded-panel border border-line bg-ink-900 p-1.5 transition-[border-color] duration-300 hover:border-line-2 focus-within:border-line-2">
+      <div className="relative aspect-[4/3] overflow-hidden rounded-tile bg-ink-950">
         {page.demo}
         <Link
           href={`/p/${page.slug}`}
           aria-label={`Open ${page.slug}`}
-          className="absolute right-2 top-2 z-30 grid size-7 place-items-center rounded-[5px] border border-white/15 bg-ink-950/70 text-white/75 backdrop-blur-[3px] transition-colors duration-200 hover:bg-ink-950 hover:text-fg"
+          className="absolute right-2 top-2 z-30 grid size-7 place-items-center rounded-control border border-white/15 bg-ink-950/90 text-white/75 transition-[opacity,color,background-color,border-color] duration-200 hover:border-white/30 hover:bg-ink-950 hover:text-fg sm:opacity-0 sm:group-focus-within:opacity-100 sm:group-hover:opacity-100"
         >
           <ArrowUpRight className="size-3.5" strokeWidth={1.6} />
         </Link>
@@ -59,16 +130,25 @@ function PageCard({ page }: { page: PageEntry }) {
 
       <Link
         href={`/p/${page.slug}`}
-        className="flex flex-1 items-start justify-between gap-3 px-2 pb-1 pt-4"
+        className="flex flex-1 flex-col px-1.5 pt-3"
       >
-        <div>
-          <h3 className="font-mono text-[13px] text-fg">{page.slug}</h3>
-          <p className="mt-1 text-[12px] text-fg-3">{page.desc}</p>
-        </div>
-        <span className="mt-0.5 shrink-0 font-mono text-[10px] text-fg-3">
-          {page.category}
+        <span className="flex items-baseline justify-between gap-3">
+          <h3 className="lab-mono text-[12.5px] leading-none text-fg">
+            {page.slug}
+          </h3>
+          <span className="shrink-0 lab-mono text-[10px] tabular-nums text-fg-3">
+            {String(index + 1).padStart(2, "0")}
+          </span>
         </span>
+        <p className="mt-1.5 text-[12px] leading-snug text-fg-3">
+          {page.desc}
+        </p>
       </Link>
+
+      <div className="mt-3 flex items-center justify-between gap-3 border-t border-line px-1.5 pb-1 pt-2 lab-mono text-[10px] leading-none text-fg-3">
+        <span className="shrink-0">{page.category}</span>
+        <span className="truncate text-right">{page.method}</span>
+      </div>
     </article>
   );
 }
@@ -89,43 +169,31 @@ export function PagesGrid() {
         } as CSSProperties
       }
     >
-      <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-line pt-4">
-        <span id="face-label" className="font-mono text-[10px] text-fg-3">
-          typeface
-        </span>
-        <div
-          role="group"
-          aria-labelledby="face-label"
-          className="flex items-center gap-1"
-        >
-          {FACES.map((f) => {
-            const on = f.id === faceId;
-            return (
-              <button
-                key={f.id}
-                type="button"
-                onClick={() => setFaceId(f.id)}
-                aria-pressed={on}
-                style={{ fontFamily: f.display }}
-                className={`rounded-[5px] border px-2.5 py-1 text-[11px] transition-colors duration-200 ${
-                  on
-                    ? "border-line-2 bg-ink-850 text-fg"
-                    : "border-transparent text-fg-3 hover:text-fg-2"
-                }`}
-              >
-                {f.label}
-              </button>
-            );
-          })}
+      <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-4">
+        <div className="flex shrink-0 items-center gap-2.5">
+          <span id="face-label" className="font-mono text-[10px] text-fg-3">
+            typeface
+          </span>
+          <span className="lab-mono text-[10px] tabular-nums text-fg-3/80">
+            {String(FACES.findIndex((f) => f.id === faceId) + 1).padStart(2, "0")}
+            /{FACES.length}
+          </span>
         </div>
-        <p className="w-full font-mono text-[10px] leading-snug text-fg-3 sm:ml-auto sm:w-auto sm:text-right">
-          previews only · your project sets{" "}
-          <span className="text-fg-2">--lab-font-display</span>
+
+        <FaceRail faceId={faceId} onPick={setFaceId} />
+
+        <p className="order-4 w-full font-mono text-[10px] leading-snug text-fg-3 sm:order-none sm:ml-auto sm:w-auto sm:shrink-0 sm:text-right">
+          {face.kind} · previews only
+          <span className="hidden sm:inline">
+            {" "}
+            · your project sets{" "}
+            <span className="text-fg-2">--lab-font-display</span>
+          </span>
         </p>
       </div>
 
-      <div className="sticky top-16 z-40 -mx-5 mt-4 border-y border-line bg-ink-950/96 backdrop-blur-[10px] sm:-mx-8">
-        <div className="flex items-center gap-1 overflow-x-auto px-4 py-3 sm:px-6">
+      <div className="sticky top-16 z-40 -mx-5 mt-3 border-y border-line bg-ink-950 sm:-mx-8">
+        <div className="flex items-center gap-1 overflow-x-auto px-4 py-2.5 sm:px-6">
           <span className="mr-1 hidden shrink-0 font-mono text-[10px] text-fg-3 lg:block">
             filter
           </span>
@@ -137,12 +205,12 @@ export function PagesGrid() {
                 type="button"
                 onClick={() => setFilter(c.id)}
                 aria-pressed={on}
-                className={`relative shrink-0 rounded-[6px] px-2.5 py-1.5 font-mono text-[11px] transition-colors duration-200 ${
+                className={`relative shrink-0 rounded-control px-2.5 py-1.5 font-mono text-[11px] transition-colors duration-200 ${
                   on ? "text-fg" : "text-fg-3 hover:text-fg-2"
                 }`}
               >
                 {on && (
-                  <span className="absolute inset-0 rounded-[6px] border border-line-2 bg-ink-850" />
+                  <span className="absolute inset-0 rounded-control border border-line-2 bg-ink-850" />
                 )}
                 <span className="relative">{c.label}</span>
                 <span
@@ -161,7 +229,7 @@ export function PagesGrid() {
         </div>
       </div>
 
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {PAGES.map((page, i) => (
           <div
             key={page.slug}
@@ -170,15 +238,18 @@ export function PagesGrid() {
             }
           >
             <Reveal delay={0.04 * (i % 3)} className="h-full">
-              <PageCard page={page} />
+              <PageCard page={page} index={i} />
             </Reveal>
           </div>
         ))}
       </div>
 
       <p className="mt-6 font-mono text-[10.5px] text-fg-3">
-        showing {shown} of {PAGES.length}
-        <span className="ml-2 text-fg-3/60">hover to run, open for the method</span>
+        showing <span className="tabular-nums">{shown}</span> of{" "}
+        <span className="tabular-nums">{PAGES.length}</span>
+        <span className="ml-2 text-fg-3/60">
+          hover to run, open for the method
+        </span>
       </p>
     </div>
   );

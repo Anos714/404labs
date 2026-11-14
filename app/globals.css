@@ -12,6 +12,11 @@
   --color-line-2: #2a2f34;
   --color-amber: #e9b871;
 
+  /* One radius scale for the whole site. Panels, media tiles, controls. */
+  --radius-panel: 10px;
+  --radius-tile: 6px;
+  --radius-control: 4px;
+
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
@@ -35,7 +40,14 @@
     background-color: var(--color-ink-950);
     color: var(--color-fg);
     font-family: var(--font-sans);
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+  }
+
+  pre {
+    font-variant-ligatures: none;
+    tab-size: 2;
   }
 
   ::selection {
@@ -44,7 +56,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-amber);
+    outline: 2px solid #e9b871;
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -80,6 +92,7 @@
     --lab-font-mono,
     var(--font-mono, ui-monospace, SFMono-Regular, monospace)
   );
+  font-variant-numeric: tabular-nums;
 }
 
 @utility meta {

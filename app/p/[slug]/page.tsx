@@ -73,8 +73,8 @@ export default async function Page({ params }: Params) {
           </div>
 
           <div className="min-w-0 lg:col-span-7 lg:row-span-2 lg:row-start-1">
-            <figure className="rounded-[14px] border border-line bg-ink-900 p-2">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-[6px]">
+            <figure className="rounded-panel border border-line bg-ink-900 p-2">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-tile">
                 {page.demo}
               </div>
               <figcaption className="flex items-center justify-between px-2 pb-1 pt-3">

@@ -70,12 +70,18 @@ component:
 Load the faces with `next/font`, a local `@font-face`, or a hosted stylesheet,
 then set the variables on `:root` or on a single wrapper. The `.display` and
 `.lab-mono` utilities in `app/globals.css` resolve through these tokens, with
-fallbacks so the pages still render before a font is chosen. The landing page
-includes a live typeface switch above the page grid to preview the effect.
+fallbacks so the pages still render before a font is chosen.
+
+The switch above the page grid previews 20 faces listed in `lib/faces.ts` and
+loaded in `app/layout.tsx`: seven serifs, eight sans, five mono. They are
+preview-only and not preloaded, so the library still ships just the two tokens.
+Add a face by importing it there and adding one entry to `FACES`.
 
 ## Design notes
 
 - Ink surfaces, one amber accent, cream type
+- One radius scale: 10px panels, 6px tiles, 4px controls
+- Hairline borders, mono metadata, tabular numbers for counts
 - Instrument Serif for display, Geist for UI, Geist Mono for labels
 - One signature device: a dashed route line ending in a small x
 - Motion only where it explains something; every demo has a still state

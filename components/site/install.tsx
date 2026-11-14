@@ -53,7 +53,7 @@ export function InstallTabs() {
   const lang = TABS.find((t) => t.id === tab)?.lang;
 
   return (
-    <div className="overflow-hidden rounded-[14px] border border-line bg-ink-950">
+    <div className="overflow-hidden rounded-panel border border-line bg-ink-950">
       <div className="flex items-center justify-between gap-4 border-b border-line px-3 py-2">
         <div
           role="tablist"
@@ -69,12 +69,12 @@ export function InstallTabs() {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setTab(t.id)}
-                className={`relative shrink-0 rounded-[5px] px-2 py-1.5 font-mono text-[10.5px] transition-colors duration-200 ${
+                className={`relative shrink-0 rounded-control px-2 py-1.5 font-mono text-[10.5px] transition-colors duration-200 ${
                   on ? "text-fg" : "text-fg-3 hover:text-fg-2"
                 }`}
               >
                 {on && (
-                  <span className="absolute inset-0 rounded-[5px] bg-ink-850" />
+                  <span className="absolute inset-0 rounded-control border border-line-2 bg-ink-850" />
                 )}
                 <span className="relative">{t.label}</span>
               </button>
@@ -134,7 +134,7 @@ export function InstallTabs() {
 
         {tab === "fonts" && (
           <>
-            <div className="rounded-[6px] bg-ink-900 px-4 py-3">
+            <div className="rounded-tile bg-ink-900 px-4 py-3">
               <pre className="overflow-x-auto font-mono text-[11px] leading-[1.9] text-fg-2">
                 <code>
                   <CodeLine>
@@ -171,10 +171,10 @@ export function InstallTabs() {
                 component.
               </p>
               <div className="mt-3 flex flex-wrap items-center gap-2 font-mono text-[10px] text-fg-3">
-                <span className="rounded-[4px] border border-line-2 px-1.5 py-1">
+                <span className="rounded-control border border-line-2 px-1.5 py-1">
                   --lab-font-display
                 </span>
-                <span className="rounded-[4px] border border-line-2 px-1.5 py-1">
+                <span className="rounded-control border border-line-2 px-1.5 py-1">
                   --lab-font-mono
                 </span>
                 <span>set on :root or one wrapper</span>
@@ -185,7 +185,7 @@ export function InstallTabs() {
 
         {tab === "manual" && (
           <>
-            <div className="rounded-[6px] bg-ink-900 px-4 py-4 font-mono text-[11.5px] leading-[2] text-fg-3">
+            <div className="rounded-tile bg-ink-900 px-4 py-4 font-mono text-[11.5px] leading-[2] text-fg-3">
               <p className="text-fg-2">components/404lab/</p>
               <p>├─ glitch-404.tsx</p>
               <p>├─ mosaic-404.tsx</p>

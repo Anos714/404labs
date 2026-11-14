@@ -145,7 +145,7 @@ export function CopyCommand({
       type="button"
       onClick={copy}
       aria-label={`Copy ${command}`}
-      className={`group/copy flex w-full items-center justify-between gap-4 rounded-[6px] border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 ${className}`}
+      className={`group/copy flex w-full items-center justify-between gap-4 rounded-control border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 active:translate-y-px ${className}`}
     >
       <code className="min-w-0 truncate lab-mono text-[10px] text-fg-2 lg:text-[12px]">
         <span className="mr-1.5 text-amber/80">$</span>

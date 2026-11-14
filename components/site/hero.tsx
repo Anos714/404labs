@@ -64,7 +64,7 @@ export function Hero() {
         <motion.div {...fade(0.28)} className="mt-9 flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-3 md:flex-col md:items-start md:gap-1 lg:flex-row lg:items-center lg:gap-3">
           <Link
             href="#pages"
-            className="group inline-flex items-center gap-2 rounded-[8px] bg-fg px-4 py-3 text-[14px] font-medium text-ink-950 transition-colors duration-200 hover:bg-white"
+            className="group inline-flex items-center gap-2 rounded-control bg-fg px-4 py-3 text-[14px] font-medium text-ink-950 transition-colors duration-200 hover:bg-white"
           >
             Browse the pages
             <ArrowDown
@@ -74,7 +74,7 @@ export function Hero() {
           </Link>
           <Link
             href="#install"
-            className="inline-flex items-center gap-1.5 rounded-[8px] px-0 py-2.5 font-mono text-[12px] text-fg-2 transition-colors duration-200 hover:text-fg sm:px-2"
+            className="inline-flex items-center gap-1.5 rounded-control px-0 py-2.5 font-mono text-[12px] text-fg-2 transition-colors duration-200 hover:text-fg sm:px-2"
           >
             or copy one command
             <ArrowUpRight className="size-4" strokeWidth={1.5} />
@@ -98,9 +98,9 @@ export function Hero() {
       >
         <figure
           onMouseEnter={fire}
-          className="group/poster relative rounded-[14px] border border-line bg-ink-900 p-2"
+          className="group/poster relative rounded-panel border border-line bg-ink-900 p-2"
         >
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[6px] bg-ink-950 sm:aspect-[5/5] lg:aspect-[4/5]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-tile bg-ink-950 sm:aspect-[5/5] lg:aspect-[4/5]">
             <Image
               src="/worlds/hero.webp"
               alt="Pixel art of a lighthouse on a cliff at dusk, light sweeping over the sea"

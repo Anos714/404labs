@@ -56,7 +56,7 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
   }
 
   return (
-    <div className="w-full min-w-0 overflow-hidden rounded-[14px] border border-line bg-ink-950">
+    <div className="w-full min-w-0 overflow-hidden rounded-panel border border-line bg-ink-950">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line p-2">
         <div
           role="group"
@@ -71,12 +71,12 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
                 type="button"
                 onClick={() => select(i)}
                 aria-pressed={on}
-                className={`relative shrink-0 rounded-[5px] px-2.5 py-1.5 lab-mono text-[10.5px] transition-colors duration-200 ${
+                className={`relative shrink-0 rounded-control px-2.5 py-1.5 lab-mono text-[10.5px] transition-colors duration-200 ${
                   on ? "text-fg" : "text-fg-3 hover:text-fg-2"
                 }`}
               >
                 {on && (
-                  <span className="absolute inset-0 rounded-[5px] bg-ink-850" />
+                  <span className="absolute inset-0 rounded-control border border-line-2 bg-ink-850" />
                 )}
                 <span className="relative">{f.name}</span>
               </button>
@@ -88,7 +88,7 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
           type="button"
           onClick={copy}
           aria-label={`Copy ${file.name}`}
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-[5px] border border-line-2 bg-ink-900 px-2.5 py-1.5 lab-mono text-[10.5px] text-fg-2 transition-colors duration-200 hover:border-fg-3/40 hover:text-fg"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-control border border-line-2 bg-ink-900 px-2.5 py-1.5 lab-mono text-[10.5px] text-fg-2 transition-colors duration-200 hover:border-fg-3/40 hover:text-fg"
         >
           {done ? (
             <Check className="size-3.5 text-amber" strokeWidth={1.6} />
