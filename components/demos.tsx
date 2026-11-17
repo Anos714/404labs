@@ -7,3 +7,4 @@ export * from "./demos/physics";
 export * from "./demos/atlas";
 export * from "./demos/letterpress";
 export * from "./demos/hands";
+export * from "./demos/found";

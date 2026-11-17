@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
 
 /**
@@ -9,6 +10,9 @@ import path from "node:path";
  */
 
 const root = path.resolve(import.meta.dirname, "..");
+const library = JSON.parse(
+  fs.readFileSync(path.join(root, "mcp/data/pages.json"), "utf8"),
+);
 const child = spawn(process.execPath, [path.join(root, "mcp/server.mjs")], {
   cwd: root,
   stdio: ["pipe", "pipe", "pipe"],
@@ -93,7 +97,11 @@ try {
   };
 
   const list = await call("list_pages", {});
-  check("list_pages", list.text.includes("46 pages"), list.text.split("\n")[0]);
+  check(
+    "list_pages",
+    list.text.includes(`${library.count} pages`),
+    list.text.split("\n")[0],
+  );
 
   const page = await call("get_page", { slug: "flood-404" });
   check("get_page source", page.text.includes("export function FloodDemo"));

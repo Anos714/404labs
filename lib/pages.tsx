@@ -21,6 +21,7 @@ import {
   HoloDemo,
   LatchDemo,
   LedgerDemo,
+  LostDemo,
   MagnetDemo,
   MosaicDemo,
   MorseDemo,
@@ -490,10 +491,64 @@ export const PAGES: PageEntry[] = [
     category: "interactive",
     demo: <PlungerDemo />,
   },
+  {
+    slug: "lost-404",
+    title: "Lost Property",
+    desc: "Four things nobody came back for",
+    note: "A paper intake sheet for a site that misplaced exactly one page and found four other things. Hover a tag, tap an item, and it does its small party trick: the umbrella shakes, the watch restarts, the key turns, the plane takes a lap. Log all four and the sheet closes anyway.",
+    method: "pointer · four items",
+    category: "interactive",
+    demo: <LostDemo />,
+  },
 ];
 
 export function getPage(slug: string) {
   return PAGES.find((p) => p.slug === slug);
+}
+
+const SMALL = [
+  "zero",
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten",
+  "eleven",
+  "twelve",
+  "thirteen",
+  "fourteen",
+  "fifteen",
+  "sixteen",
+  "seventeen",
+  "eighteen",
+  "nineteen",
+];
+const TENS = [
+  "",
+  "",
+  "twenty",
+  "thirty",
+  "forty",
+  "fifty",
+  "sixty",
+  "seventy",
+  "eighty",
+  "ninety",
+];
+
+export function pageCountWord(capitalize = false) {
+  const n = PAGES.length;
+  if (n >= 100) return String(n);
+  const word =
+    n < 20
+      ? SMALL[n]
+      : `${TENS[Math.floor(n / 10)]}${n % 10 ? `-${SMALL[n % 10]}` : ""}`;
+  return capitalize ? word.charAt(0).toUpperCase() + word.slice(1) : word;
 }
 
 export function categoryCount(id: Category | "all") {

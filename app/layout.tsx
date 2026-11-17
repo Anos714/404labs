@@ -181,9 +181,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "404lab · forty-six animated 404 pages for Next.js",
+  title: "404lab · forty-seven animated 404 pages for Next.js",
   description:
-    "Forty-six animated not-found pages and the parts they are built from. Next.js, Motion, Tailwind. Installed with shadcn, owned by you.",
+    "Forty-seven animated not-found pages and the parts they are built from. Next.js, Motion, Tailwind. Installed with shadcn, owned by you.",
   openGraph: {
     title: "404lab",
     description:

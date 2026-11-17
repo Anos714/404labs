@@ -130,7 +130,7 @@ const server = new McpServer(
   { name: "404lab", version: data.version },
   {
     instructions:
-      "404lab is a library of 46 animated 404 pages for Next.js, Motion and Tailwind. Use list_pages or search_pages to find a page, get_page to read its source and install command, and get_shared_file for the shared chrome and tokens. Copy the returned code into the user's project, or run the shadcn command.",
+      `404lab is a library of ${data.count} animated 404 pages for Next.js, Motion and Tailwind. Use list_pages or search_pages to find a page, get_page to read its source and install command, and get_shared_file for the shared chrome and tokens. Copy the returned code into the user's project, or run the shadcn command.`,
   },
 );
 
@@ -149,7 +149,7 @@ server.registerTool(
         .number()
         .int()
         .min(1)
-        .max(46)
+        .max(data.count)
         .optional()
         .describe("How many pages to return. Defaults to all."),
       offset: z

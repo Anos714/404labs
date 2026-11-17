@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { CopyCommand } from "@/components/demos";
+import { PAGES, pageCountWord } from "@/lib/pages";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -57,8 +58,8 @@ export function Hero() {
           {...fade(0.2)}
           className="mt-7 max-w-[46ch] text-[16px] leading-[1.7] text-fg-2 sm:text-[17px]"
         >
-          Forty-six animated 404 pages and the parts they are built from.
-          Next.js, Motion, Tailwind. You get the source, not a dependency.
+          {pageCountWord(true)} animated 404 pages and the parts they are built
+          from. Next.js, Motion, Tailwind. You get the source, not a dependency.
         </motion.p>
 
         <motion.div {...fade(0.28)} className="mt-9 flex flex-col items-start gap-1 sm:flex-row sm:items-center sm:gap-3 md:flex-col md:items-start md:gap-1 lg:flex-row lg:items-center lg:gap-3">
@@ -86,7 +87,7 @@ export function Hero() {
         </motion.div>
 
         <motion.p {...fade(0.4)} className="mt-6 font-mono text-[11px] text-fg-3">
-          MIT · 46 pages · 8 parts · no tracking
+          MIT · {PAGES.length} pages · 8 parts · no tracking
         </motion.p>
       </div>
 

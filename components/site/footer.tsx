@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { pageCountWord } from "@/lib/pages";
 
 export function Footer() {
   return (
@@ -12,7 +13,8 @@ export function Footer() {
               <span className="font-mono text-[12px] text-fg-2">lab</span>
             </p>
             <p className="mt-3 max-w-[34ch] text-[13px] leading-[1.7] text-fg-3">
-              Forty-six dead ends, drawn with care and handed over as source.
+              {pageCountWord(true)} dead ends, drawn with care and handed over as
+              source.
             </p>
           </div>
 
