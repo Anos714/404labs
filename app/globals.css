@@ -1,21 +1,21 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-ink-950: #08090a;
-  --color-ink-900: #0b0d0f;
-  --color-ink-850: #101317;
-  --color-ink-800: #15181c;
-  --color-fg: #f2ede3;
-  --color-fg-2: #b0aba1;
-  --color-fg-3: #8b867d;
-  --color-line: #1d2125;
-  --color-line-2: #2a2f34;
+  --color-ink-950: #121212;
+  --color-ink-900: #17171a;
+  --color-ink-850: #1b1b1e;
+  --color-ink-800: #232327;
+  --color-fg: #fafafa;
+  --color-fg-2: #b3b3b9;
+  --color-fg-3: #7c7c84;
+  --color-line: #26262a;
+  --color-line-2: #35353b;
   --color-amber: #e9b871;
 
   /* One radius scale for the whole site. Panels, media tiles, controls. */
-  --radius-panel: 10px;
-  --radius-tile: 6px;
-  --radius-control: 4px;
+  --radius-panel: 20px;
+  --radius-tile: 12px;
+  --radius-control: 8px;
 
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;

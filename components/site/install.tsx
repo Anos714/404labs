@@ -53,12 +53,12 @@ export function InstallTabs() {
   const lang = TABS.find((t) => t.id === tab)?.lang;
 
   return (
-    <div className="overflow-hidden rounded-panel border border-line bg-ink-950">
+    <div className="overflow-hidden rounded-panel border border-line bg-ink-900">
       <div className="flex items-center justify-between gap-4 border-b border-line px-3 py-2">
         <div
           role="tablist"
           aria-label="Install method"
-          className="flex min-w-0 items-center gap-0.5 overflow-x-auto"
+          className="flex min-w-0 items-center gap-0.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {TABS.map((t) => {
             const on = tab === t.id;
@@ -69,19 +69,21 @@ export function InstallTabs() {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setTab(t.id)}
-                className={`relative shrink-0 rounded-control px-2 py-1.5 font-mono text-[10.5px] transition-colors duration-200 ${
+                className={`relative shrink-0 rounded-full px-2.5 py-1.5 font-mono text-[10.5px] transition-colors duration-200 ${
                   on ? "text-fg" : "text-fg-3 hover:text-fg-2"
                 }`}
               >
                 {on && (
-                  <span className="absolute inset-0 rounded-control border border-line-2 bg-ink-850" />
+                  <span className="absolute inset-0 rounded-full bg-ink-800" />
                 )}
                 <span className="relative">{t.label}</span>
               </button>
             );
           })}
         </div>
-        <span className="shrink-0 font-mono text-[10px] text-fg-3">{lang}</span>
+        <span className="hidden shrink-0 font-mono text-[10px] text-fg-3 sm:inline">
+          {lang}
+        </span>
       </div>
 
       <div className="min-h-[318px] p-3">
@@ -89,7 +91,7 @@ export function InstallTabs() {
           <>
             <CopyCommand
               command="npx shadcn@latest add @404lab/glitch-404"
-              className="border-transparent bg-ink-900"
+              className="border-transparent bg-ink-950"
             />
             <div className="mt-4 border-t border-line px-1 pt-4">
               <p className="mb-3 font-mono text-[10px] text-fg-3">
@@ -104,7 +106,7 @@ export function InstallTabs() {
           <>
             <CopyCommand
               command="npx shadcn@latest add https://404lab.dev/r/glitch-404.json"
-              className="border-transparent bg-ink-900"
+              className="border-transparent bg-ink-950"
             />
             <div className="mt-4 border-t border-line px-1 pt-4">
               <p className="mb-3 font-mono text-[10px] text-fg-3">
@@ -134,7 +136,7 @@ export function InstallTabs() {
 
         {tab === "fonts" && (
           <>
-            <div className="rounded-tile bg-ink-900 px-4 py-3">
+            <div className="rounded-tile bg-ink-950 px-4 py-3">
               <pre className="overflow-x-auto font-mono text-[11px] leading-[1.9] text-fg-2">
                 <code>
                   <CodeLine>
@@ -185,7 +187,7 @@ export function InstallTabs() {
 
         {tab === "manual" && (
           <>
-            <div className="rounded-tile bg-ink-900 px-4 py-4 font-mono text-[11.5px] leading-[2] text-fg-3">
+            <div className="rounded-tile bg-ink-950 px-4 py-4 font-mono text-[11.5px] leading-[2] text-fg-3">
               <p className="text-fg-2">components/404lab/</p>
               <p>├─ glitch-404.tsx</p>
               <p>├─ mosaic-404.tsx</p>

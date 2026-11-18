@@ -14,21 +14,7 @@ import {
 } from "@/components/demos";
 import { InstallTabs } from "@/components/site/install";
 import { PagesGrid } from "@/components/site/pages-grid";
-import { PAGES, categoryCount, pageCountWord } from "@/lib/pages";
-
-/* --------------------------------- divider --------------------------------- */
-
-export function MapEnd() {
-  return (
-    <div aria-hidden className="mx-auto max-w-[1320px] px-5 sm:px-8">
-      <div className="relative h-px w-full bg-[repeating-linear-gradient(to_right,#2a2f34_0_6px,transparent_6px_12px)]">
-        <span className="absolute left-1/2 top-0 flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 bg-ink-950 px-3 font-mono text-[10px] text-fg-3">
-          <span className="text-amber/80">×</span> end of the map
-        </span>
-      </div>
-    </div>
-  );
-}
+import { PAGES, pageCountWord } from "@/lib/pages";
 
 /* ---------------------------------- pages ---------------------------------- */
 
@@ -36,30 +22,21 @@ export function PagesSection() {
   return (
     <section
       id="pages"
-      className="mx-auto max-w-[1320px] scroll-mt-16 px-5 py-24 sm:px-8 lg:py-28"
+      className="scroll-mt-16 border-b border-line px-5 pb-14 pt-10 sm:px-8 sm:pb-16 lg:px-10 lg:pb-20 lg:pt-12"
     >
-      <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
         <div>
           <Reveal>
-            <p className="font-mono text-[11px] text-fg-3">01 / pages</p>
-            <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
+            <p className="font-mono text-[10.5px] text-fg-3">01 / catalogue</p>
+            <h2 className="mt-3 text-[clamp(1.45rem,2.2vw,1.85rem)] font-medium leading-tight tracking-[-0.03em] text-fg">
               {pageCountWord(true)} ways to be lost
             </h2>
-            <p className="mt-4 max-w-[54ch] text-[15px] leading-[1.7] text-fg-2">
-              Each page is a small scene with one mechanic, not a layout with a
-              shake on it. Filter the set, hover to run it, open one for the
-              method and the source.
-            </p>
           </Reveal>
         </div>
-        <Reveal delay={0.1}>
-          <p className="font-mono text-[11px] leading-relaxed text-fg-3 sm:text-right">
-            {PAGES.length} pages
-            <br />
-            <span className="whitespace-nowrap">
-              {categoryCount("scene")} scenes · {categoryCount("type")} type ·{" "}
-              {categoryCount("interactive")} interactive
-            </span>
+        <Reveal delay={0.06}>
+          <p className="max-w-[46ch] text-[12.5px] leading-[1.7] text-fg-3 sm:text-right">
+            Each page is one mechanic, not a template with a shake on it. Search
+            the set, hover to run one, open it for the method and the source.
           </p>
         </Reveal>
       </div>
@@ -116,57 +93,53 @@ const PARTS = [
 
 export function PartsSection() {
   return (
-    <section id="parts" className="scroll-mt-16 border-y border-line bg-ink-900/40">
-      <div className="mx-auto grid max-w-[1320px] gap-12 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-16 lg:py-28">
-        <div className="min-w-0 lg:col-span-5">
-          <Reveal>
-            <p className="font-mono text-[11px] text-fg-3">02 / parts</p>
-            <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
-              Or build your
-              <br />
-              own dead end
-            </h2>
-            <p className="mt-5 max-w-[40ch] text-[15px] leading-[1.7] text-fg-2">
-              The pages are assembled from these. Take one on its own and it will
-              sit inside whatever you already have.
-            </p>
-            <p className="mt-6 font-mono text-[11px] text-fg-3">
-              8 parts · same tokens · no assets
-            </p>
-            <p className="mt-2 max-w-[38ch] text-[13px] leading-[1.7] text-fg-3">
-              Each one is a single file with its own state. No shared provider,
-              no context to wire up.
-            </p>
-          </Reveal>
-        </div>
+    <section
+      id="parts"
+      className="scroll-mt-16 border-b border-line px-5 py-14 sm:px-8 lg:px-10 lg:py-20"
+    >
+      <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between sm:gap-10">
+        <Reveal>
+          <p className="font-mono text-[10.5px] text-fg-3">02 / parts</p>
+          <h2 className="mt-3 text-[clamp(1.45rem,2.2vw,1.85rem)] font-medium leading-tight tracking-[-0.03em] text-fg">
+            Take the mechanism, leave the scene
+          </h2>
+        </Reveal>
+        <Reveal delay={0.06}>
+          <p className="max-w-[48ch] text-[12.5px] leading-[1.7] text-fg-3 sm:text-right">
+            The pages are assembled from these eight pieces. Each one is a single
+            file with its own state, small enough to lift into a project that
+            already exists.
+          </p>
+        </Reveal>
+      </div>
 
-        <div className="min-w-0 lg:col-span-7">
-          <ul className="border-t border-line">
-            {PARTS.map((part, i) => (
-              <Reveal key={part.name} delay={0.02 * i}>
-                <li className="flex items-center gap-4 border-b border-line py-4">
-                  <span className="w-5 shrink-0 font-mono text-[10px] tabular-nums text-fg-3">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="font-mono text-[12.5px] text-fg">{part.name}</p>
-                    <p className="mt-0.5 text-[12px] leading-snug text-fg-3">
-                      {part.desc}
-                    </p>
-                  </div>
-                  <div className="flex shrink-0 items-center justify-end">
-                    {part.demo}
-                  </div>
-                </li>
-              </Reveal>
-            ))}
-          </ul>
-          <Reveal delay={0.12}>
-            <p className="mt-5 font-mono text-[11px] text-fg-3">
-              each part ships as its own file
-            </p>
-          </Reveal>
-        </div>
+      <Reveal delay={0.08}>
+        <ul className="mt-8 divide-y divide-line overflow-hidden rounded-panel border border-line bg-ink-850">
+          {PARTS.map((part, i) => (
+            <li
+              key={part.name}
+              className="flex items-center gap-4 px-4 py-4 transition-colors duration-200 hover:bg-ink-800 sm:px-5"
+            >
+              <span className="w-5 shrink-0 font-mono text-[10px] tabular-nums text-fg-3">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="font-mono text-[12.5px] text-fg">{part.name}</p>
+                <p className="mt-1 text-[12px] leading-snug text-fg-3">
+                  {part.desc}
+                </p>
+              </div>
+              <div className="flex shrink-0 items-center justify-end">
+                {part.demo}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-fg-3">
+        <span>8 parts · same tokens · no image assets</span>
+        <span className="text-fg-3/60">each part ships as its own file</span>
       </div>
     </section>
   );
@@ -178,47 +151,47 @@ export function InstallSection() {
   return (
     <section
       id="install"
-      className="mx-auto max-w-[1320px] scroll-mt-16 px-5 py-24 sm:px-8 lg:py-28"
+      className="scroll-mt-16 border-b border-line px-5 py-14 sm:px-8 lg:px-10 lg:py-20"
     >
-      <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-5">
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-14">
+        <div>
           <Reveal>
-            <p className="font-mono text-[11px] text-fg-3">03 / install</p>
-            <h2 className="display mt-4 text-[clamp(2.2rem,4vw,3.4rem)]">
-              One command,
-              <br />
-              then it is yours
+            <p className="font-mono text-[10.5px] text-fg-3">03 / install</p>
+            <h2 className="mt-3 text-[clamp(1.45rem,2.2vw,1.85rem)] font-medium leading-tight tracking-[-0.03em] text-fg">
+              One line, then it is your file
             </h2>
-            <p className="mt-5 max-w-[42ch] text-[15px] leading-[1.7] text-fg-2">
-              No package to keep upgrading. The shadcn registry copies the page
-              into your project with its parts and its Motion import, and you
-              edit it like code you wrote.
+            <p className="mt-5 max-w-[42ch] text-[14px] leading-[1.75] text-fg-2">
+              The shadcn registry copies the page into your repo with its parts
+              and its Motion import. No package version to track, no provider to
+              mount, nothing left pointing back here.
             </p>
-            <p className="mt-6 max-w-[42ch] text-[13px] leading-[1.7] text-fg-3">
-              Works with any App Router project that already uses Tailwind. If
-              you have shadcn set up, you are one line away. If you would rather
-              not use the CLI, the same file is in the repository.
+            <p className="mt-5 max-w-[42ch] text-[12.5px] leading-[1.75] text-fg-3">
+              Any App Router project with Tailwind works. If shadcn is already
+              set up, you are one line away. If you would rather not run the CLI,
+              the file is in the repository.
             </p>
             <Link
               href="#pages"
-              className="mt-7 inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-2 transition-colors duration-200 hover:text-fg"
+              className="mt-6 inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-2 transition-colors duration-200 hover:text-fg"
             >
               see what is inside
-              <ArrowUpRight className="size-4" strokeWidth={1.5} />
+              <ArrowUpRight className="size-3.5" strokeWidth={1.6} />
             </Link>
           </Reveal>
         </div>
 
-        <div className="min-w-0 lg:col-span-7">
+        <div className="min-w-0">
           <Reveal delay={0.1} className="min-w-0">
             <InstallTabs />
           </Reveal>
           <Reveal delay={0.16} className="min-w-0">
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[10.5px] text-fg-3">
+            <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-fg-3">
               <span>registry: {"404lab.dev/r/{name}.json"}</span>
-              <span>{PAGES.length} pages · 8 parts · one namespace</span>
+              <span>
+                {PAGES.length} pages · 8 parts · one namespace
+              </span>
             </div>
-            <p className="mt-3 font-mono text-[10.5px] leading-relaxed text-fg-3">
+            <p className="mt-3 font-mono text-[10px] leading-relaxed text-fg-3">
               mcp: the repo ships a stdio server for Claude Code, Codex, Cursor
               and OpenCode
             </p>
@@ -246,26 +219,47 @@ const PRINCIPLES = [
   },
   {
     label: "Small",
-    body: "A small surface. Motion is the only animation dependency, and the pages ship without image assets.",
+    body: "Motion is the only animation dependency. No image assets, no shared provider, no wrapper.",
   },
 ];
 
 export function Principles() {
   return (
-    <section className="border-t border-line">
-      <div className="mx-auto max-w-[1320px] px-5 py-16 sm:px-8 lg:py-20">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {PRINCIPLES.map((p, i) => (
-            <Reveal key={p.label} delay={0.04 * i}>
-              <div className="border-t border-line-2 pt-5">
-                <p className="font-mono text-[11px] text-fg-3">{p.label}</p>
-                <p className="mt-3 text-[13px] leading-[1.7] text-fg-2">
-                  {p.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+    <section
+      id="notes"
+      className="scroll-mt-16 border-b border-line px-5 py-14 sm:px-8 lg:px-10 lg:py-16"
+    >
+      <Reveal>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="font-mono text-[10.5px] text-fg-3">
+              04 / what holds up
+            </p>
+            <h2 className="mt-3 text-[clamp(1.45rem,2.2vw,1.85rem)] font-medium leading-tight tracking-[-0.03em] text-fg">
+              The parts you never see
+            </h2>
+          </div>
+          <p className="max-w-[40ch] text-[12.5px] leading-[1.7] text-fg-3 sm:text-right">
+            The trick is the part people notice. These are the parts that keep it
+            from breaking.
+          </p>
         </div>
+      </Reveal>
+
+      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+        {PRINCIPLES.map((p, i) => (
+          <Reveal key={p.label} delay={0.04 * i} className="h-full">
+            <div className="flex h-full flex-col rounded-panel border border-line bg-ink-850 p-5">
+              <div className="flex items-baseline justify-between gap-3">
+                <p className="font-mono text-[11px] text-fg-2">{p.label}</p>
+                <span className="font-mono text-[10px] tabular-nums text-fg-3/70">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <p className="mt-3 text-[13px] leading-[1.7] text-fg-3">{p.body}</p>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   );
@@ -275,21 +269,24 @@ export function Principles() {
 
 export function Closing() {
   return (
-    <section className="border-t border-line">
-      <div className="mx-auto max-w-[1320px] px-5 py-20 sm:px-8 lg:py-24">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-          <Reveal>
-            <p className="font-mono text-[11px] text-fg-3">04 / end of the line</p>
-            <h2 className="display mt-4 text-[clamp(2.6rem,5vw,4.4rem)]">
-              Pick a dead end
-            </h2>
-            <p className="mt-4 max-w-[40ch] text-[15px] leading-[1.7] text-fg-2">
-              One command copies a page into your project. Then it is just a
-              component you can break, rewrite or leave alone.
+    <section className="px-5 py-12 sm:px-8 lg:px-10 lg:py-16">
+      <Reveal>
+        <div className="grid gap-10 rounded-panel border border-line bg-ink-850 p-6 sm:p-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-14">
+          <div>
+            <p className="font-mono text-[10.5px] text-fg-3">
+              05 / the way out
             </p>
-          </Reveal>
+            <h2 className="mt-3 text-[clamp(1.8rem,3.2vw,2.5rem)] font-medium leading-[1.1] tracking-[-0.04em] text-fg">
+              Pick a dead end.
+            </h2>
+            <p className="mt-4 max-w-[42ch] text-[13.5px] leading-[1.75] text-fg-2">
+              Copy a page, open it in your editor, change the words. The 404 is
+              the one screen nobody plans, which is exactly why it can be the
+              best one you ship.
+            </p>
+          </div>
 
-          <Reveal delay={0.1} className="w-full max-w-[430px]">
+          <div className="min-w-0">
             <CopyCommand command="npx shadcn@latest add @404lab/glitch-404" />
             <div className="mt-3 flex items-center justify-between gap-4">
               <Link
@@ -297,13 +294,13 @@ export function Closing() {
                 className="inline-flex items-center gap-1.5 font-mono text-[11px] text-fg-2 transition-colors duration-200 hover:text-fg"
               >
                 browse all {PAGES.length} pages
-                <ArrowUpRight className="size-4" strokeWidth={1.5} />
+                <ArrowUpRight className="size-3.5" strokeWidth={1.6} />
               </Link>
               <span className="font-mono text-[10px] text-fg-3">MIT</span>
             </div>
-          </Reveal>
+          </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

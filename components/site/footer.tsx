@@ -68,16 +68,16 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col justify-between gap-3 border-t border-line pt-6 sm:flex-row sm:items-center">
           <p className="font-mono text-[11px] text-fg-3">
-            Landscape art from{" "}
+            Built with Next.js, Motion and Tailwind. Source on{" "}
             <a
-              href="https://imageory.in/gallery"
+              href="https://github.com/Anos714/404labs"
               target="_blank"
               rel="noreferrer"
               className="text-fg-2 underline decoration-line-2 underline-offset-4 transition-colors duration-200 hover:text-fg"
             >
-              Imageory
+              GitHub
             </a>
-            . Built with Next.js, Motion and Tailwind.
+            .
           </p>
           <p className="font-mono text-[11px] text-fg-3">MIT · 2026</p>
         </div>
