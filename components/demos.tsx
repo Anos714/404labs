@@ -8,3 +8,6 @@ export * from "./demos/atlas";
 export * from "./demos/letterpress";
 export * from "./demos/hands";
 export * from "./demos/found";
+export * from "./demos/arcade";
+export * from "./demos/field";
+export * from "./demos/snake";
