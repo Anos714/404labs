@@ -1,0 +1,68 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "latch-404",
+  "type": "registry:block",
+  "title": "Latch 404",
+  "description": "The bolt gives way",
+  "author": "404lab",
+  "categories": [
+    "interactive"
+  ],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/404lab/latch-404.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/latch-404.tsx",
+      "content": "\"use client\";\n\n// latch-404 · 404lab\n// Requires ./chrome.tsx and the 404lab tokens.\n\nimport { useRef, useState } from \"react\";\nimport { Caption, Foot, Screen, clamp } from \"./chrome\";\n\n/* ---------------------------------- latch ---------------------------------- */\n\nexport function LatchDemo() {\n  const [open, setOpen] = useState(0);\n  const [dragging, setDragging] = useState(false);\n  const start = useRef<{ x: number; base: number } | null>(null);\n  const lock = useRef<HTMLDivElement>(null);\n\n  function down(e: React.PointerEvent<HTMLDivElement>) {\n    start.current = { x: e.clientX, base: open };\n    setDragging(true);\n    e.currentTarget.setPointerCapture(e.pointerId);\n  }\n\n  function move(e: React.PointerEvent<HTMLDivElement>) {\n    if (!start.current) return;\n    const w = lock.current?.getBoundingClientRect().width ?? 220;\n    setOpen(clamp(start.current.base + (e.clientX - start.current.x) / w, 0, 1));\n  }\n\n  function up() {\n    if (!start.current) return;\n    start.current = null;\n    setDragging(false);\n    setOpen((v) => (v > 0.45 ? 0.92 : 0));\n  }\n\n  const settled = !dragging && open > 0.5;\n\n  return (\n    <Screen\n      onPointerDown={down}\n      onPointerMove={move}\n      onPointerUp={up}\n      onPointerCancel={up}\n      className=\"touch-none select-none bg-[#0a0b0d]\"\n    >\n      <div className=\"absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.035),transparent_30%,rgba(0,0,0,0.25))]\" />\n      <div className=\"absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(242,237,227,0.05),transparent_68%)]\" />\n\n      <div className=\"absolute inset-x-4 top-9 flex items-center justify-between lab-mono text-[8px] tracking-[0.16em] text-white/35\">\n        <span>SEALED UNIT 04</span>\n        <span className={settled ? \"text-amber/70\" : \"\"}>\n          {settled ? \"OPEN\" : \"BOLTED\"}\n        </span>\n      </div>\n\n      <div className=\"absolute inset-0 grid place-items-center\">\n        <div\n          ref={lock}\n          className=\"relative h-[148px] w-[236px] overflow-hidden border border-line-2 bg-ink-950\"\n        >\n          <div className=\"absolute inset-0 grid place-items-center bg-[radial-gradient(ellipse_at_50%_50%,rgba(233,184,113,0.13),transparent_65%)]\">\n            <div className=\"text-center\">\n              <span className=\"display block text-[60px] leading-none text-fg\">\n                404\n              </span>\n              <span className=\"lab-mono text-[8px] tracking-[0.14em] text-amber/60\">\n                EMPTY ROOM\n              </span>\n            </div>\n          </div>\n\n          <div\n            className={`absolute inset-0 z-10 bg-[linear-gradient(180deg,#22262b,#121519_55%,#0d1013)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] ${\n              dragging ? \"\" : \"transition-transform duration-500 ease-out\"\n            }`}\n            style={{ transform: `translateX(${open * 100}%)` }}\n          >\n            <div className=\"absolute inset-2 border border-white/[0.06]\" />\n            <div className=\"absolute left-3 top-3 flex flex-col gap-1.5\">\n              {[0, 1, 2].map((i) => (\n                <span key={i} className=\"h-px w-4 bg-white/15\" />\n              ))}\n            </div>\n            <div className=\"absolute inset-0 grid place-items-center\">\n              <div className=\"text-center\">\n                <span className=\"lab-mono text-[9px] tracking-[0.22em] text-white/40\">\n                  DEADBOLT\n                </span>\n                <span className=\"mt-1 block lab-mono text-[8px] text-amber/60\">\n                  DRAG RIGHT\n                </span>\n              </div>\n            </div>\n            <span className=\"absolute inset-y-0 right-0 w-1.5 bg-[linear-gradient(90deg,rgba(0,0,0,0.3),rgba(255,255,255,0.06))]\" />\n            {[\n              \"left-2 top-2\",\n              \"right-2 top-2\",\n              \"bottom-2 left-2\",\n              \"bottom-2 right-2\",\n            ].map((pos) => (\n              <span\n                key={pos}\n                className={`absolute size-1.5 rounded-full bg-white/20 ${pos}`}\n              />\n            ))}\n          </div>\n        </div>\n      </div>\n\n      <div className=\"pointer-events-none absolute inset-x-0 bottom-[46px] text-center lab-mono text-[9px] text-white/45\">\n        {settled ? \"the room was never occupied\" : \"pull the bolt\"}\n      </div>\n\n      <Caption label=\"404 / latch\" />\n      <Foot method=\"deadbolt · drag\" />\n    </Screen>\n  );\n}\n"
+    },
+    {
+      "path": "registry/404lab/chrome.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/chrome.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { useState } from \"react\";\nimport { ArrowUpRight, Check, Copy } from \"lucide-react\";\n\nexport const EASE = [0.22, 1, 0.36, 1] as const;\n\n/* Every card shares the same framing so the grid reads as one set. */\n\nexport function Caption({\n  label,\n  className = \"\",\n}: {\n  label: string;\n  className?: string;\n}) {\n  return (\n    <span\n      className={`pointer-events-none absolute left-4 top-3 z-20 lab-mono text-[10px] tracking-[0.02em] text-white/75 [text-shadow:0_1px_3px_rgba(8,9,10,0.6)] ${className}`}\n    >\n      {label}\n    </span>\n  );\n}\n\nexport function HomeLink({ label = \"back home\" }: { label?: string }) {\n  return (\n    <span className=\"pointer-events-none inline-flex items-center gap-1 lab-mono text-[10px] text-white/70\">\n      {label}\n      <ArrowUpRight className=\"size-3\" strokeWidth={1.5} />\n    </span>\n  );\n}\n\nexport function Foot({\n  method,\n  label,\n}: {\n  method: string;\n  label?: string;\n}) {\n  return (\n    <div className=\"pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-4 pb-3\">\n      <HomeLink label={label} />\n      <span className=\"lab-mono text-[10px] text-white/50\">{method}</span>\n    </div>\n  );\n}\n\nconst SCREEN =\n  \"group @container relative h-full w-full overflow-hidden bg-ink-900\";\n\nexport function Screen({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div {...rest} className={`${SCREEN} ${className}`}>\n      {children}\n    </div>\n  );\n}\n\nexport function ScreenButton({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"button\">) {\n  return (\n    <button\n      type=\"button\"\n      {...rest}\n      className={`${SCREEN} cursor-default text-left ${className}`}\n    >\n      {children}\n    </button>\n  );\n}\n\nexport function Plate({\n  src,\n  className = \"\",\n  sizes = \"(max-width: 768px) 100vw, 33vw\",\n  opacity,\n  position = \"center\",\n}: {\n  src: string;\n  className?: string;\n  sizes?: string;\n  opacity?: number;\n  position?: string;\n}) {\n  return (\n    <Image\n      src={src}\n      alt=\"\"\n      fill\n      sizes={sizes}\n      className={`object-cover ${className}`}\n      style={{ opacity, objectPosition: position }}\n    />\n  );\n}\n\n/* --------------------------------- helpers -------------------------------- */\n\nexport function useReplay() {\n  const [run, setRun] = useState(0);\n  return { run, replay: () => setRun((n) => n + 1) };\n}\n\nexport function useStill() {\n  return useReducedMotion() ?? false;\n}\n\nexport const clamp = (v: number, min: number, max: number) =>\n  Math.max(min, Math.min(max, v));\n\n/* ------------------------------- install bits ------------------------------ */\n\nexport function CopyCommand({\n  command,\n  className = \"\",\n}: {\n  command: string;\n  className?: string;\n}) {\n  const [done, setDone] = useState(false);\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(command);\n      setDone(true);\n      setTimeout(() => setDone(false), 1600);\n    } catch {\n      setDone(false);\n    }\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label={`Copy ${command}`}\n      className={`group/copy flex w-full items-center justify-between gap-4 rounded-control border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 active:translate-y-px ${className}`}\n    >\n      <code className=\"min-w-0 break-all lab-mono text-[10px] text-fg-2 sm:truncate lg:text-[12px]\">\n        <span className=\"mr-1.5 text-amber/80\">$</span>\n        {command}\n      </code>\n      <span className=\"shrink-0 text-fg-3 transition-colors duration-200 group-hover/copy:text-fg\">\n        {done ? (\n          <Check className=\"size-4\" strokeWidth={1.5} />\n        ) : (\n          <Copy className=\"size-4\" strokeWidth={1.5} />\n        )}\n      </span>\n    </button>\n  );\n}\n\nexport function Reveal({\n  children,\n  delay = 0,\n  className = \"\",\n}: {\n  children: React.ReactNode;\n  delay?: number;\n  className?: string;\n}) {\n  const reduce = useReducedMotion();\n  return (\n    <motion.div\n      className={className}\n      initial={reduce ? false : { opacity: 0, y: 10 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true, margin: \"-60px\" }}\n      transition={{ duration: 0.55, ease: EASE, delay }}\n    >\n      {children}\n    </motion.div>\n  );\n}\n"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "color-ink-950": "#121212",
+      "color-ink-900": "#17171a",
+      "color-ink-850": "#1b1b1e",
+      "color-ink-800": "#232327",
+      "color-fg": "#fafafa",
+      "color-fg-2": "#b3b3b9",
+      "color-fg-3": "#7c7c84",
+      "color-line": "#26262a",
+      "color-line-2": "#35353b",
+      "color-amber": "#e9b871",
+      "radius-panel": "20px",
+      "radius-tile": "12px",
+      "radius-control": "8px",
+      "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+      "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+      "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+    }
+  },
+  "css": {
+    "@utility display": {
+      "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+      "font-weight": "400",
+      "letter-spacing": "-0.025em",
+      "line-height": "0.94",
+      "text-wrap": "balance"
+    },
+    "@utility lab-mono": {
+      "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+      "font-variant-numeric": "tabular-nums"
+    }
+  },
+  "meta": {
+    "category": "interactive",
+    "method": "deadbolt · drag",
+    "note": "A sealed panel with a deadbolt cover. Pull it right and the brass room behind it is empty, which is the only thing it was hiding.",
+    "version": "0.1.0"
+  }
+}

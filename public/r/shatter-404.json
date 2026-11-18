@@ -1,0 +1,68 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shatter-404",
+  "type": "registry:block",
+  "title": "Shatter 404",
+  "description": "Nine pieces, one bad step",
+  "author": "404lab",
+  "categories": [
+    "scene"
+  ],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/404lab/shatter-404.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/shatter-404.tsx",
+      "content": "\"use client\";\n\n// shatter-404 · 404lab\n// Requires ./chrome.tsx and the 404lab tokens.\n\nimport { useState } from \"react\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { Caption, Foot, Screen } from \"./chrome\";\n\n/* --------------------------------- shatter --------------------------------- */\n\nconst LATTICE: [number, number][][] = [\n  [\n    [0, 0],\n    [31, 0],\n    [67, 0],\n    [100, 0],\n  ],\n  [\n    [0, 26],\n    [28, 31],\n    [70, 24],\n    [100, 29],\n  ],\n  [\n    [0, 65],\n    [33, 59],\n    [66, 68],\n    [100, 61],\n  ],\n  [\n    [0, 100],\n    [30, 100],\n    [69, 100],\n    [100, 100],\n  ],\n];\n\nconst SHARDS = (() => {\n  const out: { clip: string; x: number; y: number; rot: number }[] = [];\n  for (let r = 0; r < 3; r += 1) {\n    for (let c = 0; c < 3; c += 1) {\n      const p = [\n        LATTICE[r][c],\n        LATTICE[r][c + 1],\n        LATTICE[r + 1][c + 1],\n        LATTICE[r + 1][c],\n      ];\n      out.push({\n        clip: `polygon(${p.map(([x, y]) => `${x}% ${y}%`).join(\", \")})`,\n        x: (c - 1) * 20 + (r - 1) * 3,\n        y: (r - 1) * 16,\n        rot: (c - 1) * 3 + (r - 1) * 2,\n      });\n    }\n  }\n  return out;\n})();\n\nexport function ShatterDemo() {\n  const [open, setOpen] = useState(false);\n  const reduce = useReducedMotion();\n\n  return (\n    <Screen\n      onPointerEnter={() => setOpen(true)}\n      onPointerLeave={() => setOpen(false)}\n      onClick={() => setOpen((v) => !v)}\n    >\n      {SHARDS.map((s, i) => (\n        <motion.div\n          key={i}\n          className=\"absolute inset-0\"\n          style={{ clipPath: s.clip }}\n          animate={\n            open && !reduce ? { x: s.x, y: s.y, rotate: s.rot } : { x: 0, y: 0, rotate: 0 }\n          }\n          transition={{\n            type: \"spring\",\n            stiffness: 200,\n            damping: 18,\n            delay: i * 0.012,\n          }}\n        >\n          <div\n            className=\"absolute inset-0 bg-cover bg-center\"\n            style={{ backgroundImage: \"url(/worlds/w-dark-range.webp)\" }}\n          />\n          <div className=\"absolute inset-0 bg-[linear-gradient(180deg,rgba(8,9,10,0.3)_0%,rgba(8,9,10,0.1)_50%,rgba(8,9,10,0.85)_100%)]\" />\n          <div className=\"absolute inset-0 flex flex-col items-center justify-center gap-2\">\n            <span className=\"display text-[66px] leading-none text-fg drop-shadow-[0_2px_12px_rgba(8,9,10,0.7)]\">\n              404\n            </span>\n            <span className=\"lab-mono text-[10px] text-white/70\">\n              the page broke apart\n            </span>\n          </div>\n        </motion.div>\n      ))}\n\n      <div className=\"pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(8,9,10,0.55)_100%)]\" />\n      <Caption label=\"404 / shatter\" />\n      <Foot method=\"9 shards · clip-path\" />\n    </Screen>\n  );\n}\n"
+    },
+    {
+      "path": "registry/404lab/chrome.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/chrome.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { useState } from \"react\";\nimport { ArrowUpRight, Check, Copy } from \"lucide-react\";\n\nexport const EASE = [0.22, 1, 0.36, 1] as const;\n\n/* Every card shares the same framing so the grid reads as one set. */\n\nexport function Caption({\n  label,\n  className = \"\",\n}: {\n  label: string;\n  className?: string;\n}) {\n  return (\n    <span\n      className={`pointer-events-none absolute left-4 top-3 z-20 lab-mono text-[10px] tracking-[0.02em] text-white/75 [text-shadow:0_1px_3px_rgba(8,9,10,0.6)] ${className}`}\n    >\n      {label}\n    </span>\n  );\n}\n\nexport function HomeLink({ label = \"back home\" }: { label?: string }) {\n  return (\n    <span className=\"pointer-events-none inline-flex items-center gap-1 lab-mono text-[10px] text-white/70\">\n      {label}\n      <ArrowUpRight className=\"size-3\" strokeWidth={1.5} />\n    </span>\n  );\n}\n\nexport function Foot({\n  method,\n  label,\n}: {\n  method: string;\n  label?: string;\n}) {\n  return (\n    <div className=\"pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-4 pb-3\">\n      <HomeLink label={label} />\n      <span className=\"lab-mono text-[10px] text-white/50\">{method}</span>\n    </div>\n  );\n}\n\nconst SCREEN =\n  \"group @container relative h-full w-full overflow-hidden bg-ink-900\";\n\nexport function Screen({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div {...rest} className={`${SCREEN} ${className}`}>\n      {children}\n    </div>\n  );\n}\n\nexport function ScreenButton({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"button\">) {\n  return (\n    <button\n      type=\"button\"\n      {...rest}\n      className={`${SCREEN} cursor-default text-left ${className}`}\n    >\n      {children}\n    </button>\n  );\n}\n\nexport function Plate({\n  src,\n  className = \"\",\n  sizes = \"(max-width: 768px) 100vw, 33vw\",\n  opacity,\n  position = \"center\",\n}: {\n  src: string;\n  className?: string;\n  sizes?: string;\n  opacity?: number;\n  position?: string;\n}) {\n  return (\n    <Image\n      src={src}\n      alt=\"\"\n      fill\n      sizes={sizes}\n      className={`object-cover ${className}`}\n      style={{ opacity, objectPosition: position }}\n    />\n  );\n}\n\n/* --------------------------------- helpers -------------------------------- */\n\nexport function useReplay() {\n  const [run, setRun] = useState(0);\n  return { run, replay: () => setRun((n) => n + 1) };\n}\n\nexport function useStill() {\n  return useReducedMotion() ?? false;\n}\n\nexport const clamp = (v: number, min: number, max: number) =>\n  Math.max(min, Math.min(max, v));\n\n/* ------------------------------- install bits ------------------------------ */\n\nexport function CopyCommand({\n  command,\n  className = \"\",\n}: {\n  command: string;\n  className?: string;\n}) {\n  const [done, setDone] = useState(false);\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(command);\n      setDone(true);\n      setTimeout(() => setDone(false), 1600);\n    } catch {\n      setDone(false);\n    }\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label={`Copy ${command}`}\n      className={`group/copy flex w-full items-center justify-between gap-4 rounded-control border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 active:translate-y-px ${className}`}\n    >\n      <code className=\"min-w-0 break-all lab-mono text-[10px] text-fg-2 sm:truncate lg:text-[12px]\">\n        <span className=\"mr-1.5 text-amber/80\">$</span>\n        {command}\n      </code>\n      <span className=\"shrink-0 text-fg-3 transition-colors duration-200 group-hover/copy:text-fg\">\n        {done ? (\n          <Check className=\"size-4\" strokeWidth={1.5} />\n        ) : (\n          <Copy className=\"size-4\" strokeWidth={1.5} />\n        )}\n      </span>\n    </button>\n  );\n}\n\nexport function Reveal({\n  children,\n  delay = 0,\n  className = \"\",\n}: {\n  children: React.ReactNode;\n  delay?: number;\n  className?: string;\n}) {\n  const reduce = useReducedMotion();\n  return (\n    <motion.div\n      className={className}\n      initial={reduce ? false : { opacity: 0, y: 10 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true, margin: \"-60px\" }}\n      transition={{ duration: 0.55, ease: EASE, delay }}\n    >\n      {children}\n    </motion.div>\n  );\n}\n"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "color-ink-950": "#121212",
+      "color-ink-900": "#17171a",
+      "color-ink-850": "#1b1b1e",
+      "color-ink-800": "#232327",
+      "color-fg": "#fafafa",
+      "color-fg-2": "#b3b3b9",
+      "color-fg-3": "#7c7c84",
+      "color-line": "#26262a",
+      "color-line-2": "#35353b",
+      "color-amber": "#e9b871",
+      "radius-panel": "20px",
+      "radius-tile": "12px",
+      "radius-control": "8px",
+      "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+      "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+      "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+    }
+  },
+  "css": {
+    "@utility display": {
+      "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+      "font-weight": "400",
+      "letter-spacing": "-0.025em",
+      "line-height": "0.94",
+      "text-wrap": "balance"
+    },
+    "@utility lab-mono": {
+      "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+      "font-variant-numeric": "tabular-nums"
+    }
+  },
+  "meta": {
+    "category": "scene",
+    "method": "9 shards · clip-path",
+    "note": "The scene is cut on a nine-piece lattice. On hover the pieces spring apart, carrying the numerals with them, and fall back into place.",
+    "version": "0.1.0"
+  }
+}

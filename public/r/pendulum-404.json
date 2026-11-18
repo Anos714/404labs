@@ -1,0 +1,68 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pendulum-404",
+  "type": "registry:block",
+  "title": "Pendulum 404",
+  "description": "The number loses balance",
+  "author": "404lab",
+  "categories": [
+    "interactive"
+  ],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/404lab/pendulum-404.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/pendulum-404.tsx",
+      "content": "\"use client\";\n\n// pendulum-404 · 404lab\n// Requires ./chrome.tsx and the 404lab tokens.\n\nimport {\n  motion,\n  useMotionValue,\n  useReducedMotion,\n  useSpring,\n  useTransform,\n} from \"motion/react\";\nimport { Caption, Foot, Screen } from \"./chrome\";\n\n/* -------------------------------- pendulum -------------------------------- */\n\nexport function PendulumDemo() {\n  const reduce = useReducedMotion();\n  const target = useMotionValue(0);\n  const tilt = useSpring(target, { stiffness: 70, damping: 11 });\n  const r1 = useTransform(tilt, (v) => v * 0.78);\n  const r2 = useTransform(tilt, (v) => v * 1.12);\n  const r3 = useTransform(tilt, (v) => v * 0.92);\n\n  const digits = [\n    { d: \"4\", left: \"31%\", len: 58, rotate: r1 },\n    { d: \"0\", left: \"50%\", len: 82, rotate: r2 },\n    { d: \"4\", left: \"69%\", len: 66, rotate: r3 },\n  ];\n\n  function move(e: React.PointerEvent<HTMLDivElement>) {\n    if (reduce) return;\n    const r = e.currentTarget.getBoundingClientRect();\n    target.set(((e.clientX - r.left) / r.width - 0.5) * 26);\n  }\n\n  return (\n    <Screen\n      onPointerMove={move}\n      onPointerLeave={() => target.set(0)}\n      className=\"bg-[#07080a]\"\n    >\n      <div className=\"absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(242,237,227,0.055),transparent_66%)]\" />\n\n      <div className=\"absolute inset-x-[12%] top-[18%] h-px bg-white/25\" />\n      {digits.map((p) => (\n        <span\n          key={p.left}\n          className=\"absolute top-[17.4%] size-[5px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-fg/70\"\n          style={{ left: p.left }}\n        />\n      ))}\n\n      {digits.map((p) => (\n        <motion.div\n          key={p.left}\n          className=\"absolute top-[18%] origin-top\"\n          style={{ left: p.left, rotate: p.rotate }}\n        >\n          <div\n            className=\"absolute left-0 top-0 w-px -translate-x-1/2 bg-[linear-gradient(180deg,rgba(242,237,227,0.55),rgba(242,237,227,0.18))]\"\n            style={{ height: p.len }}\n          />\n          <div\n            className=\"absolute left-0 -translate-x-1/2\"\n            style={{ top: p.len - 4 }}\n          >\n            <span className=\"display block text-[52px] leading-none text-fg drop-shadow-[0_3px_10px_rgba(8,9,10,0.5)]\">\n              {p.d}\n            </span>\n          </div>\n        </motion.div>\n      ))}\n\n      <div className=\"pointer-events-none absolute bottom-[19%] left-1/2 h-px w-[46%] -translate-x-1/2 bg-[repeating-linear-gradient(to_right,rgba(242,237,227,0.22)_0_3px,transparent_3px_8px)]\" />\n\n      <div className=\"pointer-events-none absolute inset-x-0 bottom-[46px] text-center lab-mono text-[9px] text-white/45\">\n        push the number off balance\n      </div>\n\n      <Caption label=\"404 / pendulum\" />\n      <Foot method=\"pendulum · pointer\" />\n    </Screen>\n  );\n}\n"
+    },
+    {
+      "path": "registry/404lab/chrome.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/chrome.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { useState } from \"react\";\nimport { ArrowUpRight, Check, Copy } from \"lucide-react\";\n\nexport const EASE = [0.22, 1, 0.36, 1] as const;\n\n/* Every card shares the same framing so the grid reads as one set. */\n\nexport function Caption({\n  label,\n  className = \"\",\n}: {\n  label: string;\n  className?: string;\n}) {\n  return (\n    <span\n      className={`pointer-events-none absolute left-4 top-3 z-20 lab-mono text-[10px] tracking-[0.02em] text-white/75 [text-shadow:0_1px_3px_rgba(8,9,10,0.6)] ${className}`}\n    >\n      {label}\n    </span>\n  );\n}\n\nexport function HomeLink({ label = \"back home\" }: { label?: string }) {\n  return (\n    <span className=\"pointer-events-none inline-flex items-center gap-1 lab-mono text-[10px] text-white/70\">\n      {label}\n      <ArrowUpRight className=\"size-3\" strokeWidth={1.5} />\n    </span>\n  );\n}\n\nexport function Foot({\n  method,\n  label,\n}: {\n  method: string;\n  label?: string;\n}) {\n  return (\n    <div className=\"pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-4 pb-3\">\n      <HomeLink label={label} />\n      <span className=\"lab-mono text-[10px] text-white/50\">{method}</span>\n    </div>\n  );\n}\n\nconst SCREEN =\n  \"group @container relative h-full w-full overflow-hidden bg-ink-900\";\n\nexport function Screen({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div {...rest} className={`${SCREEN} ${className}`}>\n      {children}\n    </div>\n  );\n}\n\nexport function ScreenButton({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"button\">) {\n  return (\n    <button\n      type=\"button\"\n      {...rest}\n      className={`${SCREEN} cursor-default text-left ${className}`}\n    >\n      {children}\n    </button>\n  );\n}\n\nexport function Plate({\n  src,\n  className = \"\",\n  sizes = \"(max-width: 768px) 100vw, 33vw\",\n  opacity,\n  position = \"center\",\n}: {\n  src: string;\n  className?: string;\n  sizes?: string;\n  opacity?: number;\n  position?: string;\n}) {\n  return (\n    <Image\n      src={src}\n      alt=\"\"\n      fill\n      sizes={sizes}\n      className={`object-cover ${className}`}\n      style={{ opacity, objectPosition: position }}\n    />\n  );\n}\n\n/* --------------------------------- helpers -------------------------------- */\n\nexport function useReplay() {\n  const [run, setRun] = useState(0);\n  return { run, replay: () => setRun((n) => n + 1) };\n}\n\nexport function useStill() {\n  return useReducedMotion() ?? false;\n}\n\nexport const clamp = (v: number, min: number, max: number) =>\n  Math.max(min, Math.min(max, v));\n\n/* ------------------------------- install bits ------------------------------ */\n\nexport function CopyCommand({\n  command,\n  className = \"\",\n}: {\n  command: string;\n  className?: string;\n}) {\n  const [done, setDone] = useState(false);\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(command);\n      setDone(true);\n      setTimeout(() => setDone(false), 1600);\n    } catch {\n      setDone(false);\n    }\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label={`Copy ${command}`}\n      className={`group/copy flex w-full items-center justify-between gap-4 rounded-control border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 active:translate-y-px ${className}`}\n    >\n      <code className=\"min-w-0 break-all lab-mono text-[10px] text-fg-2 sm:truncate lg:text-[12px]\">\n        <span className=\"mr-1.5 text-amber/80\">$</span>\n        {command}\n      </code>\n      <span className=\"shrink-0 text-fg-3 transition-colors duration-200 group-hover/copy:text-fg\">\n        {done ? (\n          <Check className=\"size-4\" strokeWidth={1.5} />\n        ) : (\n          <Copy className=\"size-4\" strokeWidth={1.5} />\n        )}\n      </span>\n    </button>\n  );\n}\n\nexport function Reveal({\n  children,\n  delay = 0,\n  className = \"\",\n}: {\n  children: React.ReactNode;\n  delay?: number;\n  className?: string;\n}) {\n  const reduce = useReducedMotion();\n  return (\n    <motion.div\n      className={className}\n      initial={reduce ? false : { opacity: 0, y: 10 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true, margin: \"-60px\" }}\n      transition={{ duration: 0.55, ease: EASE, delay }}\n    >\n      {children}\n    </motion.div>\n  );\n}\n"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "color-ink-950": "#121212",
+      "color-ink-900": "#17171a",
+      "color-ink-850": "#1b1b1e",
+      "color-ink-800": "#232327",
+      "color-fg": "#fafafa",
+      "color-fg-2": "#b3b3b9",
+      "color-fg-3": "#7c7c84",
+      "color-line": "#26262a",
+      "color-line-2": "#35353b",
+      "color-amber": "#e9b871",
+      "radius-panel": "20px",
+      "radius-tile": "12px",
+      "radius-control": "8px",
+      "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+      "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+      "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+    }
+  },
+  "css": {
+    "@utility display": {
+      "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+      "font-weight": "400",
+      "letter-spacing": "-0.025em",
+      "line-height": "0.94",
+      "text-wrap": "balance"
+    },
+    "@utility lab-mono": {
+      "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+      "font-variant-numeric": "tabular-nums"
+    }
+  },
+  "meta": {
+    "category": "interactive",
+    "method": "pendulum · pointer",
+    "note": "Three digits hang from a rail on strings of different lengths. Move across the card and they swing; leave and gravity takes its time.",
+    "version": "0.1.0"
+  }
+}

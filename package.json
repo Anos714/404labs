@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run mcp:data && next build",
+    "build": "npm run mcp:data && npm run registry:build && next build",
     "start": "next start",
     "lint": "eslint",
     "mcp": "node mcp/server.mjs",
     "mcp:data": "node scripts/build-mcp-data.mjs",
     "mcp:check": "node scripts/build-mcp-data.mjs --check",
-    "mcp:test": "node scripts/mcp-smoke.mjs"
+    "mcp:test": "node scripts/mcp-smoke.mjs",
+    "registry:build": "node scripts/build-registry.mjs",
+    "registry:check": "node scripts/build-registry.mjs --check"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.32.2",

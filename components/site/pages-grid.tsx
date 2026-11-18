@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight, SearchX } from "lucide-react";
 import { Reveal } from "@/components/demos";
@@ -114,8 +115,40 @@ function FaceRail({
 }
 
 function PageCard({ page, index }: { page: PageEntry; index: number }) {
+  const router = useRouter();
+  const href = `/p/${page.slug}`;
+
+  /**
+   * The whole card is the target, not just the title. The handler runs in the
+   * capture phase so a demo control inside the preview cannot swallow the
+   * click, and real links keep their own behaviour.
+   */
+  function open(event: React.MouseEvent<HTMLElement>) {
+    if (event.defaultPrevented || event.button !== 0) return;
+
+    const target = event.target as HTMLElement;
+    if (target.closest("a")) return;
+
+    if (event.metaKey || event.ctrlKey) {
+      event.preventDefault();
+      window.open(href, "_blank", "noopener,noreferrer");
+      return;
+    }
+    if (event.shiftKey || event.altKey) return;
+
+    const selection = window.getSelection();
+    if (selection && selection.toString().trim()) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    router.push(href);
+  }
+
   return (
-    <article className="group flex h-full flex-col rounded-panel border border-line bg-ink-850 p-2 transition-[border-color,background-color] duration-300 hover:border-line-2 focus-within:border-line-2">
+    <article
+      onClickCapture={open}
+      className="group flex h-full cursor-pointer flex-col rounded-panel border border-line bg-ink-850 p-2 transition-[border-color,background-color] duration-300 hover:border-line-2 focus-within:border-line-2"
+    >
       <div className="relative aspect-[4/3] overflow-hidden rounded-tile bg-ink-950">
         {page.demo}
         <Link

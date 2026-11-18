@@ -1,0 +1,68 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "defocus-404",
+  "type": "registry:block",
+  "title": "Defocus 404",
+  "description": "A lens that will not resolve",
+  "author": "404lab",
+  "categories": [
+    "type"
+  ],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/404lab/defocus-404.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/defocus-404.tsx",
+      "content": "\"use client\";\n\n// defocus-404 · 404lab\n// Requires ./chrome.tsx and the 404lab tokens.\n\nimport { useState } from \"react\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { Caption, EASE, Foot, Screen } from \"./chrome\";\n\n/* --------------------------------- defocus --------------------------------- */\n\nconst SLICES = 14;\n\nexport function DefocusDemo() {\n  const [open, setOpen] = useState(false);\n  const reduce = useReducedMotion();\n\n  return (\n    <Screen\n      onPointerEnter={() => setOpen(true)}\n      onPointerLeave={() => setOpen(false)}\n      onClick={() => setOpen((v) => !v)}\n      className=\"bg-[#07080a]\"\n    >\n      <div className=\"absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,237,227,0.07),transparent_68%)]\" />\n      <div className=\"absolute inset-0 grid place-items-center\">\n        <div className=\"relative\">\n          <motion.span\n            aria-hidden\n            className=\"display absolute inset-0 text-[68px] leading-none text-fg blur-[6px]\"\n            animate={{ opacity: open && !reduce ? 0 : 0.5 }}\n            transition={{ duration: 0.45 }}\n          >\n            404\n          </motion.span>\n\n          {Array.from({ length: SLICES }).map((_, i) => (\n            <motion.span\n              key={i}\n              aria-hidden\n              className=\"display absolute inset-0 text-[68px] leading-none text-fg\"\n              style={{\n                clipPath: `inset(${i * (100 / SLICES)}% 0 ${\n                  100 - (i + 1) * (100 / SLICES)\n                }% 0)`,\n              }}\n              animate={{\n                x: open || reduce ? 0 : (i - (SLICES - 1) / 2) * 2.4,\n              }}\n              transition={{\n                duration: 0.5,\n                ease: EASE,\n                delay: reduce ? 0 : i * 0.012,\n              }}\n            >\n              404\n            </motion.span>\n          ))}\n\n          <span className=\"display text-[68px] leading-none text-transparent\">\n            404\n          </span>\n        </div>\n      </div>\n\n      <div className=\"absolute inset-x-0 bottom-14 flex items-center justify-center gap-1.5\">\n        {Array.from({ length: 17 }).map((_, i) => (\n          <span\n            key={i}\n            className={`block w-px bg-white/25 ${\n              i % 4 === 0 ? \"h-2.5\" : \"h-1.5\"\n            }`}\n          />\n        ))}\n      </div>\n      <div className=\"absolute bottom-9 left-4 lab-mono text-[9.5px] text-white/45\">\n        diopter −0.4\n      </div>\n\n      <Caption label=\"404 / defocus\" />\n      <Foot method=\"slices · focus\" />\n    </Screen>\n  );\n}\n"
+    },
+    {
+      "path": "registry/404lab/chrome.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/chrome.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { useState } from \"react\";\nimport { ArrowUpRight, Check, Copy } from \"lucide-react\";\n\nexport const EASE = [0.22, 1, 0.36, 1] as const;\n\n/* Every card shares the same framing so the grid reads as one set. */\n\nexport function Caption({\n  label,\n  className = \"\",\n}: {\n  label: string;\n  className?: string;\n}) {\n  return (\n    <span\n      className={`pointer-events-none absolute left-4 top-3 z-20 lab-mono text-[10px] tracking-[0.02em] text-white/75 [text-shadow:0_1px_3px_rgba(8,9,10,0.6)] ${className}`}\n    >\n      {label}\n    </span>\n  );\n}\n\nexport function HomeLink({ label = \"back home\" }: { label?: string }) {\n  return (\n    <span className=\"pointer-events-none inline-flex items-center gap-1 lab-mono text-[10px] text-white/70\">\n      {label}\n      <ArrowUpRight className=\"size-3\" strokeWidth={1.5} />\n    </span>\n  );\n}\n\nexport function Foot({\n  method,\n  label,\n}: {\n  method: string;\n  label?: string;\n}) {\n  return (\n    <div className=\"pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-4 pb-3\">\n      <HomeLink label={label} />\n      <span className=\"lab-mono text-[10px] text-white/50\">{method}</span>\n    </div>\n  );\n}\n\nconst SCREEN =\n  \"group @container relative h-full w-full overflow-hidden bg-ink-900\";\n\nexport function Screen({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div {...rest} className={`${SCREEN} ${className}`}>\n      {children}\n    </div>\n  );\n}\n\nexport function ScreenButton({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"button\">) {\n  return (\n    <button\n      type=\"button\"\n      {...rest}\n      className={`${SCREEN} cursor-default text-left ${className}`}\n    >\n      {children}\n    </button>\n  );\n}\n\nexport function Plate({\n  src,\n  className = \"\",\n  sizes = \"(max-width: 768px) 100vw, 33vw\",\n  opacity,\n  position = \"center\",\n}: {\n  src: string;\n  className?: string;\n  sizes?: string;\n  opacity?: number;\n  position?: string;\n}) {\n  return (\n    <Image\n      src={src}\n      alt=\"\"\n      fill\n      sizes={sizes}\n      className={`object-cover ${className}`}\n      style={{ opacity, objectPosition: position }}\n    />\n  );\n}\n\n/* --------------------------------- helpers -------------------------------- */\n\nexport function useReplay() {\n  const [run, setRun] = useState(0);\n  return { run, replay: () => setRun((n) => n + 1) };\n}\n\nexport function useStill() {\n  return useReducedMotion() ?? false;\n}\n\nexport const clamp = (v: number, min: number, max: number) =>\n  Math.max(min, Math.min(max, v));\n\n/* ------------------------------- install bits ------------------------------ */\n\nexport function CopyCommand({\n  command,\n  className = \"\",\n}: {\n  command: string;\n  className?: string;\n}) {\n  const [done, setDone] = useState(false);\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(command);\n      setDone(true);\n      setTimeout(() => setDone(false), 1600);\n    } catch {\n      setDone(false);\n    }\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label={`Copy ${command}`}\n      className={`group/copy flex w-full items-center justify-between gap-4 rounded-control border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 active:translate-y-px ${className}`}\n    >\n      <code className=\"min-w-0 break-all lab-mono text-[10px] text-fg-2 sm:truncate lg:text-[12px]\">\n        <span className=\"mr-1.5 text-amber/80\">$</span>\n        {command}\n      </code>\n      <span className=\"shrink-0 text-fg-3 transition-colors duration-200 group-hover/copy:text-fg\">\n        {done ? (\n          <Check className=\"size-4\" strokeWidth={1.5} />\n        ) : (\n          <Copy className=\"size-4\" strokeWidth={1.5} />\n        )}\n      </span>\n    </button>\n  );\n}\n\nexport function Reveal({\n  children,\n  delay = 0,\n  className = \"\",\n}: {\n  children: React.ReactNode;\n  delay?: number;\n  className?: string;\n}) {\n  const reduce = useReducedMotion();\n  return (\n    <motion.div\n      className={className}\n      initial={reduce ? false : { opacity: 0, y: 10 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true, margin: \"-60px\" }}\n      transition={{ duration: 0.55, ease: EASE, delay }}\n    >\n      {children}\n    </motion.div>\n  );\n}\n"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "color-ink-950": "#121212",
+      "color-ink-900": "#17171a",
+      "color-ink-850": "#1b1b1e",
+      "color-ink-800": "#232327",
+      "color-fg": "#fafafa",
+      "color-fg-2": "#b3b3b9",
+      "color-fg-3": "#7c7c84",
+      "color-line": "#26262a",
+      "color-line-2": "#35353b",
+      "color-amber": "#e9b871",
+      "radius-panel": "20px",
+      "radius-tile": "12px",
+      "radius-control": "8px",
+      "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+      "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+      "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+    }
+  },
+  "css": {
+    "@utility display": {
+      "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+      "font-weight": "400",
+      "letter-spacing": "-0.025em",
+      "line-height": "0.94",
+      "text-wrap": "balance"
+    },
+    "@utility lab-mono": {
+      "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+      "font-variant-numeric": "tabular-nums"
+    }
+  },
+  "meta": {
+    "category": "type",
+    "method": "slices · focus",
+    "note": "Fourteen slices of the same numeral, offset like a lens with the wrong diopter. Hover and the slices line up long enough to read.",
+    "version": "0.1.0"
+  }
+}

@@ -15,6 +15,7 @@ import {
 import { InstallTabs } from "@/components/site/install";
 import { PagesGrid } from "@/components/site/pages-grid";
 import { PAGES, pageCountWord } from "@/lib/pages";
+import { REGISTRY_HOST } from "@/lib/site";
 
 /* ---------------------------------- pages ---------------------------------- */
 
@@ -162,13 +163,14 @@ export function InstallSection() {
             </h2>
             <p className="mt-5 max-w-[42ch] text-[14px] leading-[1.75] text-fg-2">
               The shadcn registry copies the page into your repo with its parts
-              and its Motion import. No package version to track, no provider to
-              mount, nothing left pointing back here.
+              and its Motion import. Point components.json at the registry once,
+              then every page is one command. No package version to track, no
+              provider to mount, nothing left pointing back here.
             </p>
             <p className="mt-5 max-w-[42ch] text-[12.5px] leading-[1.75] text-fg-3">
-              Any App Router project with Tailwind works. If shadcn is already
-              set up, you are one line away. If you would rather not run the CLI,
-              the file is in the repository.
+              Any App Router project with Tailwind works. If you would rather
+              not configure a namespace, the direct url needs no setup. If you
+              would rather not run the CLI, the file is in the repository.
             </p>
             <Link
               href="#pages"
@@ -186,7 +188,7 @@ export function InstallSection() {
           </Reveal>
           <Reveal delay={0.16} className="min-w-0">
             <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[10px] text-fg-3">
-              <span>registry: {"404lab.dev/r/{name}.json"}</span>
+              <span>registry: {REGISTRY_HOST}</span>
               <span>
                 {PAGES.length} pages · 8 parts · one namespace
               </span>

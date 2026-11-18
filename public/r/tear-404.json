@@ -1,0 +1,69 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tear-404",
+  "type": "registry:block",
+  "title": "Tear 404",
+  "description": "The page splits down the middle",
+  "author": "404lab",
+  "categories": [
+    "scene"
+  ],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/404lab/tear-404.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/tear-404.tsx",
+      "content": "\"use client\";\n\n// tear-404 · 404lab\n// Requires ./chrome.tsx and the 404lab tokens.\n\nimport { Caption, Foot, Plate, Screen } from \"./chrome\";\n\n/* ----------------------------------- tear ---------------------------------- */\n\nconst TEAR_TOP =\n  \"polygon(0 0, 100% 0, 100% 48.6%, 92% 51.4%, 85% 48.5%, 78% 52.2%, 70% 49%, 62% 51.6%, 54% 48.8%, 46% 52%, 38% 49.2%, 30% 52.4%, 22% 48.9%, 14% 51.7%, 7% 49%, 0 51.2%)\";\nconst TEAR_BOTTOM =\n  \"polygon(0 51.2%, 7% 49%, 14% 51.7%, 22% 48.9%, 30% 52.4%, 38% 49.2%, 46% 52%, 54% 48.8%, 62% 51.6%, 70% 49%, 78% 52.2%, 85% 48.5%, 92% 51.4%, 100% 48.6%, 100% 100%, 0 100%)\";\n\nconst SEAM =\n  \"0,51.2 7,49 14,51.7 22,48.9 30,52.4 38,49.2 46,52 54,48.8 62,51.6 70,49 78,52.2 85,48.5 92,51.4 100,48.6\";\n\nfunction TearHalf({ clip, caption }: { clip: string; caption?: boolean }) {\n  return (\n    <div className=\"absolute inset-0\" style={{ clipPath: clip }}>\n      <Plate src=\"/worlds/px2.webp\" className=\"brightness-[0.9]\" />\n      <div className=\"absolute inset-0 bg-[linear-gradient(180deg,rgba(8,9,10,0.35)_0%,rgba(8,9,10,0.15)_50%,rgba(8,9,10,0.75)_100%)]\" />\n      <div className=\"absolute inset-0 flex flex-col items-center justify-center gap-3\">\n        <span className=\"display text-[72px] leading-none text-fg drop-shadow-[0_2px_10px_rgba(8,9,10,0.6)]\">\n          404\n        </span>\n      </div>\n      {caption && (\n        <span className=\"absolute inset-x-0 top-[63%] text-center lab-mono text-[10px] text-white/70\">\n          this page was torn out\n        </span>\n      )}\n    </div>\n  );\n}\n\nfunction TearSeam() {\n  return (\n    <svg\n      aria-hidden\n      viewBox=\"0 0 100 100\"\n      preserveAspectRatio=\"none\"\n      className=\"pointer-events-none absolute inset-0 h-full w-full\"\n    >\n      <polyline\n        points={SEAM}\n        fill=\"none\"\n        stroke=\"rgba(242,237,227,0.36)\"\n        strokeWidth={1}\n        vectorEffect=\"non-scaling-stroke\"\n      />\n    </svg>\n  );\n}\n\nexport function TearDemo() {\n  return (\n    <Screen className=\"bg-ink-950\">\n      <div className=\"absolute inset-0 transition-transform duration-700 ease-out group-hover:-translate-y-[5px]\">\n        <TearHalf clip={TEAR_TOP} />\n        <TearSeam />\n      </div>\n      <div className=\"absolute inset-0 transition-transform duration-700 ease-out group-hover:translate-y-[5px]\">\n        <TearHalf clip={TEAR_BOTTOM} caption />\n        <TearSeam />\n      </div>\n\n      <Caption label=\"404 / tear\" />\n      <Foot method=\"clip-path\" />\n    </Screen>\n  );\n}\n"
+    },
+    {
+      "path": "registry/404lab/chrome.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/chrome.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { useState } from \"react\";\nimport { ArrowUpRight, Check, Copy } from \"lucide-react\";\n\nexport const EASE = [0.22, 1, 0.36, 1] as const;\n\n/* Every card shares the same framing so the grid reads as one set. */\n\nexport function Caption({\n  label,\n  className = \"\",\n}: {\n  label: string;\n  className?: string;\n}) {\n  return (\n    <span\n      className={`pointer-events-none absolute left-4 top-3 z-20 lab-mono text-[10px] tracking-[0.02em] text-white/75 [text-shadow:0_1px_3px_rgba(8,9,10,0.6)] ${className}`}\n    >\n      {label}\n    </span>\n  );\n}\n\nexport function HomeLink({ label = \"back home\" }: { label?: string }) {\n  return (\n    <span className=\"pointer-events-none inline-flex items-center gap-1 lab-mono text-[10px] text-white/70\">\n      {label}\n      <ArrowUpRight className=\"size-3\" strokeWidth={1.5} />\n    </span>\n  );\n}\n\nexport function Foot({\n  method,\n  label,\n}: {\n  method: string;\n  label?: string;\n}) {\n  return (\n    <div className=\"pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-4 pb-3\">\n      <HomeLink label={label} />\n      <span className=\"lab-mono text-[10px] text-white/50\">{method}</span>\n    </div>\n  );\n}\n\nconst SCREEN =\n  \"group @container relative h-full w-full overflow-hidden bg-ink-900\";\n\nexport function Screen({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div {...rest} className={`${SCREEN} ${className}`}>\n      {children}\n    </div>\n  );\n}\n\nexport function ScreenButton({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"button\">) {\n  return (\n    <button\n      type=\"button\"\n      {...rest}\n      className={`${SCREEN} cursor-default text-left ${className}`}\n    >\n      {children}\n    </button>\n  );\n}\n\nexport function Plate({\n  src,\n  className = \"\",\n  sizes = \"(max-width: 768px) 100vw, 33vw\",\n  opacity,\n  position = \"center\",\n}: {\n  src: string;\n  className?: string;\n  sizes?: string;\n  opacity?: number;\n  position?: string;\n}) {\n  return (\n    <Image\n      src={src}\n      alt=\"\"\n      fill\n      sizes={sizes}\n      className={`object-cover ${className}`}\n      style={{ opacity, objectPosition: position }}\n    />\n  );\n}\n\n/* --------------------------------- helpers -------------------------------- */\n\nexport function useReplay() {\n  const [run, setRun] = useState(0);\n  return { run, replay: () => setRun((n) => n + 1) };\n}\n\nexport function useStill() {\n  return useReducedMotion() ?? false;\n}\n\nexport const clamp = (v: number, min: number, max: number) =>\n  Math.max(min, Math.min(max, v));\n\n/* ------------------------------- install bits ------------------------------ */\n\nexport function CopyCommand({\n  command,\n  className = \"\",\n}: {\n  command: string;\n  className?: string;\n}) {\n  const [done, setDone] = useState(false);\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(command);\n      setDone(true);\n      setTimeout(() => setDone(false), 1600);\n    } catch {\n      setDone(false);\n    }\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label={`Copy ${command}`}\n      className={`group/copy flex w-full items-center justify-between gap-4 rounded-control border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 active:translate-y-px ${className}`}\n    >\n      <code className=\"min-w-0 break-all lab-mono text-[10px] text-fg-2 sm:truncate lg:text-[12px]\">\n        <span className=\"mr-1.5 text-amber/80\">$</span>\n        {command}\n      </code>\n      <span className=\"shrink-0 text-fg-3 transition-colors duration-200 group-hover/copy:text-fg\">\n        {done ? (\n          <Check className=\"size-4\" strokeWidth={1.5} />\n        ) : (\n          <Copy className=\"size-4\" strokeWidth={1.5} />\n        )}\n      </span>\n    </button>\n  );\n}\n\nexport function Reveal({\n  children,\n  delay = 0,\n  className = \"\",\n}: {\n  children: React.ReactNode;\n  delay?: number;\n  className?: string;\n}) {\n  const reduce = useReducedMotion();\n  return (\n    <motion.div\n      className={className}\n      initial={reduce ? false : { opacity: 0, y: 10 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true, margin: \"-60px\" }}\n      transition={{ duration: 0.55, ease: EASE, delay }}\n    >\n      {children}\n    </motion.div>\n  );\n}\n"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "color-ink-950": "#121212",
+      "color-ink-900": "#17171a",
+      "color-ink-850": "#1b1b1e",
+      "color-ink-800": "#232327",
+      "color-fg": "#fafafa",
+      "color-fg-2": "#b3b3b9",
+      "color-fg-3": "#7c7c84",
+      "color-line": "#26262a",
+      "color-line-2": "#35353b",
+      "color-amber": "#e9b871",
+      "radius-panel": "20px",
+      "radius-tile": "12px",
+      "radius-control": "8px",
+      "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+      "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+      "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+    }
+  },
+  "css": {
+    "@utility display": {
+      "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+      "font-weight": "400",
+      "letter-spacing": "-0.025em",
+      "line-height": "0.94",
+      "text-wrap": "balance"
+    },
+    "@utility lab-mono": {
+      "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+      "font-variant-numeric": "tabular-nums"
+    }
+  },
+  "meta": {
+    "category": "scene",
+    "method": "clip-path · transform",
+    "note": "The scene is cut on a jagged line and the halves pull apart on hover, taking the numerals with them.",
+    "version": "0.1.0"
+  },
+  "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+}

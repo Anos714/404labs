@@ -1,0 +1,523 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "404lab",
+  "homepage": "https://404lab.dev",
+  "items": [
+    {
+      "name": "tokens",
+      "type": "registry:style",
+      "title": "404lab tokens",
+      "description": "The palette, radius scale and type utilities."
+    },
+    {
+      "name": "chrome",
+      "type": "registry:component",
+      "title": "404lab chrome",
+      "description": "The shared frame, captions and replay helpers."
+    },
+    {
+      "name": "glitch-404",
+      "type": "registry:block",
+      "title": "Glitch 404",
+      "description": "RGB split on the numerals",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "mosaic-404",
+      "type": "registry:block",
+      "title": "Mosaic 404",
+      "description": "The scene arrives in twelve tiles",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "odometer-404",
+      "type": "registry:block",
+      "title": "Odometer 404",
+      "description": "Three reels spin to a stop",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "spotlight-404",
+      "type": "registry:block",
+      "title": "Spotlight 404",
+      "description": "Only the cursor lights the page",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "shatter-404",
+      "type": "registry:block",
+      "title": "Shatter 404",
+      "description": "Nine pieces, one bad step",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "ticker-404",
+      "type": "registry:block",
+      "title": "Ticker 404",
+      "description": "A board that never departs",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "gravity-404",
+      "type": "registry:block",
+      "title": "Gravity 404",
+      "description": "Digits fall, then settle",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "holo-404",
+      "type": "registry:block",
+      "title": "Holo 404",
+      "description": "A transmission that will not lock",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "stroke-404",
+      "type": "registry:block",
+      "title": "Stroke 404",
+      "description": "The number draws itself",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "magnet-404",
+      "type": "registry:block",
+      "title": "Magnet 404",
+      "description": "The number leans toward you",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "fog-404",
+      "type": "registry:block",
+      "title": "Fog 404",
+      "description": "A platform, mostly gone",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "terminal-404",
+      "type": "registry:block",
+      "title": "Terminal 404",
+      "description": "The shell gives up on you",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "domino-404",
+      "type": "registry:block",
+      "title": "Domino 404",
+      "description": "One push, nine slabs",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "constellation-404",
+      "type": "registry:block",
+      "title": "Constellation 404",
+      "description": "The number, charted",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "stack-404",
+      "type": "registry:block",
+      "title": "Stack 404",
+      "description": "Five copies deep",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "drag-404",
+      "type": "registry:block",
+      "title": "Drag 404",
+      "description": "A loose number",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "tilt-404",
+      "type": "registry:block",
+      "title": "Tilt 404",
+      "description": "A small stage with three depths",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "defocus-404",
+      "type": "registry:block",
+      "title": "Defocus 404",
+      "description": "A lens that will not resolve",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "door-404",
+      "type": "registry:block",
+      "title": "Door 404",
+      "description": "It opens onto nothing",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "viewfinder-404",
+      "type": "registry:block",
+      "title": "Viewfinder 404",
+      "description": "The camera cannot find it",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "sweep-404",
+      "type": "registry:block",
+      "title": "Sweep 404",
+      "description": "An outline fills from the left",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "rubber-404",
+      "type": "registry:block",
+      "title": "Rubber 404",
+      "description": "Pull it out of shape",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "orbit-404",
+      "type": "registry:block",
+      "title": "Orbit 404",
+      "description": "A small planet keeps turning",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "morse-404",
+      "type": "registry:block",
+      "title": "Morse 404",
+      "description": "One lamp, five characters",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "trail-404",
+      "type": "registry:block",
+      "title": "Trail 404",
+      "description": "The pointer leaves a comet",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "tear-404",
+      "type": "registry:block",
+      "title": "Tear 404",
+      "description": "The page splits down the middle",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "flood-404",
+      "type": "registry:block",
+      "title": "Flood 404",
+      "description": "The path goes under water",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "bloom-404",
+      "type": "registry:block",
+      "title": "Bloom 404",
+      "description": "The frame overexposes",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "ash-404",
+      "type": "registry:block",
+      "title": "Ash 404",
+      "description": "The edge burns inward",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "parcel-404",
+      "type": "registry:block",
+      "title": "Parcel 404",
+      "description": "It comes back to you",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "window-404",
+      "type": "registry:block",
+      "title": "Window 404",
+      "description": "Rain on the wrong glass",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "beacon-404",
+      "type": "registry:block",
+      "title": "Beacon 404",
+      "description": "A signal with no receiver",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "dust-404",
+      "type": "registry:block",
+      "title": "Dust 404",
+      "description": "The air keeps the shape",
+      "categories": [
+        "scene"
+      ]
+    },
+    {
+      "name": "braille-404",
+      "type": "registry:block",
+      "title": "Braille 404",
+      "description": "404, read by touch",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "segment-404",
+      "type": "registry:block",
+      "title": "Segment 404",
+      "description": "Three modules, seven bars",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "ledger-404",
+      "type": "registry:block",
+      "title": "Ledger 404",
+      "description": "A receipt for nothing",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "emboss-404",
+      "type": "registry:block",
+      "title": "Emboss 404",
+      "description": "Pressed, not printed",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "ransom-404",
+      "type": "registry:block",
+      "title": "Ransom 404",
+      "description": "Three cuts of type",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "barcode-404",
+      "type": "registry:block",
+      "title": "Barcode 404",
+      "description": "Scanned, not found",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "crop-404",
+      "type": "registry:block",
+      "title": "Crop 404",
+      "description": "A proof that never ran",
+      "categories": [
+        "type"
+      ]
+    },
+    {
+      "name": "dial-404",
+      "type": "registry:block",
+      "title": "Dial 404",
+      "description": "Three stops to nowhere",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "pendulum-404",
+      "type": "registry:block",
+      "title": "Pendulum 404",
+      "description": "The number loses balance",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "peel-404",
+      "type": "registry:block",
+      "title": "Peel 404",
+      "description": "There is another layer",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "tuner-404",
+      "type": "registry:block",
+      "title": "Tuner 404",
+      "description": "Static between stations",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "latch-404",
+      "type": "registry:block",
+      "title": "Latch 404",
+      "description": "The bolt gives way",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "plunger-404",
+      "type": "registry:block",
+      "title": "Plunger 404",
+      "description": "One pull, one bad bounce",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "lost-404",
+      "type": "registry:block",
+      "title": "Lost Property 404",
+      "description": "Four things nobody came back for",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "brick-404",
+      "type": "registry:block",
+      "title": "Brick 404",
+      "description": "The wall is the number",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "punch-404",
+      "type": "registry:block",
+      "title": "Punch Card 404",
+      "description": "Punch it out, one cell at a time",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "watcher-404",
+      "type": "registry:block",
+      "title": "Night Watch 404",
+      "description": "The zero opened one eye",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "botanic-404",
+      "type": "registry:block",
+      "title": "Botanic 404",
+      "description": "Nine stems, one missing page",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "wireframe-404",
+      "type": "registry:block",
+      "title": "Wireframe 404",
+      "description": "A layout with no page in it",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "setting-out-404",
+      "type": "registry:block",
+      "title": "Setting Out 404",
+      "description": "Drag the measure, set the number",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "tide-404",
+      "type": "registry:block",
+      "title": "Tide 404",
+      "description": "The water takes the number",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "launch-404",
+      "type": "registry:block",
+      "title": "Launch 404",
+      "description": "Hold, pull back, let go",
+      "categories": [
+        "interactive"
+      ]
+    },
+    {
+      "name": "snake-404",
+      "type": "registry:block",
+      "title": "Snake 404",
+      "description": "Nine pellets on a dead grid",
+      "categories": [
+        "interactive"
+      ]
+    }
+  ]
+}

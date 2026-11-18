@@ -1,0 +1,3725 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "404lab",
+  "homepage": "https://404lab.dev",
+  "items": [
+    {
+      "name": "tokens",
+      "type": "registry:style",
+      "title": "404lab tokens",
+      "description": "The palette, radius scale and type utilities.",
+      "files": [
+        {
+          "path": "registry/404lab/tokens.css",
+          "type": "registry:file",
+          "target": "@components/404lab/404lab-tokens.css"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      }
+    },
+    {
+      "name": "chrome",
+      "type": "registry:component",
+      "title": "404lab chrome",
+      "description": "The shared frame, captions and replay helpers.",
+      "files": [
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glitch-404",
+      "type": "registry:block",
+      "title": "Glitch 404",
+      "description": "RGB split on the numerals",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/glitch-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/glitch-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "keyframes · clip-path",
+        "note": "The number takes a short hit of colour separation, sliced into bands, then settles. Three stacked copies and a clipped keyframe, no canvas.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "mosaic-404",
+      "type": "registry:block",
+      "title": "Mosaic 404",
+      "description": "The scene arrives in twelve tiles",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/mosaic-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/mosaic-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "mosaic · 12 tiles",
+        "note": "Twelve tiles of one photograph reassemble from their own centre. Hover to take the picture apart and put it back in a different order.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "odometer-404",
+      "type": "registry:block",
+      "title": "Odometer 404",
+      "description": "Three reels spin to a stop",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/odometer-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/odometer-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "reels · 3 digits",
+        "note": "Mechanical reels overshoot their target and settle into 404. The middle reel always arrives last, which is the only joke in the mechanism.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "spotlight-404",
+      "type": "registry:block",
+      "title": "Spotlight 404",
+      "description": "Only the cursor lights the page",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/spotlight-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/spotlight-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "mask · pointer",
+        "note": "The scene sits in the dark. A soft mask follows the pointer and brings back the part of the page you are looking at.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "shatter-404",
+      "type": "registry:block",
+      "title": "Shatter 404",
+      "description": "Nine pieces, one bad step",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/shatter-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/shatter-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "9 shards · clip-path",
+        "note": "The scene is cut on a nine-piece lattice. On hover the pieces spring apart, carrying the numerals with them, and fall back into place.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "ticker-404",
+      "type": "registry:block",
+      "title": "Ticker 404",
+      "description": "A board that never departs",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/ticker-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/ticker-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "split-flap · 92ms",
+        "note": "A split-flap board shuffles random characters before it settles on the number. The rows underneath are honest about the destination.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "gravity-404",
+      "type": "registry:block",
+      "title": "Gravity 404",
+      "description": "Digits fall, then settle",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/gravity-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/gravity-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "motion · spring",
+        "note": "Each digit drops on its own spring and lands with a small rotation. The ground takes the weight, so the offset is not perfectly even.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "holo-404",
+      "type": "registry:block",
+      "title": "Holo 404",
+      "description": "A transmission that will not lock",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/holo-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/holo-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "scanlines · signal",
+        "note": "Scanlines, a rolling refresh bar and a colour split that keeps slipping. The signal has been coming from nowhere for a long time.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "stroke-404",
+      "type": "registry:block",
+      "title": "Stroke 404",
+      "description": "The number draws itself",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/stroke-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/stroke-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "svg · stroke draw",
+        "note": "The numerals are drawn by a single stroke and then filled in behind the line. It is dash offset all the way down, no font trick.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "magnet-404",
+      "type": "registry:block",
+      "title": "Magnet 404",
+      "description": "The number leans toward you",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/magnet-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/magnet-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "spring · pointer",
+        "note": "Each digit has its own pull, so the number leans unevenly toward the pointer. Let go and the springs put it back.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "fog-404",
+      "type": "registry:block",
+      "title": "Fog 404",
+      "description": "A platform, mostly gone",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/fog-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/fog-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "drift · blur",
+        "note": "Three layers of mist drift across a scene that is already half erased. Hover and the number sinks a little further into it.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "terminal-404",
+      "type": "registry:block",
+      "title": "Terminal 404",
+      "description": "The shell gives up on you",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/terminal-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/terminal-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "typewriter · caret",
+        "note": "A shell that types its own failure, once when it comes into view and again when you ask it to.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "domino-404",
+      "type": "registry:block",
+      "title": "Domino 404",
+      "description": "One push, nine slabs",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/domino-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/domino-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "chain · 55ms",
+        "note": "Nine slabs stand in a row. The thin ones fall first and the three numerals follow, then the whole line stands back up on its own.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "constellation-404",
+      "type": "registry:block",
+      "title": "Constellation 404",
+      "description": "The number, charted",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/constellation-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/constellation-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "svg · dashoffset",
+        "note": "404 drawn as a constellation: edges first, then the stars arrive. Hover and the survey is charted again from the beginning.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "stack-404",
+      "type": "registry:block",
+      "title": "Stack 404",
+      "description": "Five copies deep",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/stack-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/stack-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "6 layers · z",
+        "note": "Five copies of the number recede into depth on a shared perspective. Hover and the corridor collapses into one clean mark.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "drag-404",
+      "type": "registry:block",
+      "title": "Drag 404",
+      "description": "A loose number",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/drag-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/drag-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "drag · elastic",
+        "note": "The number is an object you can pull off its origin. It stretches away under your hand and the spring walks it back when you let go.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "tilt-404",
+      "type": "registry:block",
+      "title": "Tilt 404",
+      "description": "A small stage with three depths",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/tilt-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/tilt-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "perspective · pointer",
+        "note": "The card is built from three planes: scene, route line and number. The pointer tilts the whole thing and the light moves with it.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "defocus-404",
+      "type": "registry:block",
+      "title": "Defocus 404",
+      "description": "A lens that will not resolve",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/defocus-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/defocus-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "slices · focus",
+        "note": "Fourteen slices of the same numeral, offset like a lens with the wrong diopter. Hover and the slices line up long enough to read.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "door-404",
+      "type": "registry:block",
+      "title": "Door 404",
+      "description": "It opens onto nothing",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/door-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/door-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "rotateY · 104°",
+        "note": "A door in the middle of the page, with the number printed across it. It opens onto nothing, which is the correct answer.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "viewfinder-404",
+      "type": "registry:block",
+      "title": "Viewfinder 404",
+      "description": "The camera cannot find it",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/viewfinder-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/viewfinder-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "focus hunt",
+        "note": "A camera hunting for a subject that is not there. Hover and it focuses on the number anyway, then flags the frame as empty.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "sweep-404",
+      "type": "registry:block",
+      "title": "Sweep 404",
+      "description": "An outline fills from the left",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/sweep-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/sweep-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "mask · wipe",
+        "note": "An outline of the number fills behind a moving hairline. It only ever fills on the way in, so the page is briefly complete.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "rubber-404",
+      "type": "registry:block",
+      "title": "Rubber 404",
+      "description": "Pull it out of shape",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/rubber-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/rubber-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "press + pull",
+        "note": "Press and pull the number out of proportion. The spring puts it back harder than you took it, which is the whole interaction.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "orbit-404",
+      "type": "registry:block",
+      "title": "Orbit 404",
+      "description": "A small planet keeps turning",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/orbit-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/orbit-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "motion · 22s loop",
+        "note": "The zero becomes a planet with one moon on a slow orbit. Under reduced motion the moon holds still and the page still reads.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "morse-404",
+      "type": "registry:block",
+      "title": "Morse 404",
+      "description": "One lamp, five characters",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/morse-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/morse-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "signal · 115ms",
+        "note": "A single lamp blinks 404 in Morse. The digits only arrive after the signal has finished, which takes longer than you expect.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "trail-404",
+      "type": "registry:block",
+      "title": "Trail 404",
+      "description": "The pointer leaves a comet",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/trail-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/trail-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "trail · spring",
+        "note": "A line of dots follows the pointer with growing lag, then collapses back onto the route line when you stop moving.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "tear-404",
+      "type": "registry:block",
+      "title": "Tear 404",
+      "description": "The page splits down the middle",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/tear-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/tear-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "clip-path · transform",
+        "note": "The scene is cut on a jagged line and the halves pull apart on hover, taking the numerals with them.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "flood-404",
+      "type": "registry:block",
+      "title": "Flood 404",
+      "description": "The path goes under water",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/flood-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/flood-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "waterline · 2 layers",
+        "note": "A river rises across the scene in two layers, and the lower half of the number starts to dissolve into it. The hover state takes the waterline higher and pulls the page down with it.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "bloom-404",
+      "type": "registry:block",
+      "title": "Bloom 404",
+      "description": "The frame overexposes",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/bloom-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/bloom-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "light leak · +2 EV",
+        "note": "A light leak blooms in the top corner of an otherwise underexposed scene. Hover and the whole frame loses a stop, leaving the number as the only edge.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "ash-404",
+      "type": "registry:block",
+      "title": "Ash 404",
+      "description": "The edge burns inward",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/ash-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/ash-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "burn line · clip-path",
+        "note": "A serrated burn line eats the scene from the bottom, carrying embers up as it climbs. The numerals are clipped by the same edge, so they disappear at the rate the page does.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "parcel-404",
+      "type": "registry:block",
+      "title": "Parcel 404",
+      "description": "It comes back to you",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/parcel-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/parcel-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "kraft tape · label",
+        "note": "The scene is wrapped in kraft tape and a hand-written label that nobody can deliver. The stamp and the tape shift on hover, as if the parcel is being turned over for a second look.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "window-404",
+      "type": "registry:block",
+      "title": "Window 404",
+      "description": "Rain on the wrong glass",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/window-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/window-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "rain · condensation",
+        "note": "A window, a storm, and a number written in condensation. Rain runs down the inside of the glass while a far-off light occasionally throws the frame into relief.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "beacon-404",
+      "type": "registry:block",
+      "title": "Beacon 404",
+      "description": "A signal with no receiver",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/beacon-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/beacon-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "beam · 12s sweep",
+        "note": "A tower sweeps a beam across a star field and finds nothing to signal. The number holds its ground in the middle of the search.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "dust-404",
+      "type": "registry:block",
+      "title": "Dust 404",
+      "description": "The air keeps the shape",
+      "author": "404lab",
+      "categories": [
+        "scene"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/dust-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/dust-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "scene",
+        "method": "motes · drift",
+        "note": "Motes drift through a shaft of light and briefly hold the shape of the number. Move across the card and the air lets it go.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "braille-404",
+      "type": "registry:block",
+      "title": "Braille 404",
+      "description": "404, read by touch",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/braille-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/braille-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "6 dots · 3 cells",
+        "note": "Three cells of raised dots spell the number for a reader who never sees it. The dots rise in sequence; hover to feel the page again.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "segment-404",
+      "type": "registry:block",
+      "title": "Segment 404",
+      "description": "Three modules, seven bars",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/segment-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/segment-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "7 segments · 3 cells",
+        "note": "The number is built from seven-segment hardware, one bar at a time. Every unlit segment stays visible as a faint idea of the digit.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "ledger-404",
+      "type": "registry:block",
+      "title": "Ledger 404",
+      "description": "A receipt for nothing",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/ledger-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/ledger-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "receipt · void stamp",
+        "note": "The dead end arrives as a paper receipt: four line items, a total of 404.00 and a stamp that settles the matter. Hover and the stamp presses down.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "emboss-404",
+      "type": "registry:block",
+      "title": "Emboss 404",
+      "description": "Pressed, not printed",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/emboss-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/emboss-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "deboss · raking light",
+        "note": "No ink was used. The number is debossed into dark stock and read only by a raking light that drifts across the surface.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "ransom-404",
+      "type": "registry:block",
+      "title": "Ransom 404",
+      "description": "Three cuts of type",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/ransom-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/ransom-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "3 cuts · tape",
+        "note": "Three mismatched cuts of paper carry one digit each, taped down at slightly wrong angles. Hover and the paste-up snaps into line.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "barcode-404",
+      "type": "registry:block",
+      "title": "Barcode 404",
+      "description": "Scanned, not found",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/barcode-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/barcode-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "scan · EAN",
+        "note": "A barcode carries the number in bars, and a scan line keeps checking. The digits sit above the code like a price tag for something that does not exist.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "crop-404",
+      "type": "registry:block",
+      "title": "Crop 404",
+      "description": "A proof that never ran",
+      "author": "404lab",
+      "categories": [
+        "type"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/crop-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/crop-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "type",
+        "method": "registration · proof",
+        "note": "Registration marks, trim lines and a colour bar frame the number like a press proof. Hover and the guides fall away, leaving the solid print.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "dial-404",
+      "type": "registry:block",
+      "title": "Dial 404",
+      "description": "Three stops to nowhere",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/dial-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/dial-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "drag · 3 stops",
+        "note": "A rotary dial that takes 4, 0, then 4. Pull it round, let it spring back, and the readout keeps score. The correct number still gets no answer.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "pendulum-404",
+      "type": "registry:block",
+      "title": "Pendulum 404",
+      "description": "The number loses balance",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/pendulum-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/pendulum-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "pendulum · pointer",
+        "note": "Three digits hang from a rail on strings of different lengths. Move across the card and they swing; leave and gravity takes its time.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "peel-404",
+      "type": "registry:block",
+      "title": "Peel 404",
+      "description": "There is another layer",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/peel-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/peel-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "peel · drag",
+        "note": "A void sticker covers the page. Drag the corner back and the paper curls, revealing a second, emptier 404 underneath.",
+        "version": "0.1.0"
+      },
+      "docs": "This page uses a demo photograph from the 404lab public/worlds folder. Copy that file into your public folder, or change the src to your own image."
+    },
+    {
+      "name": "tuner-404",
+      "type": "registry:block",
+      "title": "Tuner 404",
+      "description": "Static between stations",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/tuner-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/tuner-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "tune · 94.4",
+        "note": "An analogue tuner hunts for a station that is not broadcasting. Drag the needle to 94.4 and the noise drops away, leaving the number clear.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "latch-404",
+      "type": "registry:block",
+      "title": "Latch 404",
+      "description": "The bolt gives way",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/latch-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/latch-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "deadbolt · drag",
+        "note": "A sealed panel with a deadbolt cover. Pull it right and the brass room behind it is empty, which is the only thing it was hiding.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "plunger-404",
+      "type": "registry:block",
+      "title": "Plunger 404",
+      "description": "One pull, one bad bounce",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/plunger-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/plunger-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "plunger · spring",
+        "note": "A pinball plunger with a single steel ball stamped 404. Pull it down, release, and watch the ball find every bumper except the one that matters.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "lost-404",
+      "type": "registry:block",
+      "title": "Lost Property 404",
+      "description": "Four things nobody came back for",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/lost-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/lost-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "pointer · four items",
+        "note": "A paper intake sheet for a site that misplaced exactly one page and found four other things. Hover a tag, tap an item, and it does its small party trick: the umbrella shakes, the watch restarts, the key turns, the plane takes a lap. Log all four and the sheet closes anyway.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "brick-404",
+      "type": "registry:block",
+      "title": "Brick 404",
+      "description": "The wall is the number",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/brick-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/brick-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "breakout · 34 bricks",
+        "note": "A working breakout wall built from one four and two zeros. Move the paddle, keep the ball alive and take the number down one brick at a time. Whatever was behind it is not the page either.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "punch-404",
+      "type": "registry:block",
+      "title": "Punch Card 404",
+      "description": "Punch it out, one cell at a time",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/punch-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/punch-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "grid · 34 punches",
+        "note": "The number is printed on a data card and every filled cell is a hole waiting to happen. Punch all thirty-four and the card voids itself. A crosshair follows the row and the column so the cut stays square.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "watcher-404",
+      "type": "registry:block",
+      "title": "Night Watch 404",
+      "description": "The zero opened one eye",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/watcher-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/watcher-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "pupil · pointer",
+        "note": "A dark sector, a stencilled number and a single eye set where the zero should be. The pupil follows the pointer, the lid closes when you click, and the watch log keeps changing its mind about what it saw.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "botanic-404",
+      "type": "registry:block",
+      "title": "Botanic 404",
+      "description": "Nine stems, one missing page",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/botanic-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/botanic-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "proximity · 9 blooms",
+        "note": "An engraved plate of nine flowers under a number that never grew. Move across the page and each flower opens as you come near. Tap one to hold it open and the register counts it.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "wireframe-404",
+      "type": "registry:block",
+      "title": "Wireframe 404",
+      "description": "A layout with no page in it",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/wireframe-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/wireframe-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "scrub · layout",
+        "note": "A dashed template frame that draws itself as you sweep across it. Guides, navigation, a hero with the number and three empty columns. Sweep back and the whole layout comes apart again.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "setting-out-404",
+      "type": "registry:block",
+      "title": "Setting Out 404",
+      "description": "Drag the measure, set the number",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/setting-out-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/setting-out-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "guide · 210 px",
+        "note": "A typesetter's sheet with one movable column guide. Drag it and the number reflows to the measure, live in pixels. Park it at 210 and the sheet agrees with you.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "tide-404",
+      "type": "registry:block",
+      "title": "Tide 404",
+      "description": "The water takes the number",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/tide-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/tide-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "waterline · drag",
+        "note": "A pixel shoreline with the number standing in the shallows. Drag the waterline and the tide climbs through the blocks, the light goes with it and the crab finds higher ground.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "launch-404",
+      "type": "registry:block",
+      "title": "Launch 404",
+      "description": "Hold, pull back, let go",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/launch-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/launch-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "hold · projectile",
+        "note": "A paper plane on a hill above a long drop. Hold anywhere to pull it back, release to throw and watch it land somewhere that still is not the page. Three throws, one measured arc.",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "name": "snake-404",
+      "type": "registry:block",
+      "title": "Snake 404",
+      "description": "Nine pellets on a dead grid",
+      "author": "404lab",
+      "categories": [
+        "interactive"
+      ],
+      "dependencies": [
+        "motion",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "registry/404lab/snake-404.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/snake-404.tsx"
+        },
+        {
+          "path": "registry/404lab/chrome.tsx",
+          "type": "registry:component",
+          "target": "@components/404lab/chrome.tsx"
+        }
+      ],
+      "cssVars": {
+        "theme": {
+          "color-ink-950": "#121212",
+          "color-ink-900": "#17171a",
+          "color-ink-850": "#1b1b1e",
+          "color-ink-800": "#232327",
+          "color-fg": "#fafafa",
+          "color-fg-2": "#b3b3b9",
+          "color-fg-3": "#7c7c84",
+          "color-line": "#26262a",
+          "color-line-2": "#35353b",
+          "color-amber": "#e9b871",
+          "radius-panel": "20px",
+          "radius-tile": "12px",
+          "radius-control": "8px",
+          "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+          "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+          "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+        }
+      },
+      "css": {
+        "@utility display": {
+          "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+          "font-weight": "400",
+          "letter-spacing": "-0.025em",
+          "line-height": "0.94",
+          "text-wrap": "balance"
+        },
+        "@utility lab-mono": {
+          "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+          "font-variant-numeric": "tabular-nums"
+        }
+      },
+      "meta": {
+        "category": "interactive",
+        "method": "grid · 9 pellets",
+        "note": "A hidden snake game on a field notebook plate. Arrow keys, W A S D or a swipe steer the head, nine pellets close the register, and hitting the frame or your own tail ends the run. The page is not on the board either.",
+        "version": "0.1.0"
+      }
+    }
+  ]
+}

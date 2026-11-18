@@ -1,0 +1,68 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tuner-404",
+  "type": "registry:block",
+  "title": "Tuner 404",
+  "description": "Static between stations",
+  "author": "404lab",
+  "categories": [
+    "interactive"
+  ],
+  "dependencies": [
+    "motion",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "registry/404lab/tuner-404.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/tuner-404.tsx",
+      "content": "\"use client\";\n\n// tuner-404 · 404lab\n// Requires ./chrome.tsx and the 404lab tokens.\n\nimport { useRef, useState } from \"react\";\nimport { motion } from \"motion/react\";\nimport { Caption, Foot, Screen, clamp } from \"./chrome\";\n\n/* ---------------------------------- tuner ---------------------------------- */\n\nconst TARGET = 94.4;\nconst MIN = 88;\nconst MAX = 108;\n\nexport function TunerDemo() {\n  const [ratio, setRatio] = useState((TARGET - MIN) / (MAX - MIN));\n  const track = useRef<HTMLDivElement>(null);\n  const dragging = useRef(false);\n  const freq = MIN + ratio * (MAX - MIN);\n  const off = Math.abs(freq - TARGET);\n  const locked = off < 0.9;\n  const noise = clamp(off / 5, 0, 0.6);\n  const blur = clamp(off * 1.1, 0, 6);\n  const opacity = clamp(1 - off / 7, 0.1, 1);\n\n  function setFrom(clientX: number) {\n    const r = track.current?.getBoundingClientRect();\n    if (!r) return;\n    setRatio(clamp((clientX - r.left) / r.width, 0, 1));\n  }\n\n  return (\n    <Screen className=\"touch-none select-none bg-[#07080a]\">\n      <div className=\"absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(242,237,227,0.055),transparent_66%)]\" />\n\n      <motion.div\n        aria-hidden\n        className=\"pointer-events-none absolute inset-0 z-20\"\n        style={{\n          opacity: noise,\n          backgroundImage:\n            \"repeating-linear-gradient(0deg,rgba(242,237,227,0.35)_0_1px,transparent_1px_3px),repeating-linear-gradient(90deg,rgba(242,237,227,0.18)_0_1px,transparent_1px_5px)\",\n        }}\n        animate={{ backgroundPosition: [\"0px 0px\", \"6px 6px\"] }}\n        transition={{ duration: 0.5, repeat: Infinity, ease: \"linear\" }}\n      />\n\n      <div className=\"absolute inset-0 z-10 flex flex-col items-center justify-center gap-4\">\n        <div className=\"flex items-baseline gap-2\">\n          <span\n            className=\"display text-[72px] leading-none text-fg transition-[filter,opacity] duration-150\"\n            style={{ filter: `blur(${blur}px)`, opacity }}\n          >\n            404\n          </span>\n          <span\n            className={`lab-mono text-[8px] tracking-[0.18em] transition-colors duration-200 ${\n              locked ? \"text-amber\" : \"text-white/25\"\n            }`}\n          >\n            {locked ? \"LOCKED\" : \"NO SIGNAL\"}\n          </span>\n        </div>\n\n        <div className=\"lab-mono text-[9px] text-white/45\">\n          FM {freq.toFixed(1)} · station 404\n        </div>\n      </div>\n\n      <div className=\"absolute inset-x-0 bottom-[52px] z-10 flex justify-center\">\n        <div\n          ref={track}\n          onPointerDown={(e) => {\n            dragging.current = true;\n            e.currentTarget.setPointerCapture(e.pointerId);\n            setFrom(e.clientX);\n          }}\n          onPointerMove={(e) => {\n            if (dragging.current) setFrom(e.clientX);\n          }}\n          onPointerUp={() => {\n            dragging.current = false;\n          }}\n          onPointerCancel={() => {\n            dragging.current = false;\n          }}\n          className=\"relative h-7 w-[72%] cursor-ew-resize\"\n        >\n          <div className=\"absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-white/20\" />\n          {Array.from({ length: 21 }).map((_, i) => (\n            <span\n              key={i}\n              className={`absolute top-1/2 w-px -translate-y-1/2 ${\n                i % 5 === 0 ? \"h-2.5 bg-white/40\" : \"h-1.5 bg-white/20\"\n              }`}\n              style={{ left: `${(i / 20) * 100}%` }}\n            />\n          ))}\n          <span\n            className=\"absolute top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full border border-amber/80 bg-ink-900 shadow-[0_0_12px_rgba(233,184,113,0.3)] after:absolute after:left-1/2 after:top-1/2 after:size-1 after:-translate-x-1/2 after:-translate-y-1/2 after:rounded-full after:bg-amber\"\n            style={{ left: `${ratio * 100}%` }}\n          />\n        </div>\n      </div>\n\n      <div className=\"pointer-events-none absolute inset-x-0 bottom-[30px] text-center lab-mono text-[8px] text-white/25\">\n        88 · 94.4 · 108\n      </div>\n\n      <Caption label=\"404 / tuner\" />\n      <Foot method=\"tune · 94.4\" />\n    </Screen>\n  );\n}\n"
+    },
+    {
+      "path": "registry/404lab/chrome.tsx",
+      "type": "registry:component",
+      "target": "@components/404lab/chrome.tsx",
+      "content": "\"use client\";\n\nimport Image from \"next/image\";\nimport { motion, useReducedMotion } from \"motion/react\";\nimport { useState } from \"react\";\nimport { ArrowUpRight, Check, Copy } from \"lucide-react\";\n\nexport const EASE = [0.22, 1, 0.36, 1] as const;\n\n/* Every card shares the same framing so the grid reads as one set. */\n\nexport function Caption({\n  label,\n  className = \"\",\n}: {\n  label: string;\n  className?: string;\n}) {\n  return (\n    <span\n      className={`pointer-events-none absolute left-4 top-3 z-20 lab-mono text-[10px] tracking-[0.02em] text-white/75 [text-shadow:0_1px_3px_rgba(8,9,10,0.6)] ${className}`}\n    >\n      {label}\n    </span>\n  );\n}\n\nexport function HomeLink({ label = \"back home\" }: { label?: string }) {\n  return (\n    <span className=\"pointer-events-none inline-flex items-center gap-1 lab-mono text-[10px] text-white/70\">\n      {label}\n      <ArrowUpRight className=\"size-3\" strokeWidth={1.5} />\n    </span>\n  );\n}\n\nexport function Foot({\n  method,\n  label,\n}: {\n  method: string;\n  label?: string;\n}) {\n  return (\n    <div className=\"pointer-events-none absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-4 pb-3\">\n      <HomeLink label={label} />\n      <span className=\"lab-mono text-[10px] text-white/50\">{method}</span>\n    </div>\n  );\n}\n\nconst SCREEN =\n  \"group @container relative h-full w-full overflow-hidden bg-ink-900\";\n\nexport function Screen({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div {...rest} className={`${SCREEN} ${className}`}>\n      {children}\n    </div>\n  );\n}\n\nexport function ScreenButton({\n  className = \"\",\n  children,\n  ...rest\n}: React.ComponentProps<\"button\">) {\n  return (\n    <button\n      type=\"button\"\n      {...rest}\n      className={`${SCREEN} cursor-default text-left ${className}`}\n    >\n      {children}\n    </button>\n  );\n}\n\nexport function Plate({\n  src,\n  className = \"\",\n  sizes = \"(max-width: 768px) 100vw, 33vw\",\n  opacity,\n  position = \"center\",\n}: {\n  src: string;\n  className?: string;\n  sizes?: string;\n  opacity?: number;\n  position?: string;\n}) {\n  return (\n    <Image\n      src={src}\n      alt=\"\"\n      fill\n      sizes={sizes}\n      className={`object-cover ${className}`}\n      style={{ opacity, objectPosition: position }}\n    />\n  );\n}\n\n/* --------------------------------- helpers -------------------------------- */\n\nexport function useReplay() {\n  const [run, setRun] = useState(0);\n  return { run, replay: () => setRun((n) => n + 1) };\n}\n\nexport function useStill() {\n  return useReducedMotion() ?? false;\n}\n\nexport const clamp = (v: number, min: number, max: number) =>\n  Math.max(min, Math.min(max, v));\n\n/* ------------------------------- install bits ------------------------------ */\n\nexport function CopyCommand({\n  command,\n  className = \"\",\n}: {\n  command: string;\n  className?: string;\n}) {\n  const [done, setDone] = useState(false);\n\n  async function copy() {\n    try {\n      await navigator.clipboard.writeText(command);\n      setDone(true);\n      setTimeout(() => setDone(false), 1600);\n    } catch {\n      setDone(false);\n    }\n  }\n\n  return (\n    <button\n      type=\"button\"\n      onClick={copy}\n      aria-label={`Copy ${command}`}\n      className={`group/copy flex w-full items-center justify-between gap-4 rounded-control border border-line bg-ink-900 px-3 py-2.5 text-left transition-colors duration-200 hover:border-line-2 active:translate-y-px ${className}`}\n    >\n      <code className=\"min-w-0 break-all lab-mono text-[10px] text-fg-2 sm:truncate lg:text-[12px]\">\n        <span className=\"mr-1.5 text-amber/80\">$</span>\n        {command}\n      </code>\n      <span className=\"shrink-0 text-fg-3 transition-colors duration-200 group-hover/copy:text-fg\">\n        {done ? (\n          <Check className=\"size-4\" strokeWidth={1.5} />\n        ) : (\n          <Copy className=\"size-4\" strokeWidth={1.5} />\n        )}\n      </span>\n    </button>\n  );\n}\n\nexport function Reveal({\n  children,\n  delay = 0,\n  className = \"\",\n}: {\n  children: React.ReactNode;\n  delay?: number;\n  className?: string;\n}) {\n  const reduce = useReducedMotion();\n  return (\n    <motion.div\n      className={className}\n      initial={reduce ? false : { opacity: 0, y: 10 }}\n      whileInView={{ opacity: 1, y: 0 }}\n      viewport={{ once: true, margin: \"-60px\" }}\n      transition={{ duration: 0.55, ease: EASE, delay }}\n    >\n      {children}\n    </motion.div>\n  );\n}\n"
+    }
+  ],
+  "cssVars": {
+    "theme": {
+      "color-ink-950": "#121212",
+      "color-ink-900": "#17171a",
+      "color-ink-850": "#1b1b1e",
+      "color-ink-800": "#232327",
+      "color-fg": "#fafafa",
+      "color-fg-2": "#b3b3b9",
+      "color-fg-3": "#7c7c84",
+      "color-line": "#26262a",
+      "color-line-2": "#35353b",
+      "color-amber": "#e9b871",
+      "radius-panel": "20px",
+      "radius-tile": "12px",
+      "radius-control": "8px",
+      "lab-font-display": "var(--font-instrument), Georgia, \"Times New Roman\", serif",
+      "lab-font-mono": "var(--font-geist-mono), ui-monospace, monospace",
+      "ease-out": "cubic-bezier(0.22, 1, 0.36, 1)"
+    }
+  },
+  "css": {
+    "@utility display": {
+      "font-family": "var(--lab-font-display, var(--font-display, Georgia, \"Times New Roman\", serif))",
+      "font-weight": "400",
+      "letter-spacing": "-0.025em",
+      "line-height": "0.94",
+      "text-wrap": "balance"
+    },
+    "@utility lab-mono": {
+      "font-family": "var(--lab-font-mono, var(--font-mono, ui-monospace, SFMono-Regular, monospace))",
+      "font-variant-numeric": "tabular-nums"
+    }
+  },
+  "meta": {
+    "category": "interactive",
+    "method": "tune · 94.4",
+    "note": "An analogue tuner hunts for a station that is not broadcasting. Drag the needle to 94.4 and the noise drops away, leaving the number clear.",
+    "version": "0.1.0"
+  }
+}

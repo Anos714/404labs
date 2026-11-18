@@ -18,25 +18,25 @@ export function Nav() {
 
         <nav className="flex items-center gap-1 sm:gap-2">
           <Link
-            href="#pages"
+            href="/#pages"
             className="rounded-control px-2.5 py-1.5 font-mono text-[12px] text-fg-2 transition-colors duration-200 hover:text-fg sm:px-3"
           >
             Pages
           </Link>
           <Link
-            href="#parts"
+            href="/#parts"
             className="hidden rounded-control px-2.5 py-1.5 font-mono text-[12px] text-fg-2 transition-colors duration-200 hover:text-fg sm:block sm:px-3"
           >
             Parts
           </Link>
           <Link
-            href="#install"
+            href="/#install"
             className="rounded-control px-2.5 py-1.5 font-mono text-[12px] text-fg-2 transition-colors duration-200 hover:text-fg sm:px-3"
           >
             Install
           </Link>
           <a
-            href="https://github.com"
+            href="https://github.com/Anos714/404labs"
             target="_blank"
             rel="noreferrer"
             className="ml-1 flex items-center gap-1.5 rounded-control border border-line-2 px-3 py-1.5 font-mono text-[12px] text-fg transition-colors duration-200 hover:border-fg/25"

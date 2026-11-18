@@ -142,7 +142,14 @@ export function LandingIntro() {
           <CopyCommand command="npx shadcn@latest add @404lab/glitch-404" />
         </div>
         <p className="mt-4 font-mono text-[10.5px] text-fg-3">
-          or browse the catalogue below
+          needs the{" "}
+          <Link
+            href="#install"
+            className="text-fg-2 underline decoration-line-2 underline-offset-4 transition-colors hover:text-fg"
+          >
+            @404lab registry
+          </Link>
+          , one line in components.json
         </p>
       </div>
     </section>

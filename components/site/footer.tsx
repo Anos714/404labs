@@ -23,9 +23,9 @@ export function Footer() {
               <p className="font-mono text-[11px] text-fg-3">Library</p>
               <ul className="mt-4 space-y-2.5">
                 {[
-                  ["The pages", "#pages"],
-                  ["The parts", "#parts"],
-                  ["Install", "#install"],
+                  ["The pages", "/#pages"],
+                  ["The parts", "/#parts"],
+                  ["Install", "/#install"],
                 ].map(([label, href]) => (
                   <li key={label}>
                     <Link
@@ -44,7 +44,7 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5">
                 <li>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/Anos714/404labs"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1 text-[13px] text-fg-2 transition-colors duration-200 hover:text-fg"
@@ -55,10 +55,10 @@ export function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="#install"
+                    href="/#install"
                     className="text-[13px] text-fg-2 transition-colors duration-200 hover:text-fg"
                   >
-                    Registry JSON
+                    Install notes
                   </Link>
                 </li>
               </ul>

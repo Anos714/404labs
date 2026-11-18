@@ -1,0 +1,44 @@
+/* 404lab tokens, Tailwind v4. Merge into app/globals.css. */
+@theme inline {
+  --color-ink-950: #121212;
+  --color-ink-900: #17171a;
+  --color-ink-850: #1b1b1e;
+  --color-ink-800: #232327;
+  --color-fg: #fafafa;
+  --color-fg-2: #b3b3b9;
+  --color-fg-3: #7c7c84;
+  --color-line: #26262a;
+  --color-line-2: #35353b;
+  --color-amber: #e9b871;
+
+  /* One radius scale: panels, media tiles, controls. */
+  --radius-panel: 20px;
+  --radius-tile: 12px;
+  --radius-control: 8px;
+
+  /* Public type tokens. Override these two to reskin the library. */
+  --lab-font-display: var(--font-instrument), Georgia, "Times New Roman", serif;
+  --lab-font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --default-transition-duration: 180ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@utility display {
+  font-family: var(
+    --lab-font-display,
+    var(--font-display, Georgia, "Times New Roman", serif)
+  );
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.94;
+  text-wrap: balance;
+}
+
+@utility lab-mono {
+  font-family: var(
+    --lab-font-mono,
+    var(--font-mono, ui-monospace, SFMono-Regular, monospace)
+  );
+}

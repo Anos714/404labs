@@ -57,11 +57,18 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
 
   return (
     <div className="w-full min-w-0 overflow-hidden rounded-panel border border-line bg-ink-950">
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line p-2">
+      <div className="flex items-center justify-between gap-3 border-b border-line px-3.5 py-2.5">
+        <p className="font-mono text-[10px] text-fg-3">files</p>
+        <p className="font-mono text-[10px] tabular-nums text-fg-3">
+          {files.length} files · MIT
+        </p>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line bg-ink-900 p-2">
         <div
           role="group"
           aria-label="Source files"
-          className="flex min-w-0 items-center gap-0.5 overflow-x-auto"
+          className="flex min-w-0 items-center gap-0.5 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {files.map((f, i) => {
             const on = i === active;
@@ -71,14 +78,13 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
                 type="button"
                 onClick={() => select(i)}
                 aria-pressed={on}
-                className={`relative shrink-0 rounded-control px-2.5 py-1.5 lab-mono text-[10.5px] transition-colors duration-200 ${
-                  on ? "text-fg" : "text-fg-3 hover:text-fg-2"
+                className={`relative shrink-0 rounded-full px-2.5 py-1.5 lab-mono text-[10.5px] transition-colors duration-200 ${
+                  on
+                    ? "bg-ink-800 text-fg"
+                    : "text-fg-3 hover:bg-ink-850 hover:text-fg-2"
                 }`}
               >
-                {on && (
-                  <span className="absolute inset-0 rounded-control border border-line-2 bg-ink-850" />
-                )}
-                <span className="relative">{f.name}</span>
+                {f.name}
               </button>
             );
           })}
@@ -88,7 +94,7 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
           type="button"
           onClick={copy}
           aria-label={`Copy ${file.name}`}
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-control border border-line-2 bg-ink-900 px-2.5 py-1.5 lab-mono text-[10.5px] text-fg-2 transition-colors duration-200 hover:border-fg-3/40 hover:text-fg"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-line-2 bg-ink-900 px-3 py-1.5 lab-mono text-[10.5px] text-fg-2 transition-colors duration-200 hover:border-fg-3/40 hover:text-fg"
         >
           {done ? (
             <Check className="size-3.5 text-amber" strokeWidth={1.6} />
@@ -99,7 +105,7 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
         </button>
       </div>
 
-      <div className="flex items-center justify-between gap-4 border-b border-line px-4 py-2">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-ink-900 px-4 py-2">
         <p className="lab-mono text-[10px] leading-relaxed text-fg-3">
           {file.note}
         </p>
@@ -114,9 +120,9 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
           role="region"
           aria-label={`${file.name} source`}
           tabIndex={0}
-          className="max-h-[460px] overflow-auto overscroll-contain outline-none focus-visible:ring-1 focus-visible:ring-amber/50"
+          className="max-h-[520px] overflow-auto overscroll-contain outline-none focus-visible:ring-1 focus-visible:ring-amber/50"
         >
-          <pre className="p-4 lab-mono text-[11.5px] leading-[1.8] text-fg-2">
+          <pre className="p-4 lab-mono text-[11.5px] leading-[1.85] text-fg-2 sm:p-5">
             <code>{file.code}</code>
           </pre>
         </div>
@@ -134,7 +140,7 @@ export function SourcePanel({ files }: { files: SourceFile[] }) {
         />
       </div>
 
-      <div className="flex items-center justify-between border-t border-line px-4 py-2.5">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line px-4 py-2.5">
         <span className="lab-mono text-[10px] text-fg-3">
           component · shared chrome · tokens
         </span>
