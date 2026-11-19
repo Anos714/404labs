@@ -26,7 +26,7 @@ function SampleCode() {
         </CodeLine>
         <CodeLine>
           <span className="text-fg-2">import</span>
-          {" { Glitch } "}
+          {" { GlitchDemo } "}
           <span className="text-fg-2">from</span>
         </CodeLine>
         <CodeLine>
@@ -43,8 +43,7 @@ function SampleCode() {
         <CodeLine>
           {"  "}
           <span className="text-fg-2">return</span> {"<"}
-          <span className="text-fg">Glitch</span> home=
-          <span className="text-amber/85">&quot;/&quot;</span> {" />"}
+          <span className="text-fg">GlitchDemo</span> {" />"}
         </CodeLine>
         <CodeLine>{"}"}</CodeLine>
       </code>

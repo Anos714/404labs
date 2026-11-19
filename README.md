@@ -37,7 +37,8 @@ Open http://localhost:3000.
 The site serves a shadcn registry at `/r/{name}.json`. Each page item carries
 the component, the shared `chrome.tsx` and the token block, so a single install
 lands a working file. `registry.json` is the build input; `registry/404lab/` and
-`public/r/` are generated.
+`public/r/` are generated. The full setup, including the optional Directory
+listing, is in [`docs/registry.md`](docs/registry.md).
 
 ```bash
 npm run registry:build   # rebuild registry/ and public/r
