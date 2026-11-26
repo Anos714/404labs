@@ -31,36 +31,29 @@ export function MorseDemo() {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { margin: "-30px" });
-  const [step, setStep] = useState(-1);
+  const [step, setStep] = useState(0);
   const [text, setText] = useState("");
+  const [started, setStarted] = useState(false);
+
+  const active = started || inView;
 
   useEffect(() => {
-    if (inView) setStep(0);
-  }, [inView]);
-
-  useEffect(() => {
-    if (step < 0) return;
+    if (!active || reduce) return;
     const ev = EVENTS[step];
-    if (!ev) {
-      setStep(-1);
-      return;
-    }
-    if (reduce) {
-      setText("404");
-      setStep(-1);
-      return;
-    }
+    if (!ev) return;
     const t = setTimeout(() => {
       if (ev.reveal) setText((s) => s + ev.reveal);
       setStep((s) => s + 1);
     }, ev.dur);
     return () => clearTimeout(t);
-  }, [step, reduce]);
+  }, [active, step, reduce]);
 
-  const lit = step >= 0 && EVENTS[step]?.on === true;
+  const lit = !reduce && active && step < EVENTS.length && EVENTS[step]?.on === true;
+  const shownText = reduce ? "404" : text;
 
   function replay() {
     if (reduce) return;
+    setStarted(true);
     setText("");
     setStep(0);
   }
@@ -89,7 +82,7 @@ export function MorseDemo() {
             <span
               key={i}
               className={`display text-[56px] leading-none transition-colors duration-200 ${
-                text.length > i ? "text-fg" : "text-fg/15"
+                shownText.length > i ? "text-fg" : "text-fg/15"
               }`}
             >
               {d}
@@ -102,7 +95,7 @@ export function MorseDemo() {
             <span
               key={gi}
               className={`lab-mono text-[12px] tracking-[0.18em] ${
-                text.length > gi ? "text-amber/80" : "text-white/30"
+                shownText.length > gi ? "text-amber/80" : "text-white/30"
               }`}
             >
               {g}

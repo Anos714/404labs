@@ -10,7 +10,6 @@ import { Screen } from "./chrome";
 
 const PAPER = "#f2eee3";
 const BOTANIC = "#1f2b22";
-const BOTANIC_MUTED = "#6c766b";
 const BOTANIC_RED = "#9a4b32";
 
 type Stem = {

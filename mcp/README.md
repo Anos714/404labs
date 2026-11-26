@@ -1,7 +1,7 @@
 # 404lab MCP server
 
 A stdio MCP server for the 404lab library. It lets an assistant list and search
-the 46 pages, read a page's real component source, pull the shared chrome and
+the 56 pages, read a page's real component source, pull the shared chrome and
 tokens, and get the install command, without leaving the editor.
 
 Works with Claude Code, Codex, Cursor, OpenCode, or any client that speaks MCP
@@ -16,9 +16,10 @@ over stdio.
 | `get_page` | one page: category, method, note, install command, export name and full component source |
 | `get_shared_file` | `chrome.tsx` or `tokens.css`, the two files every page imports |
 | `get_install_guide` | prerequisites, the shadcn command and the manual copy path |
+| `get_agent_skill` | the `SKILL.md` instructions for installing and wiring 404lab pages |
 
-It also exposes resources: `lab404://library` for the catalog and
-`lab404://pages/<slug>` for a single page. The URI scheme starts with a letter
+It also exposes resources: `lab404://library` for the catalog,
+`lab404://pages/<slug>` for a single page, and `lab404://skill` for the agent skill. The URI scheme starts with a letter
 on purpose, since URL parsers reject schemes that start with a digit.
 
 ## Run it

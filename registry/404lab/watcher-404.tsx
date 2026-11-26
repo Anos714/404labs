@@ -22,7 +22,6 @@ const WATCH_LOGS = [
   "still nothing",
 ];
 
-const WATCH_EYE = "#181a14";
 const WATCH_LINE = "rgba(233,184,113,0.17)";
 
 function WatchEye({

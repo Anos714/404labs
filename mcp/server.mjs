@@ -92,17 +92,33 @@ function pageHeader(page) {
   ].join("\n");
 }
 
+function extractWorldsAssets(code) {
+  const matches = code.match(/\/worlds\/[a-z0-9-]+\.webp/gi);
+  return matches ? [...new Set(matches)] : [];
+}
+
 function pageBody(page, includeSource) {
+  const assets = extractWorldsAssets(page.source.code);
   const parts = [
     pageHeader(page),
     "",
     "install",
-    page.command,
+    `namespace: ${page.command}`,
+    `direct url: npx shadcn@latest add https://404lab.dev/r/${page.slug}.json`,
+    "",
+    "dependencies",
+    "- motion (motion/react)",
+    "- lucide-react",
+    "- Next.js App Router + Tailwind CSS v4",
     "",
     "use it",
-    'in app/not-found.tsx:',
+    "in app/not-found.tsx:",
     `import { ${page.export} } from "@/components/404lab/${page.slug}";`,
     `export default function NotFound() { return <${page.export} />; }`,
+    "",
+    "tokens",
+    "- --lab-font-display (override display serif/sans without editing component)",
+    "- --lab-font-mono (override monospace labels without editing component)",
     "",
     "shared files",
     ...data.shared.map(
@@ -110,6 +126,17 @@ function pageBody(page, includeSource) {
         `- ${file.name} · ${file.lines} lines · ${file.note} Fetch it with get_shared_file.`,
     ),
   ];
+
+  if (assets.length) {
+    parts.push(
+      "",
+      "assets",
+      ...assets.map(
+        (asset) =>
+          `- public${asset} (scene photograph; copy from repo or swap Plate src for your own image)`,
+      ),
+    );
+  }
 
   if (includeSource) {
     parts.push(
@@ -204,7 +231,7 @@ server.registerTool(
         .number()
         .int()
         .min(1)
-        .max(46)
+        .max(data.count)
         .optional()
         .describe("Maximum matches. Defaults to 10."),
     },
@@ -370,17 +397,54 @@ server.registerTool(
   },
 );
 
+server.registerTool(
+  "get_agent_skill",
+  {
+    title: "Get 404lab agent skill",
+    description:
+      "Return the 404lab SKILL.md instructions so an AI coding agent can install, customize, and wire 404lab pages consistently.",
+    inputSchema: {},
+    annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
+  },
+  async () => {
+    const skillPath = path.join(here, "../public/skills/404lab/SKILL.md");
+    if (!fs.existsSync(skillPath)) {
+      return toolResult("SKILL.md is not bundled in this build.", true);
+    }
+    return toolResult(fs.readFileSync(skillPath, "utf8"));
+  },
+);
+
 server.registerResource(
   "library",
   "lab404://library",
   {
     title: "404lab catalog",
-    description: "All 46 pages grouped by category.",
+    description: `All ${data.count} pages grouped by category.`,
     mimeType: "text/markdown",
   },
   async (uri) => ({
     contents: [{ uri: uri.href, mimeType: "text/markdown", text: catalog() }],
   }),
+);
+
+server.registerResource(
+  "skill",
+  "lab404://skill",
+  {
+    title: "404lab agent skill",
+    description: "SKILL.md guide for AI coding agents using 404lab.",
+    mimeType: "text/markdown",
+  },
+  async (uri) => {
+    const skillPath = path.join(here, "../public/skills/404lab/SKILL.md");
+    const text = fs.existsSync(skillPath)
+      ? fs.readFileSync(skillPath, "utf8")
+      : "SKILL.md is not available.";
+    return {
+      contents: [{ uri: uri.href, mimeType: "text/markdown", text }],
+    };
+  },
 );
 
 server.registerResource(
