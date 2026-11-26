@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { readLibrary } from "../lib/source-data.mjs";
 
 /**
@@ -10,7 +11,7 @@ import { readLibrary } from "../lib/source-data.mjs";
  * node scripts/build-mcp-data.mjs --check  exits 1 when the file is stale
  */
 
-const root = path.resolve(import.meta.dirname, "..");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const target = path.join(root, "mcp/data/pages.json");
 const { pages, shared } = readLibrary(root);
 const version = JSON.parse(

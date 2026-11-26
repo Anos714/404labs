@@ -1,6 +1,5 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Screen, clamp } from "./chrome";
 
@@ -8,7 +7,6 @@ import { Screen, clamp } from "./chrome";
 
 const PAPER = "#f2eee3";
 const BOTANIC = "#1f2b22";
-const BOTANIC_MUTED = "#6c766b";
 const BOTANIC_RED = "#9a4b32";
 
 type Stem = {
@@ -1003,7 +1001,7 @@ export function LaunchDemo() {
 
     let x = PAD_X;
     let y = GROUND(PAD_X) - 2.4;
-    let vx = 34 + 44 * c;
+    const vx = 34 + 44 * c;
     let vy = -(44 + 22 * c);
     const pts: [number, number][] = [[x, y]];
     let last = performance.now();

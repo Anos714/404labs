@@ -124,20 +124,15 @@ export function TerminalDemo() {
   const ref = useRef<HTMLButtonElement>(null);
   const seen = useInView(ref, { once: true, margin: "-30px" });
 
-  useEffect(() => {
-    if (seen) setStarted(true);
-  }, [seen]);
+  const active = started || seen;
 
   useEffect(() => {
-    if (!started) return;
-    if (reduce) {
-      setTyped(TERM_LINE.length);
-      return;
-    }
-    if (typed >= TERM_LINE.length) return;
+    if (!active || reduce || typed >= TERM_LINE.length) return;
     const t = setTimeout(() => setTyped((n) => n + 2), 34);
     return () => clearTimeout(t);
-  }, [started, typed, reduce]);
+  }, [active, typed, reduce]);
+
+  const shownTyped = reduce ? TERM_LINE.length : typed;
 
   return (
     <ScreenButton
@@ -166,7 +161,7 @@ export function TerminalDemo() {
           </p>
           <p className="lab-mono text-[10px] leading-5 text-white/80">
             <span className="text-amber/80">&gt;</span>{" "}
-            {TERM_LINE.slice(0, typed)}
+            {TERM_LINE.slice(0, shownTyped)}
             <span className="caret ml-0.5 inline-block h-3 w-1 translate-y-0.5 bg-fg/80" />
           </p>
           <p className="mt-2 lab-mono text-[10px] leading-5 text-white/45">
