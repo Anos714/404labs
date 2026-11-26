@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { SITE_URL } from "@/lib/site";
 import {
   Archivo,
   Bodoni_Moda,
@@ -181,14 +182,52 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "404lab · fifty-six not-found pages for Next.js",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "404lab · fifty-six not-found pages for Next.js",
+    template: "%s · 404lab",
+  },
   description:
-    "Fifty-six not-found pages and the parts they are built from. Next.js, Motion, Tailwind. Installed with shadcn, owned by you.",
+    "Fifty-six animated not-found pages and the parts they are built from. Next.js, Motion, Tailwind v4. Installed via shadcn, MCP, or agent skills, owned by you.",
+  keywords: [
+    "404 page",
+    "Next.js 404",
+    "not-found.tsx",
+    "shadcn registry",
+    "Motion",
+    "Tailwind CSS v4",
+    "animated 404",
+    "MCP server",
+    "agent skills",
+  ],
+  authors: [{ name: "404lab", url: "https://github.com/Anos714/404labs" }],
+  creator: "404lab",
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: "/mascot.jpg",
+    apple: "/mascot.jpg",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    title: "404lab",
+    title: "404lab · fifty-six not-found pages for Next.js",
     description:
       "Not-found pages you install with one command, then edit like your own code. Scenes, type and interactive pieces.",
+    url: SITE_URL,
+    siteName: "404lab",
     type: "website",
+    images: ["/mascot.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "404lab · fifty-six not-found pages for Next.js",
+    description:
+      "Fifty-six animated not-found pages for Next.js, Motion, and Tailwind v4. Install via shadcn, MCP, or agent skills.",
+    images: ["/mascot.jpg"],
   },
 };
 
