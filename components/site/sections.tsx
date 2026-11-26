@@ -1,5 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, GitBranch, Plus } from "lucide-react";
 import {
   AnimatedDigits,
   CopyCommand,
@@ -15,7 +16,7 @@ import {
 import { InstallTabs } from "@/components/site/install";
 import { PagesGrid } from "@/components/site/pages-grid";
 import { PAGES, pageCountWord } from "@/lib/pages";
-import { REGISTRY_HOST } from "@/lib/site";
+import { REGISTRY_HOST, SPONSORS } from "@/lib/site";
 
 /* ---------------------------------- pages ---------------------------------- */
 
@@ -267,6 +268,112 @@ export function Principles() {
   );
 }
 
+/* --------------------------------- sponsor --------------------------------- */
+
+const OPEN_SLOTS = 5;
+
+export function SponsorSection() {
+  const sponsor = SPONSORS[0];
+
+  return (
+    <section
+      id="sponsor"
+      className="scroll-mt-16 border-b border-line px-5 py-14 sm:px-8 lg:px-10 lg:py-16"
+    >
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-14">
+        <Reveal>
+          <p className="font-mono text-[10.5px] text-amber/90">
+            05 / sponsors
+          </p>
+          <h2 className="mt-3 text-[clamp(1.75rem,2.8vw,2.25rem)] font-medium leading-tight tracking-[-0.03em] text-fg">
+            Sponsors<span className="text-amber">.</span>
+          </h2>
+          <p className="mt-4 max-w-[42ch] text-[13.5px] leading-[1.75] text-fg-2">
+            404lab is built independently and stays free &amp; MIT-licensed for
+            everyone. Sponsors cover the time that goes into new pages, parts,
+            and maintenance.
+          </p>
+          <p className="mt-4 font-mono text-[10.5px] text-fg-3">
+            <span className="text-amber/90">logo tile</span> · navbar +
+            sponsor strip with backlink
+          </p>
+          <a
+            href="https://github.com/Anos714/404labs"
+            target="_blank"
+            rel="noreferrer"
+            className="mt-5 inline-flex items-center gap-1.5 border-b border-amber/60 pb-1 font-mono text-[11.5px] text-amber transition-colors duration-200 hover:border-amber hover:text-fg"
+          >
+            Become a sponsor
+            <ArrowUpRight className="size-3.5" strokeWidth={1.7} />
+          </a>
+        </Reveal>
+
+        <Reveal delay={0.08} className="min-w-0">
+          <div className="flex items-center justify-between gap-3 font-mono text-[10px] tracking-[0.06em] text-fg-3">
+            <span>{OPEN_SLOTS} SLOTS OPEN</span>
+            <span>your logo goes here</span>
+          </div>
+
+          <div className="mt-3.5 grid grid-cols-3 gap-3 sm:grid-cols-6">
+            {sponsor && (
+              <a
+                href={sponsor.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${sponsor.name} — ${sponsor.tagline}`}
+                className="group flex aspect-square flex-col items-center justify-center gap-1.5 rounded-[14px] border border-line-2 bg-ink-900 p-2.5 text-center transition-[transform,border-color,background-color] duration-200 hover:-translate-y-0.5 hover:border-amber/60 hover:bg-ink-850"
+              >
+                <Image
+                  src={sponsor.logo}
+                  alt={`${sponsor.name} logo`}
+                  width={36}
+                  height={36}
+                  unoptimized
+                  className="size-9 rounded-[9px] object-cover"
+                />
+                <span className="w-full truncate font-mono text-[9.5px] text-fg-2 group-hover:text-fg">
+                  {sponsor.name}
+                </span>
+              </a>
+            )}
+
+            {Array.from({ length: OPEN_SLOTS }).map((_, i) => (
+              <a
+                key={i}
+                href="https://github.com/Anos714/404labs"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Claim sponsor slot"
+                className="group flex aspect-square items-center justify-center rounded-[14px] border border-dashed border-line-2 bg-ink-900/35 text-fg-3 transition-[transform,border-color,background-color,color] duration-200 hover:-translate-y-0.5 hover:border-amber/50 hover:bg-ink-900 hover:text-amber"
+              >
+                <Plus
+                  className="size-4 transition-transform duration-200 group-hover:rotate-90"
+                  strokeWidth={1.5}
+                />
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <span className="font-mono text-[10px] tracking-[0.06em] text-fg-3">
+              SUPPORT THE PROJECT
+            </span>
+            <a
+              href="https://github.com/Anos714/404labs"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="404lab on GitHub"
+              className="grid size-8 place-items-center rounded-control border border-line bg-ink-900 text-fg-3 transition-colors duration-200 hover:border-line-2 hover:text-fg"
+            >
+              <GitBranch className="size-3.5" strokeWidth={1.6} />
+            </a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* --------------------------------- closing --------------------------------- */
 
 export function Closing() {
@@ -276,7 +383,7 @@ export function Closing() {
         <div className="grid gap-10 rounded-panel border border-line bg-ink-850 p-6 sm:p-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-14">
           <div>
             <p className="font-mono text-[10.5px] text-fg-3">
-              05 / the way out
+              06 / the way out
             </p>
             <h2 className="mt-3 text-[clamp(1.8rem,3.2vw,2.5rem)] font-medium leading-[1.1] tracking-[-0.04em] text-fg">
               Pick a dead end.

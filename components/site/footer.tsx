@@ -26,6 +26,7 @@ export function Footer() {
                   ["The pages", "/#pages"],
                   ["The parts", "/#parts"],
                   ["Install", "/#install"],
+                  ["Sponsor", "/#sponsor"],
                 ].map(([label, href]) => (
                   <li key={label}>
                     <Link

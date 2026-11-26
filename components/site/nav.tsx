@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { SponsorBadge } from "@/components/site/sponsor-badge";
 
 export function Nav() {
   return (
@@ -7,10 +9,20 @@ export function Nav() {
       <div className="mx-auto flex h-16 max-w-[1320px] items-center justify-between px-5 sm:px-8">
         <Link
           href="/"
-          className="flex items-baseline gap-[5px] rounded-control py-1 text-fg"
+          className="flex items-center gap-2 rounded-control py-1 text-fg"
         >
-          <span className="font-display text-[20px] leading-none">404</span>
-          <span className="font-mono text-[12px] text-fg-2">lab</span>
+          <Image
+            src="/mascot.jpg"
+            alt="404lab mascot"
+            width={64}
+            height={64}
+            unoptimized
+            className="size-6 rounded-[7px] border border-line object-cover"
+          />
+          <span className="flex items-baseline gap-[5px]">
+            <span className="font-display text-[20px] leading-none">404</span>
+            <span className="font-mono text-[12px] text-fg-2">lab</span>
+          </span>
           <span className="ml-2 hidden font-mono text-[11px] text-fg-3 sm:inline">
             v0.1
           </span>
@@ -35,6 +47,13 @@ export function Nav() {
           >
             Install
           </Link>
+          <Link
+            href="/#sponsor"
+            className="rounded-control px-2.5 py-1.5 font-mono text-[12px] text-amber/90 transition-colors duration-200 hover:text-amber sm:px-3"
+          >
+            Sponsor
+          </Link>
+          <SponsorBadge />
           <a
             href="https://github.com/Anos714/404labs"
             target="_blank"
