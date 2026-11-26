@@ -1,0 +1,34 @@
+# 404lab
+
+> Fifty-six animated not-found pages for Next.js (App Router), Motion, and Tailwind CSS v4. Installed via shadcn, MCP, or agent skills, owned by you.
+
+## Key Links
+
+- Catalogue: https://404lab.dev
+- Registry Template: https://404lab.dev/r/{name}.json
+- Registry Index: https://404lab.dev/r/registry.json
+- Agent Skill (SKILL.md): https://404lab.dev/skills/404lab/SKILL.md
+- Source Repository: https://github.com/Anos714/404labs
+
+## Install
+
+```bash
+npx shadcn@latest add @404lab/glitch-404
+```
+
+Or without configuring `components.json`:
+
+```bash
+npx shadcn@latest add https://404lab.dev/r/glitch-404.json
+```
+
+## Categories
+
+- `scene` (17): Atmospheric scenes and spatial metaphors (`/p/mosaic-404`, `/p/spotlight-404`, `/p/flood-404`, `/p/fog-404`, `/p/terminal-404`, ...)
+- `type` (16): Kinetic typography and numeral studies (`/p/glitch-404`, `/p/odometer-404`, `/p/morse-404`, `/p/ticker-404`, `/p/sweep-404`, ...)
+- `interactive` (23): Pointer, keyboard, and physics-driven pages (`/p/brick-404`, `/p/snake-404`, `/p/gravity-404`, `/p/magnet-404`, `/p/dial-404`, ...)
+
+## AI Agent Integration
+
+- **Agent Skill**: Install `https://404lab.dev/skills/404lab/SKILL.md` into `.agents/skills/404lab/SKILL.md`.
+- **MCP Server**: `node mcp/server.mjs` exposes `list_pages`, `search_pages`, `get_page`, `get_shared_file`, `get_install_guide`, `get_agent_skill`, and resources `lab404://library`, `lab404://pages/{slug}`, `lab404://skill`.

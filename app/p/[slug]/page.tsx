@@ -8,6 +8,7 @@ import { SourcePanel } from "@/components/site/source-panel";
 import { CopyCommand } from "@/components/demos";
 import { getPageSource } from "@/lib/source";
 import { PAGES, getPage } from "@/lib/pages";
+import { SITE_URL } from "@/lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -20,8 +21,17 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const page = getPage(slug);
   if (!page) return { title: "Not found · 404lab" };
   return {
-    title: `${page.title} 404 · 404lab`,
+    title: `${page.title} 404`,
     description: page.note,
+    alternates: {
+      canonical: `/p/${page.slug}`,
+    },
+    openGraph: {
+      title: `${page.title} 404 · 404lab`,
+      description: page.note,
+      url: `${SITE_URL}/p/${page.slug}`,
+      type: "article",
+    },
   };
 }
 
@@ -52,8 +62,35 @@ export default async function Page({ params }: Params) {
     ["needs", "Next · Motion · Tailwind"],
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareSourceCode",
+        name: `${page.title} 404`,
+        description: page.note,
+        programmingLanguage: "TypeScript",
+        runtimePlatform: "Next.js",
+        license: "https://opensource.org/licenses/MIT",
+        url: `${SITE_URL}/p/${page.slug}`,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "404lab", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "pages", item: `${SITE_URL}/#pages` },
+          { "@type": "ListItem", position: 3, name: page.slug, item: `${SITE_URL}/p/${page.slug}` },
+        ],
+      },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] [background-size:16px_16px]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto flex w-full max-w-[1300px] flex-col border-line bg-ink-950 lg:border-x">
         <Nav />
         <main className="mx-auto w-full min-w-0 max-w-[1180px] flex-1 px-5 pb-24 pt-6 sm:px-8 lg:pb-28">
