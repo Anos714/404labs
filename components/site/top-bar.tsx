@@ -4,12 +4,14 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { ArrowUpRight, Search, X } from "lucide-react";
 import { PAGES } from "@/lib/pages";
+import { SponsorBadge } from "@/components/site/sponsor-badge";
 import { usePageSearch } from "@/components/site/search";
 
 const NAV = [
   ["Catalogue", "#pages"],
   ["Parts", "#parts"],
   ["Install", "#install"],
+  ["Sponsor", "#sponsor"],
 ] as const;
 
 export function LandingTopBar() {
@@ -101,6 +103,8 @@ export function LandingTopBar() {
             </span>
           )}
         </form>
+
+        <SponsorBadge />
 
         <a
           href="https://github.com/Anos714/404labs"

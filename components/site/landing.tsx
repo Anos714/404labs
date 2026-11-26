@@ -1,14 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowUpRight,
   Blocks,
   GitBranch,
+  Heart,
   Info,
   LayoutGrid,
   Terminal,
 } from "lucide-react";
 import { CopyCommand } from "@/components/demos";
+import { HeroMascot } from "@/components/site/mascot";
 import { PAGES, categoryCount, pageCountWord } from "@/lib/pages";
+import { SPONSORS } from "@/lib/site";
 
 const BROWSE = [
   {
@@ -20,6 +24,7 @@ const BROWSE = [
   { label: "The parts", href: "#parts", icon: Blocks, count: "8" },
   { label: "Install", href: "#install", icon: Terminal, count: null },
   { label: "How it holds up", href: "#notes", icon: Info, count: null },
+  { label: "Sponsor", href: "#sponsor", icon: Heart, count: null },
 ] as const;
 
 export function LandingRail() {
@@ -28,12 +33,22 @@ export function LandingRail() {
       <div className="flex h-15 items-center justify-between gap-3 px-5 sm:px-6 lg:h-16 lg:px-6">
         <Link
           href="/"
-          className="flex items-baseline gap-[5px] rounded-control text-fg"
+          className="flex items-center gap-2.5 rounded-control text-fg"
         >
-          <span className="font-display text-[26px] leading-none tracking-[-0.02em]">
-            404
+          <Image
+            src="/mascot.jpg"
+            alt="404lab mascot"
+            width={64}
+            height={64}
+            unoptimized
+            className="size-7 rounded-[8px] border border-line object-cover"
+          />
+          <span className="flex items-baseline gap-[5px]">
+            <span className="font-display text-[26px] leading-none tracking-[-0.02em]">
+              404
+            </span>
+            <span className="font-mono text-[12px] text-fg-2">lab</span>
           </span>
-          <span className="font-mono text-[12px] text-fg-2">lab</span>
         </Link>
         <span className="rounded-full border border-line px-2 py-[3px] font-mono text-[9.5px] leading-none text-fg-3">
           v0.1
@@ -91,7 +106,46 @@ export function LandingRail() {
         </a>
       </div>
 
-      <div className="hidden px-5 pb-5 pt-6 lg:block">
+      {SPONSORS[0] && (
+        <div className="hidden px-5 pt-4 lg:block">
+          <a
+            href={SPONSORS[0].url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block rounded-panel border border-line bg-ink-900 p-3.5 transition-colors duration-200 hover:border-line-2"
+          >
+            <div className="flex items-center justify-between gap-2">
+              <span className="font-mono text-[9.5px] text-fg-3">
+                sponsored by
+              </span>
+              <ArrowUpRight
+                className="size-3 text-fg-3 transition-colors group-hover:text-fg"
+                strokeWidth={1.6}
+              />
+            </div>
+            <div className="mt-2.5 flex items-center gap-2.5">
+              <Image
+                src={SPONSORS[0].logo}
+                alt={`${SPONSORS[0].name} logo`}
+                width={24}
+                height={24}
+                unoptimized
+                className="size-6 shrink-0 rounded-[6px] border border-line object-cover"
+              />
+              <div className="min-w-0">
+                <p className="truncate text-[12.5px] font-medium text-fg">
+                  {SPONSORS[0].name}
+                </p>
+                <p className="truncate font-mono text-[9.5px] text-fg-3">
+                  {SPONSORS[0].host}
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      )}
+
+      <div className="hidden px-5 pb-5 pt-4 lg:block">
         <div className="rounded-panel border border-line bg-ink-850 p-4">
           <p className="font-mono text-[10.5px] text-fg-3">Start here</p>
           <p className="mt-2 text-[12.5px] leading-[1.65] text-fg-2">
@@ -125,6 +179,7 @@ export function LandingIntro() {
   return (
     <section className="border-b border-line px-5 pb-12 pt-11 sm:px-8 sm:pb-14 sm:pt-16 lg:px-10 lg:pb-16 lg:pt-20">
       <div className="mx-auto max-w-[700px] text-center">
+        <HeroMascot />
         <p className="font-mono text-[10.5px] text-fg-3">
           not-found pages, kept in the open
         </p>
@@ -182,6 +237,9 @@ export function LandingFooter() {
           </Link>
           <Link href="#install" className="transition-colors hover:text-fg">
             Install
+          </Link>
+          <Link href="#sponsor" className="transition-colors hover:text-fg">
+            Sponsor
           </Link>
           <a
             href="https://github.com/Anos714/404labs"
