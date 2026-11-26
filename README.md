@@ -205,10 +205,10 @@ Want your logo in the navbar and sponsor strip? Check the `#sponsor` section on 
 Built by **Rahul Sain**
 
 - **Portfolio:** [rahulxcode.vercel.app](https://rahulxcode.vercel.app/)
-- **Twitter / X:** [@_rahulsain](https://x.com/_rahulsain)
-- **LinkedIn:** [linkedin.com/in/rahulsain](https://linkedin.com/in/rahulsain)
-- **Medium:** [medium.com/@_rahulsain](https://medium.com/@_rahulsain)
-- **GitHub:** [github.com/Anos714/404labs](https://github.com/Anos714/404labs)
+- **Twitter / X:** [@RahulSain714](https://x.com/RahulSain714)
+- **LinkedIn:** [linkedin.com/in/rahulxcode](https://www.linkedin.com/in/rahulxcode/)
+- **Medium:** [medium.com/@rahulxcode](https://medium.com/@rahulxcode)
+- **GitHub:** [github.com/Anos714](https://github.com/Anos714) · [404labs repo](https://github.com/Anos714/404labs)
 
 ---
 
