@@ -7,6 +7,8 @@ import { REGISTRY_TEMPLATE, SITE_URL } from "@/lib/site";
 const TABS = [
   { id: "cli", label: "shadcn cli", lang: "bash" },
   { id: "registry", label: "direct url", lang: "bash" },
+  { id: "skill", label: "agent skill", lang: "md" },
+  { id: "mcp", label: "mcp", lang: "json" },
   { id: "fonts", label: "fonts", lang: "css" },
   { id: "manual", label: "by hand", lang: "text" },
 ] as const;
@@ -170,6 +172,98 @@ export function InstallTabs() {
                 </span>
                 <span>one file per page</span>
               </div>
+            </div>
+          </>
+        )}
+
+        {tab === "skill" && (
+          <>
+            <CopyCommand
+              command={`curl -sL ${SITE_URL}/skills/404lab/SKILL.md -o .agents/skills/404lab/SKILL.md --create-dirs`}
+              className="border-transparent bg-ink-950"
+            />
+            <div className="mt-4 border-t border-line px-1 pt-4">
+              <p className="max-w-[50ch] text-[13px] leading-[1.7] text-fg-2">
+                Add the 404lab skill to Antigravity, Claude Code, Codex, or
+                Cursor so your agent knows every slug, category, font token, and
+                App Router wiring rule.
+              </p>
+              <div className="mt-4 grid gap-px overflow-hidden rounded-tile border border-line bg-line">
+                {[
+                  [".agents/skills/404lab/SKILL.md", "Antigravity · Codex"],
+                  [".claude/skills/404lab/SKILL.md", "Claude Code"],
+                  [".cursor/rules/404lab.mdc", "Cursor"],
+                ].map(([dest, host]) => (
+                  <div
+                    key={dest}
+                    className="flex items-center justify-between gap-3 bg-ink-900 px-3 py-2.5 font-mono text-[10.5px]"
+                  >
+                    <span className="truncate text-fg-2">{dest}</span>
+                    <span className="shrink-0 text-fg-3">{host}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-3 flex flex-wrap items-center gap-3 font-mono text-[10px] text-fg-3">
+                <a
+                  href="/skills/404lab/SKILL.md"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-fg-2 underline decoration-line-2 underline-offset-4 transition-colors hover:text-fg"
+                >
+                  view SKILL.md
+                </a>
+                <span>also available via mcp: get_agent_skill</span>
+              </div>
+            </div>
+          </>
+        )}
+
+        {tab === "mcp" && (
+          <>
+            <div className="rounded-tile bg-ink-950 px-4 py-3">
+              <p className="mb-2 font-mono text-[10px] text-fg-3">
+                .mcp.json · Claude Code, Cursor, Codex, OpenCode
+              </p>
+              <pre className="overflow-x-auto font-mono text-[11px] leading-[1.85] text-fg-2">
+                <code>
+                  <CodeLine>{"{"}</CodeLine>
+                  <CodeLine>
+                    {"  "}
+                    <span className="text-fg-2">&quot;mcpServers&quot;</span>: {"{"}
+                  </CodeLine>
+                  <CodeLine>
+                    {"    "}
+                    <span className="text-fg-2">&quot;404lab&quot;</span>: {"{"}
+                  </CodeLine>
+                  <CodeLine>
+                    {"      "}
+                    <span className="text-fg-2">&quot;command&quot;</span>:{" "}
+                    <span className="text-amber/85">&quot;node&quot;</span>,
+                  </CodeLine>
+                  <CodeLine>
+                    {"      "}
+                    <span className="text-fg-2">&quot;args&quot;</span>: [
+                    <span className="text-amber/85">
+                      &quot;/path/to/404lab/mcp/server.mjs&quot;
+                    </span>
+                    ]
+                  </CodeLine>
+                  <CodeLine>{"    }"}</CodeLine>
+                  <CodeLine>{"  }"}</CodeLine>
+                  <CodeLine>{"}"}</CodeLine>
+                </code>
+              </pre>
+            </div>
+            <div className="mt-4 border-t border-line px-1 pt-4">
+              <p className="max-w-[50ch] text-[13px] leading-[1.7] text-fg-2">
+                Exposes 6 tools (`list_pages`, `search_pages`, `get_page`,
+                `get_shared_file`, `get_install_guide`, `get_agent_skill`) and
+                resources (`lab404://library`, `lab404://pages/&#123;slug&#125;`,
+                `lab404://skill`).
+              </p>
+              <p className="mt-3 font-mono text-[10px] text-fg-3">
+                stdio · read-only · zero network calls at runtime
+              </p>
             </div>
           </>
         )}

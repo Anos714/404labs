@@ -108,7 +108,7 @@ export function LaunchDemo() {
 
     let x = PAD_X;
     let y = GROUND(PAD_X) - 2.4;
-    let vx = 34 + 44 * c;
+    const vx = 34 + 44 * c;
     let vy = -(44 + 22 * c);
     const pts: [number, number][] = [[x, y]];
     let last = performance.now();

@@ -21,11 +21,7 @@ export function TickerDemo() {
   const busy = useRef(false);
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setChars(TARGET);
-      return;
-    }
+    if (!inView || reduce) return;
     busy.current = true;
     let n = 0;
     const id = setInterval(() => {
@@ -43,6 +39,8 @@ export function TickerDemo() {
     return () => clearInterval(id);
   }, [inView, spin, reduce]);
 
+  const shownChars = reduce ? TARGET : chars;
+
   function replay() {
     if (reduce || busy.current) return;
     setSpin((s) => s + 1);
@@ -59,7 +57,7 @@ export function TickerDemo() {
         </div>
 
         <div className="flex items-start gap-2">
-          {chars.map((c, i) => (
+          {shownChars.map((c, i) => (
             <div
               key={i}
               className="relative grid h-[84px] w-[60px] place-items-center overflow-hidden rounded-[3px] border border-line-2 bg-ink-850 [perspective:260px]"

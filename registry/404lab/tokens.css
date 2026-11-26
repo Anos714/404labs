@@ -41,4 +41,5 @@
     --lab-font-mono,
     var(--font-mono, ui-monospace, SFMono-Regular, monospace)
   );
+  font-variant-numeric: tabular-nums;
 }

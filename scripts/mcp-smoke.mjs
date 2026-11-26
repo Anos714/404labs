@@ -1,6 +1,7 @@
 import { spawn } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 /**
  * Minimal MCP handshake: starts the server, lists tools, reads one page and one
@@ -9,7 +10,7 @@ import path from "node:path";
  * node scripts/mcp-smoke.mjs
  */
 
-const root = path.resolve(import.meta.dirname, "..");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const library = JSON.parse(
   fs.readFileSync(path.join(root, "mcp/data/pages.json"), "utf8"),
 );
@@ -85,9 +86,14 @@ try {
   const names = tools.tools.map((tool) => tool.name);
   check(
     "tools",
-    ["get_install_guide", "get_page", "get_shared_file", "list_pages", "search_pages"].every(
-      (name) => names.includes(name),
-    ),
+    [
+      "get_agent_skill",
+      "get_install_guide",
+      "get_page",
+      "get_shared_file",
+      "list_pages",
+      "search_pages",
+    ].every((name) => names.includes(name)),
     names.join(", "),
   );
 
@@ -124,6 +130,12 @@ try {
     "read catalog",
     catalog.contents?.[0]?.text?.startsWith("# 404lab"),
   );
+
+  const skill = await call("get_agent_skill", {});
+  check("get_agent_skill", skill.text.includes("name: 404lab"));
+
+  const skillRes = await request("resources/read", { uri: "lab404://skill" });
+  check("read skill", skillRes.contents?.[0]?.text?.includes("# 404lab Agent Skill"));
 } catch (error) {
   failures.push(error.message);
   console.log(`fail  ${error.message}`);

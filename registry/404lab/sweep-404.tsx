@@ -3,7 +3,7 @@
 // sweep-404 · 404lab
 // Requires ./chrome.tsx and the 404lab tokens.
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Caption, Foot, Screen } from "./chrome";
 
@@ -12,15 +12,12 @@ import { Caption, Foot, Screen } from "./chrome";
 export function SweepDemo() {
   const reduce = useReducedMotion();
   const [on, setOn] = useState(false);
-
-  useEffect(() => {
-    if (reduce) setOn(true);
-  }, [reduce]);
+  const active = Boolean(reduce) || on;
 
   return (
     <Screen
       onPointerEnter={() => setOn(true)}
-      onPointerLeave={() => setOn(reduce ? true : false)}
+      onPointerLeave={() => setOn(false)}
       onClick={() => setOn((v) => !v)}
       className="bg-[#07080a]"
     >
@@ -41,7 +38,7 @@ export function SweepDemo() {
 
           <motion.div
             className="absolute inset-y-0 left-0 overflow-hidden"
-            animate={{ width: on ? "100%" : "0%" }}
+            animate={{ width: active ? "100%" : "0%" }}
             transition={{ type: "spring", stiffness: 90, damping: 20 }}
           >
             <span className="display absolute left-0 top-0 whitespace-nowrap text-[70px] leading-none text-fg">
