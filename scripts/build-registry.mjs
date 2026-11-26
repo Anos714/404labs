@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { readLibrary } from "../lib/source-data.mjs";
 
 /**
@@ -9,7 +10,7 @@ import { readLibrary } from "../lib/source-data.mjs";
  * node scripts/build-registry.mjs --check  exits 1 when anything is stale
  */
 
-const root = path.resolve(import.meta.dirname, "..");
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const check = process.argv.includes("--check");
 const { pages, shared } = readLibrary(root);
 const chrome = shared.find((file) => file.name === "chrome.tsx");

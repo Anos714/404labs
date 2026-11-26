@@ -155,15 +155,12 @@ export function TypeLine() {
   const reduce = useReducedMotion();
 
   useEffect(() => {
-    if (!on) return;
-    if (reduce) {
-      setN(text.length);
-      return;
-    }
-    if (n >= text.length) return;
+    if (!on || reduce || n >= text.length) return;
     const t = setTimeout(() => setN((v) => v + 1), 46);
     return () => clearTimeout(t);
   }, [on, n, reduce, text.length]);
+
+  const shownCount = reduce && on ? text.length : n;
 
   return (
     <span
@@ -177,7 +174,7 @@ export function TypeLine() {
       }}
       className="cursor-default lab-mono text-[11px] text-fg/70"
     >
-      {text.slice(0, n) || "hover or tap"}
+      {text.slice(0, shownCount) || "hover or tap"}
       <span className="caret ml-0.5 inline-block h-3 w-[3px] translate-y-0.5 bg-amber/80" />
     </span>
   );

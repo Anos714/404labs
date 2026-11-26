@@ -2,6 +2,9 @@
   "name": "404lab",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.11.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "npm run mcp:data && npm run registry:build && next build",

@@ -289,15 +289,12 @@ export function DefocusDemo() {
 export function SweepDemo() {
   const reduce = useReducedMotion();
   const [on, setOn] = useState(false);
-
-  useEffect(() => {
-    if (reduce) setOn(true);
-  }, [reduce]);
+  const active = Boolean(reduce) || on;
 
   return (
     <Screen
       onPointerEnter={() => setOn(true)}
-      onPointerLeave={() => setOn(reduce ? true : false)}
+      onPointerLeave={() => setOn(false)}
       onClick={() => setOn((v) => !v)}
       className="bg-[#07080a]"
     >
@@ -318,7 +315,7 @@ export function SweepDemo() {
 
           <motion.div
             className="absolute inset-y-0 left-0 overflow-hidden"
-            animate={{ width: on ? "100%" : "0%" }}
+            animate={{ width: active ? "100%" : "0%" }}
             transition={{ type: "spring", stiffness: 90, damping: 20 }}
           >
             <span className="display absolute left-0 top-0 whitespace-nowrap text-[70px] leading-none text-fg">
@@ -365,36 +362,29 @@ export function MorseDemo() {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { margin: "-30px" });
-  const [step, setStep] = useState(-1);
+  const [step, setStep] = useState(0);
   const [text, setText] = useState("");
+  const [started, setStarted] = useState(false);
+
+  const active = started || inView;
 
   useEffect(() => {
-    if (inView) setStep(0);
-  }, [inView]);
-
-  useEffect(() => {
-    if (step < 0) return;
+    if (!active || reduce) return;
     const ev = EVENTS[step];
-    if (!ev) {
-      setStep(-1);
-      return;
-    }
-    if (reduce) {
-      setText("404");
-      setStep(-1);
-      return;
-    }
+    if (!ev) return;
     const t = setTimeout(() => {
       if (ev.reveal) setText((s) => s + ev.reveal);
       setStep((s) => s + 1);
     }, ev.dur);
     return () => clearTimeout(t);
-  }, [step, reduce]);
+  }, [active, step, reduce]);
 
-  const lit = step >= 0 && EVENTS[step]?.on === true;
+  const lit = !reduce && active && step < EVENTS.length && EVENTS[step]?.on === true;
+  const shownText = reduce ? "404" : text;
 
   function replay() {
     if (reduce) return;
+    setStarted(true);
     setText("");
     setStep(0);
   }
@@ -423,7 +413,7 @@ export function MorseDemo() {
             <span
               key={i}
               className={`display text-[56px] leading-none transition-colors duration-200 ${
-                text.length > i ? "text-fg" : "text-fg/15"
+                shownText.length > i ? "text-fg" : "text-fg/15"
               }`}
             >
               {d}
@@ -436,7 +426,7 @@ export function MorseDemo() {
             <span
               key={gi}
               className={`lab-mono text-[12px] tracking-[0.18em] ${
-                text.length > gi ? "text-amber/80" : "text-white/30"
+                shownText.length > gi ? "text-amber/80" : "text-white/30"
               }`}
             >
               {g}
@@ -469,11 +459,7 @@ export function TickerDemo() {
   const busy = useRef(false);
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setChars(TARGET);
-      return;
-    }
+    if (!inView || reduce) return;
     busy.current = true;
     let n = 0;
     const id = setInterval(() => {
@@ -491,6 +477,8 @@ export function TickerDemo() {
     return () => clearInterval(id);
   }, [inView, spin, reduce]);
 
+  const shownChars = reduce ? TARGET : chars;
+
   function replay() {
     if (reduce || busy.current) return;
     setSpin((s) => s + 1);
@@ -507,7 +495,7 @@ export function TickerDemo() {
         </div>
 
         <div className="flex items-start gap-2">
-          {chars.map((c, i) => (
+          {shownChars.map((c, i) => (
             <div
               key={i}
               className="relative grid h-[84px] w-[60px] place-items-center overflow-hidden rounded-[3px] border border-line-2 bg-ink-850 [perspective:260px]"

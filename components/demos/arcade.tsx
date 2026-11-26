@@ -2,7 +2,6 @@
 
 import {
   motion,
-  useMotionValue,
   useReducedMotion,
   useSpring,
   useTransform,
@@ -51,7 +50,7 @@ export function BrickDemo() {
   const ballsRef = useRef(3);
   const phaseRef = useRef<"ready" | "live" | "over" | "clear">("ready");
   const keys = useRef({ left: false, right: false });
-  const [alive, setAlive] = useState<boolean[]>(aliveRef.current);
+  const [alive, setAlive] = useState<boolean[]>(() => BRICKS.map(() => true));
   const [hits, setHits] = useState(0);
   const [balls, setBalls] = useState(3);
   const [phase, setPhase] = useState<"ready" | "live" | "over" | "clear">(
@@ -621,7 +620,6 @@ const WATCH_LOGS = [
   "still nothing",
 ];
 
-const WATCH_EYE = "#181a14";
 const WATCH_LINE = "rgba(233,184,113,0.17)";
 
 function WatchEye({

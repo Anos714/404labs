@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
     // Generated from components/demos by scripts/build-registry.mjs.
     "registry/**",
     "public/r/**",
+    ".agents/**",
   ]),
 ]);
 
