@@ -1,51 +1,93 @@
-# 404lab
+<div align="center">
+  <img src="./public/mascot.jpg" alt="404lab mascot" width="140" style="border-radius: 28px;" />
 
-Catalogue and source for 56 animated not-found pages: 17 scenes, 16 type
-studies and 23 interactive pages.
+  <h1>404lab</h1>
 
-Stack: Next.js (App Router), Tailwind CSS v4, Motion, lucide-react.
+  <p>
+    <strong>A missing page still has a design.</strong><br />
+    Fifty-six animated not-found pages and eight reusable parts for Next.js, Motion, and Tailwind CSS v4.<br />
+    Installed via shadcn, MCP, or Agent Skills — owned by you.
+  </p>
 
-## Run
+  <p>
+    <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-e9b871?style=flat-square" alt="MIT License" /></a>
+    <img src="https://img.shields.io/badge/Next.js-16.4-121212?style=flat-square&logo=next.js" alt="Next.js 16.4" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-v4-121212?style=flat-square&logo=tailwindcss" alt="Tailwind CSS v4" />
+    <img src="https://img.shields.io/badge/pages-56-121212?style=flat-square" alt="56 Pages" />
+    <img src="https://img.shields.io/badge/MCP_%2B_Skill-ready-121212?style=flat-square" alt="MCP and Agent Skill Ready" />
+  </p>
+</div>
+
+---
+
+## Overview
+
+**404lab** is an open-source catalogue and source library of **56 handcrafted, animated 404 pages**:
+- **17 Scenes** — atmospheric environments and spatial metaphors (`mosaic-404`, `spotlight-404`, `flood-404`, `fog-404`, `terminal-404`, ...)
+- **16 Type Studies** — kinetic typography and numeral mechanics (`glitch-404`, `odometer-404`, `morse-404`, `ticker-404`, `sweep-404`, ...)
+- **23 Interactive Pages** — pointer, keyboard, and physics-driven dead ends (`brick-404`, `snake-404`, `gravity-404`, `magnet-404`, `dial-404`, ...)
+- **8 Reusable Parts** — standalone micro-components (`scramble-text`, `flip-digit`, `animated-digits`, `magnetic-button`, `elastic-arrow`, `typewriter-line`, `morse-lamp`, `scan-sweep`)
+
+Every page exports a single zero-prop `<Name>Demo` component. Nothing calls home, and no runtime wrapper is required.
+
+---
+
+## Key Features
+
+- **Copy-as-Source via shadcn Registry** — served at `/r/{name}.json` with `chrome.tsx` and Tailwind v4 tokens bundled in.
+- **Built-in Stdio MCP Server** — `mcp/server.mjs` exposes 6 tools (`list_pages`, `search_pages`, `get_page`, `get_shared_file`, `get_install_guide`, `get_agent_skill`) and 3 resources (`lab404://library`, `lab404://pages/{slug}`, `lab404://skill`).
+- **Agent Skill (`SKILL.md`)** — installable directly into Antigravity, Claude Code, Codex, and Cursor from `/skills/404lab/SKILL.md`.
+- **20-Typeface Live Specimen Rail** — preview 7 serifs, 8 sans, and 5 mono faces live across the catalogue using just two public CSS tokens.
+- **Accessibility & Reduced Motion** — every demo ships a still state respecting `prefers-reduced-motion` via `useStill()` and keyboard-first controls.
+- **SEO / AEO / GEO Ready** — dynamic `sitemap.xml`, `robots.txt`, canonicals, OpenGraph/Twitter cards, JSON-LD structured data, and `public/llms.txt`.
+
+---
+
+## Tech Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| **Framework** | Next.js `16.4.6` (App Router, Turbopack) |
+| **UI & Language** | React `19.3.0`, TypeScript `5` (`strict: true`) |
+| **Styling** | Tailwind CSS `v4`, `@tailwindcss/turbopack` |
+| **Animation** | Motion (`motion/react` `^14.13.0`) |
+| **Icons** | `lucide-react` |
+| **AI Tooling** | `@modelcontextprotocol/sdk`, `zod`, Agent `SKILL.md` |
+| **Distribution** | shadcn Registry (`/r/{name}.json`) |
+
+---
+
+## Getting Started (Clone & Run)
+
+**Prerequisites:** Node.js `>= 20.11.0` and `npm` (or `bun`).
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/Anos714/404labs.git
+cd 404labs
+
+# 2. Install dependencies
 npm install
+
+# 3. Start the development server
 npm run dev
 ```
 
-Open http://localhost:3000.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Structure
+---
 
-- `app/page.tsx` - catalogue landing: rail, search, page grid, parts, install
-- `app/p/[slug]/page.tsx` - detail page with the live demo, install command and
-  the real component source
-- `components/demos/` - the demos, grouped by kind and re-exported by
-  `components/demos.tsx`
-- `components/site/` - landing rail, top bar, catalogue, detail chrome
-- `lib/pages.tsx` - the page registry: slug, copy, category, demo
-- `lib/source-data.mjs` - reads the registry and demos, builds each page's
-  standalone source, including small helpers shared inside a demo file
-- `registry/404lab/` - generated source files used by the shadcn registry
-- `public/r/` - generated registry items served to the shadcn CLI
-- `mcp/` - stdio MCP server and its generated data, see
-  [mcp/README.md](mcp/README.md)
-- `scripts/` - MCP data, registry build and smoke tests
-- `public/worlds/` - photographs used by a few scene demos
+## Installing a 404 Page in Your Project
 
-## shadcn registry
-
-The site serves a shadcn registry at `/r/{name}.json`. Each page item carries
-the component, the shared `chrome.tsx` and the token block, so a single install
-lands a working file. `registry.json` is the build input; `registry/404lab/` and
-`public/r/` are generated. The full setup, including the optional Directory
-listing, is in [`docs/registry.md`](docs/registry.md).
+### Option 1: Direct URL (zero config)
 
 ```bash
-npm run registry:build   # rebuild registry/ and public/r
-npm run registry:check   # fail when the generated files are stale
+npx shadcn@latest add https://404lab.dev/r/glitch-404.json
 ```
 
-Point `components.json` at the registry once:
+### Option 2: `@404lab` Namespace
+
+Add the registry once to `components.json`:
 
 ```json
 {
@@ -55,64 +97,58 @@ Point `components.json` at the registry once:
 }
 ```
 
-Then install a page by name:
+Then install any page by slug:
 
 ```bash
 npx shadcn@latest add @404lab/glitch-404
 ```
 
-Or skip the namespace and install from the item URL:
+Use it in `app/not-found.tsx`:
 
-```bash
-npx shadcn@latest add https://404lab.dev/r/glitch-404.json
+```tsx
+import { GlitchDemo } from "@/components/404lab/glitch-404";
+
+export default function NotFound() {
+  return <GlitchDemo />;
+}
 ```
 
-Replace the host with wherever the site is deployed. The site reads
-`NEXT_PUBLIC_SITE_URL` at build time (default `https://404lab.dev`), so set it
-once and every command, snippet and registry `homepage` follows. In local
-development the template is `http://localhost:3000/r/{name}.json`.
+> **Note on Scene Images:** Some `scene` pages reference photographs from `public/worlds/`. Copy the referenced `.webp` file into your project's `public/worlds/` directory or swap the `src` for your own image. See [`docs/registry.md`](docs/registry.md) for full deployment and shadcn Directory details.
 
-The item adds `motion` and `lucide-react`, writes both files into
-`components/404lab/`, and merges the colors, radius scale and the `display` and
-`lab-mono` utilities into the project CSS. Some scene demos use a photograph
-from `public/worlds/`; the install output says so, and the `src` can be swapped
-for your own image.
+---
 
-## MCP server
+## Agent Skill & MCP Server
 
-`mcp/server.mjs` is a stdio MCP server for the library. It lists and searches
-the 56 pages, returns a page's real component source, and hands over the shared
-`chrome.tsx` and `tokens.css`. It works with Claude Code, Codex, Cursor and
-OpenCode.
+### Agent Skill (`SKILL.md`)
+
+Install the skill into your project so your coding agent knows all 56 slugs, tokens, and App Router wiring rules:
 
 ```bash
-npm run mcp:data   # rebuild mcp/data/pages.json from the demos
-npm run mcp:test   # handshake, tool list, one page read
-npm run mcp        # start the server on stdio
+curl -sL https://404lab.dev/skills/404lab/SKILL.md -o .agents/skills/404lab/SKILL.md --create-dirs
 ```
 
-Point a client at the absolute path. A project `.mcp.json` looks like this:
+### MCP Server (`mcp/server.mjs`)
+
+Point Claude Code, Cursor, Codex, or OpenCode at `mcp/server.mjs`:
 
 ```json
 {
   "mcpServers": {
     "404lab": {
       "command": "node",
-      "args": ["/path/to/404lab/mcp/server.mjs"]
+      "args": ["/path/to/404labs/mcp/server.mjs"]
     }
   }
 }
 ```
 
-Per-client setup, tool list and examples are in
-[`mcp/README.md`](mcp/README.md). `npm run build` regenerates the MCP data and
-the registry before the Next build, so the site, the server and the CLI items
-stay in step.
+See [`mcp/README.md`](mcp/README.md) for client-specific setup instructions and tool documentation.
 
-## Fonts
+---
 
-Every page reads two public tokens, so you can change the type without editing a
-component:
+## Typography & Design Tokens
+
+Override two CSS variables on `:root` (or any wrapper) to reskin every page without editing component code:
 
 ```css
 :root {
@@ -121,30 +157,62 @@ component:
 }
 ```
 
-Load the faces with `next/font`, a local `@font-face`, or a hosted stylesheet,
-then set the variables on `:root` or on a single wrapper. The `.display` and
-`.lab-mono` utilities in `app/globals.css` resolve through these tokens, with
-fallbacks so the pages still render before a font is chosen.
+---
 
-The typeface rail above the catalogue previews 20 faces listed in
-`lib/faces.ts` and loaded in `app/layout.tsx`: seven serifs, eight sans, five
-mono. They are preview-only and not preloaded, so the library still ships just
-the two tokens. Add a face by importing it there and adding one entry to
-`FACES`.
+## Scripts
 
-## Design notes
+```bash
+npm run dev             # Start Next.js dev server
+npm run build           # Rebuild MCP data + registry + Next.js production build
+npm run lint            # Run ESLint
+npx tsc --noEmit        # Run TypeScript typecheck
+npm run registry:build  # Regenerate registry/ and public/r/
+npm run registry:check  # Verify generated registry is in sync
+npm run mcp:data        # Regenerate mcp/data/pages.json
+npm run mcp:check       # Verify MCP data is in sync
+npm run mcp:test        # Run MCP stdio smoke tests
+npm run mcp             # Start the MCP server on stdio
+```
 
-- Neutral ink surfaces, one amber accent, near-white type
-- One radius scale: 20px panels, 12px tiles, 8px controls
-- Dashed dividers, mono metadata, tabular numbers for counts
-- Instrument Serif for display, Geist for UI, Geist Mono for labels
-- Motion only where it explains something; every demo has a still state
-- All animation runs through Motion or a small CSS keyframe set
+---
 
-## Credits
+## Project Structure
 
-Landscape photographs from [Imageory](https://imageory.in/gallery). Check the
-terms on that site before using the images in a public launch; the gallery does
-not publish an explicit license on its pages.
+```text
+app/                Next.js App Router pages, SEO routes (robots.ts, sitemap.ts), global tokens
+components/demos/   All 56 animated 404 demos + shared chrome.tsx
+components/site/    Catalogue UI, search, typeface rail, install tabs, mascot, sponsor badges
+lib/                Page registry (pages.tsx), typeface list, source extractor (source-data.mjs)
+mcp/                Stdio MCP server (server.mjs) and generated pages.json
+public/             Static assets, mascot, worlds/, llms.txt, skills/, and generated r/*.json
+registry/           Generated standalone component files for shadcn
+scripts/            Registry builder, MCP data builder, and MCP smoke tests
+```
 
-Pages are original work, MIT once the library is published.
+---
+
+## Sponsors
+
+404lab is independent and free for everyone. Current sponsor:
+- **[Designeer](https://designeer.xyz/)** — Inspiration, resources, tools & portfolios
+
+Want your logo in the navbar and sponsor strip? Check the `#sponsor` section on the site or reach out via GitHub.
+
+---
+
+## Author
+
+Built by **Rahul Sain**
+
+- **Portfolio:** [rahulxcode.vercel.app](https://rahulxcode.vercel.app/)
+- **Twitter / X:** [@_rahulsain](https://x.com/_rahulsain)
+- **LinkedIn:** [linkedin.com/in/rahulsain](https://linkedin.com/in/rahulsain)
+- **Medium:** [medium.com/@_rahulsain](https://medium.com/@_rahulsain)
+- **GitHub:** [github.com/Anos714/404labs](https://github.com/Anos714/404labs)
+
+---
+
+## Credits & License
+
+- Landscape photographs in `public/worlds/` are from [Imageory](https://imageory.in/gallery). Please review their site terms before using those images in a public launch.
+- Released under the **[MIT License](./LICENSE)**.
